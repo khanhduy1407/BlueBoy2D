@@ -13,7 +13,7 @@ public class Main {
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
 
-        // pack(): Cause this Window to be sized to fix the preferred size and layout of
+        // Cause this Window to be sized to fix the preferred size and layout of
         // its subcomponents (= GamePanel).
         window.pack();
 

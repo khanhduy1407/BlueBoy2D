@@ -16,7 +16,13 @@ public class GamePanel extends JPanel implements Runnable {
     final int screenWidth = tileSize * maxScreenCol; // 768 pixels
     final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
+    KeyHandler keyH = new KeyHandler();
     Thread gameThread;
+
+    // Set player's default position
+    int playerX = 100;
+    int playerY = 100;
+    int playerSpeed = 4;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -24,6 +30,9 @@ public class GamePanel extends JPanel implements Runnable {
         // If set to true, all the drawing from this component will be done in an offscreen painting buffer.
         // In short, enabling this can improve game's rendering performance
         this.setDoubleBuffered(true);
+        this.addKeyListener(keyH);
+        // With this, this GamePanel can be "focused" to receive key input.
+        this.setFocusable(true);
     }
 
     public void startGameThread() {
@@ -56,7 +65,15 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        //
+        if (keyH.upPressed == true) {
+            playerY -= playerSpeed;
+        } else if (keyH.downPressed == true) {
+            playerY += playerSpeed;
+        } else if (keyH.leftPressed == true) {
+            playerX -= playerSpeed;
+        } else if (keyH.rightPressed == true) {
+            playerX += playerSpeed;
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -66,9 +83,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         g2.setColor(Color.white);
 
-        g2.fillRect(100, 100, tileSize, tileSize);
+        g2.fillRect(playerX, playerY, tileSize, tileSize);
 
-        // dispose(): Dispose of this graphics context and release any system resources that it is using.
+        // Dispose of this graphics context and release any system resources that it is using.
         g2.dispose();
     }
 }
