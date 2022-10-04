@@ -4,17 +4,22 @@ import main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class TileManager {
 
     GamePanel gp;
     Tile[] tile;
+    int mapTileNum[][];
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
 
         tile = new Tile[10];
+        mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
 
         getTileImage();
     }
@@ -31,6 +36,43 @@ public class TileManager {
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water.png"));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void loadMap() {
+        try {
+            InputStream is = getClass().getResourceAsStream("/maps/map01.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            int col = 0;
+            int row = 0;
+
+            while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
+                // Read a line of text
+                String line = br.readLine();
+
+                while (col < gp.maxScreenCol) {
+                    // Splits this string around matches of the given regular expression
+                    String numbers[] = line.split(" "); // = split the string at a space
+
+                    // Use 'col' as an index for 'numbers[]' array
+                    int num = Integer.parseInt(numbers[col]);
+
+                    // We store the extracted number in the mapTileNum[][]
+                    mapTileNum[col][row] = num;
+                    col++;
+                }
+
+                // Continue this until everything in the number[] is stored in the mapTileNum[][]
+                if (col == gp.maxScreenCol) {
+                    col = 0;
+                    row++;
+                }
+            }
+            
+            br.close();
+        } catch (Exception e) {
+            //
         }
     }
 
