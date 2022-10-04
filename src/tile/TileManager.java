@@ -35,6 +35,34 @@ public class TileManager {
     }
 
     public void draw(Graphics2D g2) {
-        //
+        g2.drawImage(tile[1].image, 0, 0, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[1].image, 48, 0, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[1].image, 96, 0, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[1].image, 144, 0, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[1].image, 192, 0, gp.tileSize, gp.tileSize, null);
+
+        g2.drawImage(tile[1].image, 0, 48, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[0].image, 48, 48, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[0].image, 96, 48, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[0].image, 144, 48, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[1].image, 192, 48, gp.tileSize, gp.tileSize, null);
+
+        g2.drawImage(tile[1].image, 0, 96, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[0].image, 48, 96, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[0].image, 96, 96, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[0].image, 144, 96, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[0].image, 192, 96, gp.tileSize, gp.tileSize, null);
+
+        g2.drawImage(tile[1].image, 0, 144, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[0].image, 48, 144, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[0].image, 96, 144, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[0].image, 144, 144, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[1].image, 192, 144, gp.tileSize, gp.tileSize, null);
+
+        g2.drawImage(tile[1].image, 0, 192, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[2].image, 48, 192, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[2].image, 96, 192, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[2].image, 144, 192, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[1].image, 192, 192, gp.tileSize, gp.tileSize, null);
     }
 }
