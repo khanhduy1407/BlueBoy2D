@@ -33,6 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
+    public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
 
@@ -45,6 +46,11 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(keyH);
         // With this, this GamePanel can be "focused" to receive key input.
         this.setFocusable(true);
+    }
+
+    // Create this method so we can add other setup stuff in the future
+    public void setupGame() {
+        aSetter.setObject();
     }
 
     public void startGameThread() {
