@@ -12,7 +12,7 @@ Use WASD to move the character
    - [x] Control player character
    - [x] Display background tiles
    - [x] Display objects
-   - [ ] Complete the game
+   - [x] Complete the game
 2. Action RPG Game
    - [ ] Create monsters
    - [ ] Create battle system
