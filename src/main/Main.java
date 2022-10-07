@@ -8,7 +8,7 @@ public class Main {
         // This lets the window properly close when user clicks the close ("x") button.
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("2D Adventure");
+        window.setTitle("Blue Boy Adventure - v1.0");
 
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
