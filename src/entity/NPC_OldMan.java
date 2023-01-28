@@ -29,6 +29,9 @@ public class NPC_OldMan extends Entity {
 
     public void setDialogue() {
         dialogues[0] = "Hello, lab.";
+        dialogues[1] = "So you've come to this island to fine the treasure?";
+        dialogues[2] = "I used to be a great wizard but now... I'm a bit too old for talking an adventure.";
+        dialogues[3] = "Wll, good luck on you.";
     }
 
     public void setAction() {
@@ -56,6 +59,7 @@ public class NPC_OldMan extends Entity {
     }
 
     public void speak() {
-        gp.ui.currentDialogue = dialogues[0];
+        gp.ui.currentDialogue = dialogues[dialogueIndex];
+        dialogueIndex++;
     }
 }
