@@ -60,8 +60,9 @@ public class GamePanel extends JPanel implements Runnable {
     // Create this method so we can add other setup stuff in the future
     public void setupGame() {
         aSetter.setObject();
-
         playMusic(0);
+        stopMusic();
+        gameState = playState;
     }
 
     public void startGameThread() {
