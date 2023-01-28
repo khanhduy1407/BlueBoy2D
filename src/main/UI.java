@@ -15,6 +15,7 @@ public class UI {
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
+    public String currentDialogue = "";
 
     public UI(GamePanel gp) {
         this.gp = gp;
