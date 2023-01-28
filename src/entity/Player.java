@@ -11,14 +11,14 @@ import java.io.IOException;
 
 public class Player extends Entity {
 
-    GamePanel gp;
     KeyHandler keyH;
 
     public final int screenX;
     public final int screenY;
 
     public Player(GamePanel gp, KeyHandler keyH) {
-        this.gp = gp;
+        super(gp);
+
         this.keyH = keyH;
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);

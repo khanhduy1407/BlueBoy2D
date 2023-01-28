@@ -1,5 +1,7 @@
 package entity;
 
+import main.GamePanel;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -7,6 +9,8 @@ import java.awt.image.BufferedImage;
  * This stores variables that will be used in player, monster and NPC classes.
  */
 public class Entity {
+
+    GamePanel gp;
 
     public int worldX, worldY;
     public int speed;
@@ -22,4 +26,8 @@ public class Entity {
     public Rectangle solidArea;
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
+
+    public Entity(GamePanel gp) {
+        this.gp = gp;
+    }
 }
