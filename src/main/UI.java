@@ -43,6 +43,10 @@ public class UI {
         g2.setFont(maruMonica);
         g2.setColor(Color.white);
 
+        // TITLE STATE
+        if (gp.gameState == gp.titleState) {
+            drawTitleScreen();
+        }
         // PLAY STATE
         if (gp.gameState == gp.playState) {
             // Do playState stuff later
@@ -55,6 +59,10 @@ public class UI {
         if (gp.gameState == gp.dialogueState) {
             drawDialogueScreen();
         }
+    }
+
+    public void drawTitleScreen() {
+        //
     }
 
     public void drawPauseScreen() {
