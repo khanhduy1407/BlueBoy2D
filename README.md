@@ -15,7 +15,7 @@ Use WASD to move the character
    - [x] Complete the game
 2. Action RPG Game
    - [x] Game state
-   - [ ] NPC and Dialogue System
+   - [x] NPC and Dialogue System
    - [ ] Player status (Life, Level, Attack, Defense, EXP etc.)
    - [ ] Monsters (simple AI) and Battle System (hit detection)
    - [ ] Inventory
