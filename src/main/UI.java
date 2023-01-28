@@ -77,6 +77,11 @@ public class UI {
         // MAIN COLOR
         g2.setColor(Color.white);
         g2.drawString(text, x, y);
+
+        // BLUE BOY IMAGE
+        x = gp.screenWidth / 2 - (gp.tileSize * 2) / 2;
+        y += gp.tileSize * 2;
+        g2.drawImage(gp.player.down1, x, y, gp.tileSize * 2, gp.tileSize * 2, null);
     }
 
     public void drawPauseScreen() {
