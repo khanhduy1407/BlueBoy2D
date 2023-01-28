@@ -46,6 +46,17 @@ public class UI {
     }
 
     public void drawPauseScreen() {
-        //
+        String text = "PAUSED";
+        int x = getXForCenteredText(text);
+        int y = gp.screenHeight / 2;
+
+        g2.drawString(text, x, y);
+    }
+
+    public int getXForCenteredText(String text) {
+        int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x = gp.screenWidth / 2 - length / 2;
+
+        return x;
     }
 }
