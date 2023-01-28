@@ -62,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Create this method so we can add other setup stuff in the future
     public void setupGame() {
         aSetter.setObject();
+        aSetter.setNPC();
         playMusic(0);
         stopMusic();
         gameState = playState;
@@ -142,6 +143,13 @@ public class GamePanel extends JPanel implements Runnable {
             // Check if the slot is not empty to avoid NullPointer error
             if (obj[i] != null) {
                 obj[i].draw(g2, this);
+            }
+        }
+
+        // NPC
+        for (int i = 0; i < npc.length; i++) {
+            if (npc[i] != null) {
+                npc[i].draw(g2);
             }
         }
 
