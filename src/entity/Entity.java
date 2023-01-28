@@ -43,6 +43,8 @@ public class Entity {
 
         collisionOn = false;
         gp.cChecker.checkTile(this);
+        gp.cChecker.checkObject(this, false);
+        gp.cChecker.checkPlayer(this);
 
         // IF COLLISION IS FALSE, NPC CAN MOVE
         if (collisionOn == false) {
