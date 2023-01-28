@@ -5,27 +5,19 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
+    GamePanel gp;
+
     public boolean upPressed, downPressed, leftPressed, rightPressed;
     // DEBUG
     boolean checkDrawTime = false;
 
-    /**
-     * Invoked when a key has been typed.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key typed event.
-     *
-     * @param e the event to be processed
-     */
+    public KeyHandler(GamePanel gp) {
+        this.gp = gp;
+    }
+
     @Override
     public void keyTyped(KeyEvent e) { }
 
-    /**
-     * Invoked when a key has been pressed.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key pressed event.
-     *
-     * @param e the event to be processed
-     */
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
@@ -42,6 +34,13 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_D) {
             rightPressed = true;
         }
+        if (code == KeyEvent.VK_P) {
+            if (gp.gameState == gp.playState) {
+                gp.gameState = gp.pauseState;
+            } else if (gp.gameState == gp.pauseState) {
+                gp.gameState = gp.playState;
+            }
+        }
 
         // DEBUG
         if (code == KeyEvent.VK_T) {
@@ -53,13 +52,6 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-    /**
-     * Invoked when a key has been released.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key released event.
-     *
-     * @param e the event to be processed
-     */
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
