@@ -14,9 +14,19 @@ Use WASD to move the character
    - [x] Display objects
    - [x] Complete the game
 2. Action RPG Game
-   - [ ] Create monsters
-   - [ ] Create battle system
-   - [ ] Create NPCs
-   - [ ] Create inventory
-   - [ ] Create events
-   - [ ] Complete the game
+   - [ ] Game state
+   - [ ] NPC and Dialogue System
+   - [ ] Player status (Life, Level, Attack, Defense, EXP etc.)
+   - [ ] Monsters (simple AI) and Battle System (hit detection)
+   - [ ] Inventory
+   - [ ] Merchant NPC (Buy/Sell items)
+   - [ ] Title Screen, Game Over Screen
+   - [ ] Environment Interaction (Cutting trees with axe)
+   - [ ] Item Drop
+   - [ ] In-game menu
+   - [ ] Advanced UI
+   - [ ] New Area (map transition)
+   - [ ] Events (Boss fight etc.)
+   - [ ] Save/Load
+   - [ ] Ending Screen
+   - [ ] And maybe some more...
