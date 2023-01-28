@@ -18,6 +18,7 @@ public class UI {
     int messageCounter = 0;
     public boolean gameFinished = false;
     public String currentDialogue = "";
+    public int commandNum = 0;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -90,16 +91,25 @@ public class UI {
         x = getXForCenteredText(text);
         y += gp.tileSize * 3.5;
         g2.drawString(text, x, y);
+        if (commandNum == 0) {
+            g2.drawString(">", x - gp.tileSize, y);
+        }
 
         text = "LOAD GAME";
         x = getXForCenteredText(text);
         y += gp.tileSize;
         g2.drawString(text, x, y);
+        if (commandNum == 1) {
+            g2.drawString(">", x - gp.tileSize, y);
+        }
 
         text = "QUIT";
         x = getXForCenteredText(text);
         y += gp.tileSize;
         g2.drawString(text, x, y);
+        if (commandNum == 2) {
+            g2.drawString(">", x - gp.tileSize, y);
+        }
     }
 
     public void drawPauseScreen() {
