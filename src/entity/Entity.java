@@ -34,6 +34,10 @@ public class Entity {
         this.gp = gp;
     }
 
+    public void setAction() {}
+
+    public void update() {}
+
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
 
