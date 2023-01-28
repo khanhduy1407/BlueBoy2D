@@ -16,9 +16,6 @@ public class UI {
     int messageCounter = 0;
     public boolean gameFinished = false;
 
-    double playTime;
-    DecimalFormat dFormat = new DecimalFormat("#0.00");
-
     public UI(GamePanel gp) {
         this.gp = gp;
 
@@ -37,11 +34,17 @@ public class UI {
         g2.setFont(arial_40);
         g2.setColor(Color.white);
 
+        // PLAY STATE
         if (gp.gameState == gp.playState) {
             // Do playState stuff later
         }
+        // PAUSE STATE
         if (gp.gameState == gp.pauseState) {
             drawPauseScreen();
+        }
+        // DIALOGUE STATE
+        if (gp.gameState == gp.dialogueState) {
+            drawDialogueScreen();
         }
     }
 
@@ -52,6 +55,10 @@ public class UI {
         int y = gp.screenHeight / 2;
 
         g2.drawString(text, x, y);
+    }
+
+    public void drawDialogueScreen() {
+        //
     }
 
     public int getXForCenteredText(String text) {
