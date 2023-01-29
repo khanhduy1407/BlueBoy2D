@@ -75,9 +75,6 @@ public class UI {
     }
 
     public void drawPlayerLife() {
-        // TEST
-        gp.player.life = 3;
-
         int x = gp.tileSize / 2;
         int y = gp.tileSize / 2;
         int i = 0;
