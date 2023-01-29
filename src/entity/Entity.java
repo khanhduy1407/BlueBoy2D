@@ -32,6 +32,9 @@ public class Entity {
 
     public int actionLockCounter = 0;
 
+    public boolean invincible = false;
+    public int invincibleCounter = 0;
+
     String dialogues[] = new String[20];
     int dialogueIndex = 0;
 
