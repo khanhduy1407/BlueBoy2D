@@ -2,7 +2,6 @@ package main;
 
 import entity.Entity;
 import entity.Player;
-import object.SuperObject;
 import tile.TileManager;
 
 import javax.swing.*;
@@ -41,7 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // ENTITY AND OBJECT
     public Player player = new Player(this, keyH);
-    public SuperObject obj[] = new SuperObject[10];
+    public Entity obj[] = new Entity[10];
     public Entity npc[] = new Entity[10];
 
     // GAME STATE
@@ -164,7 +163,7 @@ public class GamePanel extends JPanel implements Runnable {
             for (int i = 0; i < obj.length; i++) {
                 // Check if the slot is not empty to avoid NullPointer error
                 if (obj[i] != null) {
-                    obj[i].draw(g2, this);
+                    obj[i].draw(g2);
                 }
             }
 
