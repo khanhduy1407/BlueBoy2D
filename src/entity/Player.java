@@ -63,7 +63,7 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
+        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true) {
             if (keyH.upPressed == true) {
                 direction = "up";
             } else if (keyH.downPressed == true) {
@@ -85,6 +85,9 @@ public class Player extends Entity {
             // CHECK NPC COLLISION
             int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
             interactNPC(npcIndex);
+
+            // CHECK MONSTER COLLISION
+            int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
 
             // CHECK EVENT
             gp.eHandler.checkEvent();
