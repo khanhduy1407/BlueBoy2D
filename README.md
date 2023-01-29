@@ -2,7 +2,7 @@
 
 ## How to play?
 
-Use WASD to move the character
+Use `WASD` to move the character
 
 ## The Roadmap
 
