@@ -152,6 +152,11 @@ public class GamePanel extends JPanel implements Runnable {
         }
         // OTHERS
         else {
+            // If an entity A is below an entity B, we draw entity A later.
+            // If an entity B is below an entity A, we draw entity B later.
+            // (We use their worldY to compare)
+            int playerY = player.worldY;
+
             // TILE
             tileM.draw(g2);
 
@@ -166,12 +171,19 @@ public class GamePanel extends JPanel implements Runnable {
             // NPC
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null) {
-                    npc[i].draw(g2);
+                    int npcY = npc[i].worldY; // get npc' worldY
+                    if (playerY < npcY) { // if player is above npc, draw npc later
+                        player.draw(g2);
+                        npc[i].draw(g2);
+                    } else {
+                        npc[i].draw(g2);
+                        player.draw(g2);
+                    }
                 }
             }
 
             // PLAYER
-            player.draw(g2);
+//            player.draw(g2);
 
             // UI
             ui.draw(g2);
