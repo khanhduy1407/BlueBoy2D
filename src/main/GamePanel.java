@@ -6,6 +6,7 @@ import tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 // This class inherits JPanel class
 public class GamePanel extends JPanel implements Runnable {
@@ -42,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, keyH);
     public Entity obj[] = new Entity[10];
     public Entity npc[] = new Entity[10];
+    ArrayList<Entity> entityList = new ArrayList<>();
 
     // GAME STATE
     public int gameState;
@@ -151,38 +153,23 @@ public class GamePanel extends JPanel implements Runnable {
         }
         // OTHERS
         else {
-            // If an entity A is below an entity B, we draw entity A later.
-            // If an entity B is below an entity A, we draw entity B later.
-            // (We use their worldY to compare)
-            int playerY = player.worldY;
-
             // TILE
             tileM.draw(g2);
 
-            // OBJECT
-            for (int i = 0; i < obj.length; i++) {
-                // Check if the slot is not empty to avoid NullPointer error
-                if (obj[i] != null) {
-                    obj[i].draw(g2);
-                }
-            }
+            // ADD ENTITIES TO THE LIST
+            entityList.add(player);
 
-            // NPC
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null) {
-                    int npcY = npc[i].worldY; // get npc' worldY
-                    if (playerY < npcY) { // if player is above npc, draw npc later
-                        player.draw(g2);
-                        npc[i].draw(g2);
-                    } else {
-                        npc[i].draw(g2);
-                        player.draw(g2);
-                    }
+                    entityList.add(npc[i]);
                 }
             }
 
-            // PLAYER
-//            player.draw(g2);
+            for (int i = 0; i < obj.length; i++) {
+                if (obj[i] != null) {
+                    entityList.add(obj[i]);
+                }
+            }
 
             // UI
             ui.draw(g2);
