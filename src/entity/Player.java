@@ -41,8 +41,10 @@ public class Player extends Entity {
     public void setDefaultValues() {
         // You can type numbers like worldX = 1000
         // Either way is fine
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 21;
+//        worldX = gp.tileSize * 23;
+//        worldY = gp.tileSize * 21;
+        worldX = gp.tileSize * 10; // test
+        worldY = gp.tileSize * 13; // test
         speed = 4;
         direction = "down";
 
