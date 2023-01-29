@@ -2,7 +2,6 @@ package entity;
 
 import main.GamePanel;
 
-import java.awt.*;
 import java.util.Random;
 
 public class NPC_OldMan extends Entity {
@@ -10,15 +9,16 @@ public class NPC_OldMan extends Entity {
     public NPC_OldMan(GamePanel gp) {
         super(gp);
 
-        solidArea = new Rectangle();
-        solidArea.x = 8;
-        solidArea.y = 16;
-        solidAreaDefaultX = solidArea.x;
-        solidAreaDefaultY = solidArea.y;
-        solidArea.width = 32;
-        solidArea.height = 32;
+        type = 1;
         direction = "down";
         speed = 1;
+
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidArea.width = 32;
+        solidArea.height = 32;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
 
         getImage();
         setDialogue();
@@ -68,7 +68,6 @@ public class NPC_OldMan extends Entity {
 
     public void speak() {
         // Do this character specific stuff
-
         super.speak();
     }
 }
