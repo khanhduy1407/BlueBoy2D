@@ -198,5 +198,10 @@ public class Player extends Entity {
 
         // draw an image on the screen
         g2.drawImage(image, screenX, screenY, null);
+
+        // DEBUG
+        g2.setFont(new Font("Arial", Font.PLAIN, 26));
+        g2.setColor(Color.white);
+        g2.drawString("Invincible: " + invincibleCounter, 10, 400);
     }
 }
