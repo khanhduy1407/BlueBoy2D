@@ -364,22 +364,23 @@ public class UI {
         final int slotYStart = frameY + 20;
         int slotX = slotXStart;
         int slotY = slotYStart;
+        int slotSize = gp.tileSize + 3;
 
         // DRAW PLAYER'S ITEMS
         // Since we are using ArrayList, the size (for loop condition) should not be fixed.
         for (int i = 0; i < gp.player.inventory.size(); i++) {
             g2.drawImage(gp.player.inventory.get(i).down1, slotX, slotY, null);
-            slotX += gp.tileSize;
+            slotX += slotSize;
 
             if (i == 4 || i == 9 || i == 14) {
                 slotX = slotXStart;
-                slotY += gp.tileSize;
+                slotY += slotSize;
             }
         }
 
         // CURSOR
-        int cursorX = slotXStart + (gp.tileSize * slotCol);
-        int cursorY = slotYStart + (gp.tileSize * slotRow);
+        int cursorX = slotXStart + (slotSize * slotCol);
+        int cursorY = slotYStart + (slotSize * slotRow);
         int cursorWidth = gp.tileSize;
         int cursorHeight = gp.tileSize;
         // DRAW CURSOR
