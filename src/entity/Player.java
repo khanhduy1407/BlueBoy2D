@@ -238,7 +238,18 @@ public class Player extends Entity {
         // I choose 999 but basically any number is fine as long as it's not used by
         // the object array's index
         if (i != 999) {
-            //
+            String text;
+
+            if (inventory.size() != maxInventorySize) {
+                inventory.add(gp.obj[i]);
+                gp.playSE(1);
+                text = "Got a " + gp.obj[i].name + "!";
+            } else {
+                text = "You cannot carry any more!";
+            }
+
+            gp.ui.addMessage(text);
+            gp.obj[i] = null;
         }
     }
 
