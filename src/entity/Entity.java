@@ -60,7 +60,11 @@ public class Entity {
     public int nextLevelExp;
     public int coin;
     public Entity currentWeapon;
-    public Entity currentShied;
+    public Entity currentShield;
+
+    // ITEM ATTRIBUTES
+    public int attackValue;
+    public int defenseValue;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
