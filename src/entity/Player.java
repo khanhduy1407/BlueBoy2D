@@ -244,7 +244,12 @@ public class Player extends Entity {
         if (i != 999) {
             if (invincible == false) {
                 gp.playSE(6);
-                life -= 1;
+
+                int damage = gp.monster[i].attack - defense;
+                if (damage < 0) {
+                    damage = 0;
+                }
+                life -= damage;
                 invincible = true;
             }
         }
@@ -254,7 +259,12 @@ public class Player extends Entity {
         if (i != 999) {
             if (gp.monster[i].invincible == false) {
                 gp.playSE(5);
-                gp.monster[i].life -= 1;
+
+                int damage = attack - gp.monster[i].defense;
+                if (damage < 0) {
+                    damage = 0;
+                }
+                gp.monster[i].life -= damage;
                 gp.monster[i].invincible = true;
                 gp.monster[i].damageReaction();
 
