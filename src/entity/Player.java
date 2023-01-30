@@ -75,6 +75,9 @@ public class Player extends Entity {
     }
 
     public void update() {
+        if (attacking == true) {
+            attacking();
+        }
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true) {
             if (keyH.upPressed == true) {
                 direction = "up";
@@ -144,6 +147,21 @@ public class Player extends Entity {
         }
     }
 
+    public void attacking() {
+        spriteCounter++;
+        if (spriteCounter <= 5) {
+            spriteNum = 1;
+        }
+        if (spriteCounter > 5 && spriteCounter <= 25) {
+            spriteNum = 2;
+        }
+        if (spriteCounter > 25) {
+            spriteNum = 1;
+            spriteCounter = 0;
+            attacking = false;
+        }
+    }
+
     public void pickUpObject(int i) {
         // I choose 999 but basically any number is fine as long as it's not used by
         // the object array's index
@@ -153,10 +171,12 @@ public class Player extends Entity {
     }
 
     public void interactNPC(int i) {
-        if (i != 999) {
-            if (gp.keyH.enterPressed) {
+        if (gp.keyH.enterPressed) {
+            if (i != 999) {
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();
+            } else {
+                attacking = true;
             }
         }
     }
@@ -175,35 +195,43 @@ public class Player extends Entity {
 
         switch (direction) {
             case "up":
-                if (spriteNum == 1) {
-                    image = up1;
+                if (!attacking) {
+                    if (spriteNum == 1) { image = up1; }
+                    if (spriteNum == 2) { image = up2; }
                 }
-                if (spriteNum == 2) {
-                    image = up2;
+                if (attacking) {
+                    if (spriteNum == 1) { image = attackUp1; }
+                    if (spriteNum == 2) { image = attackUp2; }
                 }
                 break;
             case "down":
-                if (spriteNum == 1) {
-                    image = down1;
+                if (!attacking) {
+                    if (spriteNum == 1) { image = down1; }
+                    if (spriteNum == 2) { image = down2; }
                 }
-                if (spriteNum == 2) {
-                    image = down2;
+                if (attacking) {
+                    if (spriteNum == 1) { image = attackDown1; }
+                    if (spriteNum == 2) { image = attackDown2; }
                 }
                 break;
             case "left":
-                if (spriteNum == 1) {
-                    image = left1;
+                if (!attacking) {
+                    if (spriteNum == 1) { image = left1; }
+                    if (spriteNum == 2) { image = left2; }
                 }
-                if (spriteNum == 2) {
-                    image = left2;
+                if (attacking) {
+                    if (spriteNum == 1) { image = attackLeft1; }
+                    if (spriteNum == 2) { image = attackLeft2; }
                 }
                 break;
             case "right":
-                if (spriteNum == 1) {
-                    image = right1;
+                if (!attacking) {
+                    if (spriteNum == 1) { image = right1; }
+                    if (spriteNum == 2) { image = right2; }
                 }
-                if (spriteNum == 2) {
-                    image = right2;
+                if (attacking) {
+                    if (spriteNum == 1) { image = attackRight1; }
+                    if (spriteNum == 2) { image = attackRight2; }
                 }
                 break;
         }
