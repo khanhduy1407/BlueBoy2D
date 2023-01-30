@@ -58,6 +58,8 @@ public class Entity {
 
     public void setAction() {}
 
+    public void damageReaction() {}
+
     public void speak() {
         if (dialogues[dialogueIndex] == null) {
             dialogueIndex = 0;
