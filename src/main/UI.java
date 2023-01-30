@@ -350,12 +350,18 @@ public class UI {
     }
 
     public void drawInventory() {
+        // FRAME
         final int frameX = gp.tileSize * 9;
         final int frameY = gp.tileSize;
         final int frameWidth = gp.tileSize * 6;
         final int frameHeight = gp.tileSize * 5;
-
         drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        // SLOT
+        final int slotXStart = frameX + 20;
+        final int slotYStart = frameY + 20;
+        int slotX = slotXStart;
+        int slotY = slotYStart;
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {
