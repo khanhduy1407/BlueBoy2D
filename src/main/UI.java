@@ -228,7 +228,7 @@ public class UI {
 
     public void drawCharacterScreen() {
         // CREATE A FRAME
-        final int frameX = gp.tileSize * 2;
+        final int frameX = gp.tileSize;
         final int frameY = gp.tileSize;
         final int frameWidth = gp.tileSize * 5;
         final int frameHeight = gp.tileSize * 10;
