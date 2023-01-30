@@ -365,6 +365,18 @@ public class UI {
         int slotX = slotXStart;
         int slotY = slotYStart;
 
+        // DRAW PLAYER'S ITEMS
+        // Since we are using ArrayList, the size (for loop condition) should not be fixed.
+        for (int i = 0; i < gp.player.inventory.size(); i++) {
+            g2.drawImage(gp.player.inventory.get(i).down1, slotX, slotY, null);
+            slotX += gp.tileSize;
+
+            if (i == 4 || i == 9 || i == 14) {
+                slotX = slotXStart;
+                slotY += gp.tileSize;
+            }
+        }
+
         // CURSOR
         int cursorX = slotXStart + (gp.tileSize * slotCol);
         int cursorY = slotYStart + (gp.tileSize * slotRow);
