@@ -9,7 +9,7 @@ public class OBJ_Shield_Wood extends Entity {
         super(gp);
 
         name = "Wood Shield";
-        down1 = setup("/objects/shield_wood.png", gp.tileSize, gp.tileSize);
+        down1 = setup("/objects/shield_wood", gp.tileSize, gp.tileSize);
         defenseValue = 1;
     }
 }
