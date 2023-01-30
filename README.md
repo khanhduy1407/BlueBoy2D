@@ -16,7 +16,7 @@ Use `WASD` to move the character
 2. Action RPG Game
    - [x] Game state
    - [x] NPC and Dialogue System
-   - [ ] Player status (Life, Level, Attack, Defense, EXP etc.)
+   - [x] Player status (Life, Level, Attack, Defense, EXP etc.)
    - [x] Monsters (simple AI) and Battle System (hit detection)
    - [ ] Inventory
    - [ ] Merchant NPC (Buy/Sell items)
