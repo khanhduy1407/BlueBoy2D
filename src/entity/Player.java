@@ -193,12 +193,14 @@ public class Player extends Entity {
             }
         }
 
-        if (gp.keyH.shotKeyPressed == true && projectile.alive == false) {
+        if (gp.keyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30) {
             // SET DEFAULT COORDINATES, DIRECTION AND USER
             projectile.set(worldX, worldY, direction, true, this);
 
             // ADD IT TO THE LIST
             gp.projectileList.add(projectile);
+
+            shotAvailableCounter = 0;
 
             gp.playSE(10);
         }
@@ -210,6 +212,10 @@ public class Player extends Entity {
                 invincible = false;
                 invincibleCounter = 0;
             }
+        }
+
+        if (shotAvailableCounter < 30) {
+            shotAvailableCounter++;
         }
     }
 
