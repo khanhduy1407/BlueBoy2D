@@ -38,6 +38,14 @@ public class AssetSetter {
         gp.obj[i] = new OBJ_Potion_Red(gp);
         gp.obj[i].worldX = gp.tileSize*22;
         gp.obj[i].worldY = gp.tileSize*27;
+        i++;
+        gp.obj[i] = new OBJ_Heart(gp);
+        gp.obj[i].worldX = gp.tileSize*22;
+        gp.obj[i].worldY = gp.tileSize*29;
+        i++;
+        gp.obj[i] = new OBJ_ManaCrystal(gp);
+        gp.obj[i].worldX = gp.tileSize*22;
+        gp.obj[i].worldY = gp.tileSize*31;
     }
 
     public void setNPC() {
