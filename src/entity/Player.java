@@ -195,9 +195,13 @@ public class Player extends Entity {
             }
         }
 
-        if (gp.keyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30) {
+        if (gp.keyH.shotKeyPressed == true && projectile.alive == false
+                && shotAvailableCounter == 30 && projectile.haveResource(this) == true) {
             // SET DEFAULT COORDINATES, DIRECTION AND USER
             projectile.set(worldX, worldY, direction, true, this);
+
+            // SUBTRACT THE COST (MANA, AMMO ETC.)
+            projectile.subtractResource(this);
 
             // ADD IT TO THE LIST
             gp.projectileList.add(projectile);
