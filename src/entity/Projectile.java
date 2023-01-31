@@ -28,7 +28,12 @@ public class Projectile extends Entity {
             }
         }
         if (user != gp.player) {
-            //
+            boolean contactPlayer = gp.cChecker.checkPlayer(this);
+
+            if (gp.player.invincible == false && contactPlayer == true) {
+                damagePlayer(attack);
+                alive = false;
+            }
         }
 
         // Just like other NPCs or monsters, projectiles move based on its speed and direction.
