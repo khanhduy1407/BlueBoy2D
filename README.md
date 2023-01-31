@@ -22,7 +22,7 @@ Use `WASD` to move the character
    - [ ] Merchant NPC (Buy/Sell items)
    - [ ] Title Screen, Game Over Screen
    - [ ] Environment Interaction (Cutting trees with axe)
-   - [ ] Item Drop
+   - [x] Item Drop
    - [ ] In-game menu
    - [ ] Advanced UI
    - [ ] New Area (map transition)
