@@ -3,10 +3,7 @@ package entity;
 import main.GamePanel;
 import main.KeyHandler;
 import main.UtilityTool;
-import object.OBJ_Fireball;
-import object.OBJ_Key;
-import object.OBJ_Shield_Wood;
-import object.OBJ_Sword_Normal;
+import object.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -64,6 +61,7 @@ public class Player extends Entity {
         life = maxLife;
         maxMana = 4;
         mana = maxMana;
+        ammo = 10; // test rock
         strength = 1; // The more strength he has, the more damage he gives.
         dexterity = 1; // The more dexterity he has, the less damage he receives.
         exp = 0;
@@ -72,6 +70,7 @@ public class Player extends Entity {
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_Shield_Wood(gp);
         projectile = new OBJ_Fireball(gp);
+//        projectile = new OBJ_Rock(gp); // test (comment projectile above)
         attack = getAttack(); // The total attack value is decided by strength and weapon
         defense = getDefense(); // The total defense value is decided by dexterity and shield
     }
