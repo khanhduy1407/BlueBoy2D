@@ -241,7 +241,7 @@ public class Player extends Entity {
 
             // Check monster collision with the updated worldX/Y and solidArea
             int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
-            damageMonster(monsterIndex);
+            damageMonster(monsterIndex, attack);
 
             // After checking collision, restore the original data
             worldX = currentWorldX;
@@ -300,7 +300,7 @@ public class Player extends Entity {
         }
     }
 
-    public void damageMonster(int i) {
+    public void damageMonster(int i, int attack) {
         if (i != 999) {
             if (gp.monster[i].invincible == false) {
                 gp.playSE(5);
