@@ -11,7 +11,7 @@ public class OBJ_Fireball extends Projectile {
         super(gp);
 
         this.gp = gp;
-        speed = 5;
+        speed = 10;
         maxLife = 80;
         life = maxLife;
         attack = 2;
