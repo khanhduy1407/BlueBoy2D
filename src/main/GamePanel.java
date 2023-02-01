@@ -125,7 +125,8 @@ public class GamePanel extends JPanel implements Runnable {
 
             if (delta >= 1) {
                 update();
-                repaint();
+                drawToTempScreen(); // draw everything to the buffered image
+                drawToScreen(); // draw the buffered image to the screen
                 delta--;
                 drawCount++;
             }
@@ -292,6 +293,12 @@ public class GamePanel extends JPanel implements Runnable {
             g2.drawString("Row: " + (player.worldY + player.solidArea.y)/tileSize, x, y); y += lineHeight;
             g2.drawString("Draw Time: " + passed, x, y);
         }
+    }
+
+    public void drawToScreen() {
+        Graphics g = getGraphics();
+        g.drawImage(tempScreen, 0, 0, screenWidth2, screenHeight2, null);
+        g.dispose();
     }
 
     public void playMusic(int i) {
