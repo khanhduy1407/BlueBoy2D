@@ -67,10 +67,11 @@ public class Player extends Entity {
         exp = 0;
         nextLevelExp = 5;
         coin = 0;
-        currentWeapon = new OBJ_Sword_Normal(gp);
+//        currentWeapon = new OBJ_Sword_Normal(gp);
+        currentWeapon = new OBJ_Axe(gp); // test (comment projectile above)
         currentShield = new OBJ_Shield_Wood(gp);
         projectile = new OBJ_Fireball(gp);
-//        projectile = new OBJ_Rock(gp); // test (comment projectile above)
+//        projectile = new OBJ_Rock(gp);
         attack = getAttack(); // The total attack value is decided by strength and weapon
         defense = getDefense(); // The total defense value is decided by dexterity and shield
     }
@@ -361,7 +362,8 @@ public class Player extends Entity {
 
     public void damageInteractiveTile(int i) {
         if (i != 999 && gp.iTile[i].destructible == true && gp.iTile[i].isCorrectItem(this) == true) {
-            gp.iTile[i] = null;
+            gp.iTile[i].playSE();
+            gp.iTile[i] = gp.iTile[i].getDestroyedForm();
         }
     }
 

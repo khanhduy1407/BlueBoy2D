@@ -27,4 +27,13 @@ public class IT_DryTree extends InteractiveTile {
 
         return isCorrectItem;
     }
+
+    public void playSE() {
+        gp.playSE(11);
+    }
+
+    public InteractiveTile getDestroyedForm() {
+        InteractiveTile tile = new IT_Trunk(gp, worldX/gp.tileSize, worldY/gp.tileSize);
+        return tile;
+    }
 }

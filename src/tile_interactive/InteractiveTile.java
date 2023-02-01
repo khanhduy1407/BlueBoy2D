@@ -19,5 +19,12 @@ public class InteractiveTile extends Entity {
         return isCorrectItem;
     }
 
+    public void playSE() {}
+
+    public InteractiveTile getDestroyedForm() {
+        InteractiveTile tile = null;
+        return tile;
+    }
+
     public void update() {}
 }
