@@ -131,6 +131,30 @@ public class Entity {
         }
     }
 
+    public Color getParticleColor() {
+        Color color = null;
+        return color;
+    }
+
+    public int getParticleSize() {
+        int size = 0;
+        return size;
+    }
+
+    public int getParticleSpeed() {
+        int speed = 0;
+        return speed;
+    }
+
+    public int getParticleMaxLife() {
+        int maxlife = 0;
+        return maxlife;
+    }
+
+    public void generateParticle(Entity generator, Entity target) {
+        // later
+    }
+
     public void update() {
         setAction();
 
