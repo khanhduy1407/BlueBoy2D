@@ -198,15 +198,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    public void drawTempToScreen() {
-        //
-    }
-
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        Graphics2D g2 = (Graphics2D) g;
-
+    public void drawToTempScreen() {
         // DEBUG
         long drawStart = 0;
         if (keyH.checkDrawTime) {
@@ -300,9 +292,6 @@ public class GamePanel extends JPanel implements Runnable {
             g2.drawString("Row: " + (player.worldY + player.solidArea.y)/tileSize, x, y); y += lineHeight;
             g2.drawString("Draw Time: " + passed, x, y);
         }
-
-        // Dispose of this graphics context and release any system resources that it is using.
-        g2.dispose();
     }
 
     public void playMusic(int i) {
