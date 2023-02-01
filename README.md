@@ -20,7 +20,7 @@ Use `WASD` to move the character
    - [x] Monsters (simple AI) and Battle System (hit detection)
    - [x] Inventory
    - [ ] Merchant NPC (Buy/Sell items)
-   - [ ] Title Screen, Game Over Screen
+   - [x] Title Screen, Game Over Screen
    - [x] Environment Interaction (Cutting trees with axe)
    - [x] Item Drop
    - [x] In-game menu
