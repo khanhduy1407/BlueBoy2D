@@ -70,6 +70,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int dialogueState = 3;
     public final int characterState = 4;
     public final int optionsState = 5;
+    public final int gameOverState = 6;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -82,9 +83,9 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
     }
 
-    // Create this method so we can add other setup stuff in the future
+    // Create this method, so we can add other setup stuff in the future
     public void setupGame() {
-        aSetter.setObject();
+        aSetter.setObject(); // we keep the acquired items and the destroyed objects' status etc.
         aSetter.setNPC();
         aSetter.setMonster();
         aSetter.setInteractiveTile();
@@ -96,6 +97,26 @@ public class GamePanel extends JPanel implements Runnable {
         if (fullScreenOn == true) {
             setFullScreen();
         }
+    }
+
+    public void retry() {
+        player.setDefaultPositions();
+        player.restoreLifeAndMana();
+        aSetter.setNPC();
+        aSetter.setMonster();
+    }
+
+    public void restart() {
+        player.setDefaultValues();
+        // Actually, these two lines weren't really necessary here
+        // because "setDefaultValues" restore the positions, the life and the mana...
+        player.setDefaultPositions();
+        player.restoreLifeAndMana();
+        player.setItems();
+        aSetter.setObject();
+        aSetter.setNPC();
+        aSetter.setMonster();
+        aSetter.setInteractiveTile();
     }
 
     public void setFullScreen() {
