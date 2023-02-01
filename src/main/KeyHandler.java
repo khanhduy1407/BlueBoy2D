@@ -222,6 +222,7 @@ public class KeyHandler implements KeyListener {
         int maxCommandNum = 0;
         switch (gp.ui.subState) {
             case 0: maxCommandNum = 5; break;
+            case 3: maxCommandNum = 1; break;
         }
         if (code == KeyEvent.VK_W) {
             if (gp.ui.commandNum > 0) {

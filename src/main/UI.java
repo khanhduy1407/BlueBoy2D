@@ -458,6 +458,7 @@ public class UI {
             case 0: options_top(frameX, frameY); break;
             case 1: options_fullScreenNotification(frameX, frameY); break;
             case 2: options_control(frameX, frameY); break;
+            case 3: options_endGameConfirmation(frameX, frameY); break;
         }
 
         gp.keyH.enterPressed = false;
@@ -519,6 +520,10 @@ public class UI {
         g2.drawString("End Game", textX, textY);
         if (commandNum == 4) {
             g2.drawString(">", textX - 25, textY);
+            if (gp.keyH.enterPressed == true) {
+                subState = 3;
+                commandNum = 0;
+            }
         }
 
         // BACK
@@ -609,6 +614,46 @@ public class UI {
             g2.drawString(">", textX - 25, textY);
             if (gp.keyH.enterPressed) {
                 subState = 0;
+                commandNum = 3;
+            }
+        }
+    }
+
+    public void options_endGameConfirmation(int frameX, int frameY) {
+        int textX = frameX + gp.tileSize;
+        int textY = frameY + gp.tileSize * 3;
+
+        currentDialogue = "Quit the game and\nreturn to the title screen?";
+
+        for (String line: currentDialogue.split("\n")) {
+            g2.drawString(line, textX, textY);
+            textY += 40;
+        }
+
+        // YES
+        String text = "Yes";
+        textX = getXForCenteredText(text);
+        textY += gp.tileSize * 3;
+        g2.drawString(text, textX, textY);
+        if (commandNum == 0) {
+            g2.drawString(">", textX - 25, textY);
+            if (gp.keyH.enterPressed == true) {
+                subState = 0;
+                gp.gameState = gp.titleState;
+                gp.stopMusic();
+            }
+        }
+
+        // NO
+        text = "No";
+        textX = getXForCenteredText(text);
+        textY += gp.tileSize;
+        g2.drawString(text, textX, textY);
+        if (commandNum == 1) {
+            g2.drawString(">", textX - 25, textY);
+            if (gp.keyH.enterPressed == true) {
+                subState = 0;
+                commandNum = 4;
             }
         }
     }
