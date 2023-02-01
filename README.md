@@ -21,7 +21,7 @@ Use `WASD` to move the character
    - [x] Inventory
    - [ ] Merchant NPC (Buy/Sell items)
    - [ ] Title Screen, Game Over Screen
-   - [ ] Environment Interaction (Cutting trees with axe)
+   - [x] Environment Interaction (Cutting trees with axe)
    - [x] Item Drop
    - [ ] In-game menu
    - [ ] Advanced UI
