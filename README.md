@@ -23,7 +23,7 @@ Use `WASD` to move the character
    - [ ] Title Screen, Game Over Screen
    - [x] Environment Interaction (Cutting trees with axe)
    - [x] Item Drop
-   - [ ] In-game menu
+   - [x] In-game menu
    - [ ] Advanced UI
    - [ ] New Area (map transition)
    - [ ] Events (Boss fight etc.)
