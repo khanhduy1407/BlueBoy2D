@@ -9,7 +9,7 @@ public class KeyHandler implements KeyListener {
 
     public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, shotKeyPressed;
     // DEBUG
-    boolean checkDrawTime = false;
+    boolean showDebugText = false;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -41,6 +41,10 @@ public class KeyHandler implements KeyListener {
         // CHARACTER STATE
         else if (gp.gameState == gp.characterState) {
             characterState(code);
+        }
+        // OPTIONS STATE
+        else if (gp.gameState == gp.optionsState) {
+            optionsState(code);
         }
     }
 
@@ -136,13 +140,16 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_F) {
             shotKeyPressed = true;
         }
+        if (code == KeyEvent.VK_ESCAPE) {
+            gp.gameState = gp.optionsState;
+        }
 
         // DEBUG
         if (code == KeyEvent.VK_T) {
-            if (!checkDrawTime) {
-                checkDrawTime = true;
-            } else if (checkDrawTime) {
-                checkDrawTime = false;
+            if (!showDebugText) {
+                showDebugText = true;
+            } else if (showDebugText) {
+                showDebugText = false;
             }
         }
     }
@@ -198,6 +205,18 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_ENTER) {
             gp.player.selectItem();
+        }
+    }
+
+    /**
+     * OPTIONS STATE
+     */
+    public void optionsState(int code) {
+        if (code == KeyEvent.VK_ESCAPE) {
+            gp.gameState = gp.playState;
+        }
+        if (code == KeyEvent.VK_ENTER) {
+            enterPressed = true;
         }
     }
 

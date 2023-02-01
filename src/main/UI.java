@@ -84,6 +84,10 @@ public class UI {
             drawCharacterScreen();
             drawInventory();
         }
+        // OPTIONS STATS
+        if (gp.gameState == gp.optionsState) {
+            drawOptionsScreen();
+        }
     }
 
     public void drawPlayerLife() {
@@ -436,6 +440,18 @@ public class UI {
                 textY += 32;
             }
         }
+    }
+
+    public void drawOptionsScreen() {
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(32F));
+
+        // SUB WINDOW
+        int frameX = gp.tileSize * 6;
+        int frameY = gp.tileSize;
+        int frameWidth = gp.tileSize * 8;
+        int frameHeight = gp.tileSize * 10;
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
     }
 
     public int getItemIndexOnSlot() {
