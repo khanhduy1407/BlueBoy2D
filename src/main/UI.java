@@ -462,7 +462,39 @@ public class UI {
     }
 
     public void options_top(int frameX, int frameY) {
-        //
+        int textX;
+        int textY;
+
+        // TITLE
+        String text = "Options";
+        textX = getXForCenteredText(text);
+        textY = frameY + gp.tileSize;
+        g2.drawString(text, textX, textY);
+
+        // FULL SCREEN ON/OFF
+        textX = frameX + gp.tileSize;
+        textY += gp.tileSize * 2;
+        g2.drawString("Full Screen", textX, textY);
+
+        // MUSIC
+        textY += gp.tileSize;
+        g2.drawString("Music", textX, textY);
+
+        // SE
+        textY += gp.tileSize;
+        g2.drawString("SE", textX, textY);
+
+        // CONTROL
+        textY += gp.tileSize;
+        g2.drawString("Control", textX, textY);
+
+        // END GAME
+        textY += gp.tileSize;
+        g2.drawString("End Game", textX, textY);
+
+        // BACK
+        textY += gp.tileSize * 2;
+        g2.drawString("Back", textX, textY);
     }
 
     public int getItemIndexOnSlot() {
