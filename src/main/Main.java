@@ -3,8 +3,11 @@ package main;
 import javax.swing.*;
 
 public class Main {
+
+    public static JFrame window;
+
     public static void main(String[] args) {
-        JFrame window = new JFrame();
+        window = new JFrame();
         // This lets the window properly close when user clicks the close ("x") button.
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
