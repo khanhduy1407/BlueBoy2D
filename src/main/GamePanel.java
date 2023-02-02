@@ -95,6 +95,7 @@ public class GamePanel extends JPanel implements Runnable {
         aSetter.setInteractiveTile();
 //        gameState = titleState;
         gameState = playState; // test
+        playMusic(0); // if test gameState = playState, enable music
 
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
         g2 = (Graphics2D) tempScreen.getGraphics();
