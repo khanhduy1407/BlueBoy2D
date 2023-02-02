@@ -67,8 +67,8 @@ public class Player extends Entity {
         exp = 0;
         nextLevelExp = 5;
         coin = 0;
-        currentWeapon = new OBJ_Sword_Normal(gp);
-//        currentWeapon = new OBJ_Axe(gp); // test (comment projectile above)
+//        currentWeapon = new OBJ_Sword_Normal(gp);
+        currentWeapon = new OBJ_Axe(gp); // test (comment projectile above)
         currentShield = new OBJ_Shield_Wood(gp);
         projectile = new OBJ_Fireball(gp);
 //        projectile = new OBJ_Rock(gp); // test (comment projectile above)
