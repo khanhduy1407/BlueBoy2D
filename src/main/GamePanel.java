@@ -229,7 +229,7 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
 
-            for (int i = 0; i < iTile.length; i++) {
+            for (int i = 0; i < iTile[1].length; i++) {
                 if (iTile[i] != null) {
                     iTile[i].update();
                 }
