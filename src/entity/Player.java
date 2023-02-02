@@ -47,11 +47,11 @@ public class Player extends Entity {
     public void setDefaultValues() {
         // You can type numbers like worldX = 1000
         // Either way is fine
-//        worldX = gp.tileSize * 23;
-//        worldY = gp.tileSize * 21;
-        worldX = gp.tileSize * 12; // test
-        worldY = gp.tileSize * 12; // test
-        gp.currentMap = 1; // test
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 21;
+//        worldX = gp.tileSize * 12; // test
+//        worldY = gp.tileSize * 12; // test
+//        gp.currentMap = 1; // test
         speed = 4;
         direction = "down";
 
@@ -67,8 +67,8 @@ public class Player extends Entity {
         exp = 0;
         nextLevelExp = 5;
         coin = 500; // test, default 0
-//        currentWeapon = new OBJ_Sword_Normal(gp);
-        currentWeapon = new OBJ_Axe(gp); // test (comment projectile above)
+        currentWeapon = new OBJ_Sword_Normal(gp);
+//        currentWeapon = new OBJ_Axe(gp); // test (comment projectile above)
         currentShield = new OBJ_Shield_Wood(gp);
         projectile = new OBJ_Fireball(gp);
 //        projectile = new OBJ_Rock(gp); // test (comment projectile above)
@@ -99,7 +99,7 @@ public class Player extends Entity {
         inventory.add(currentWeapon);
         inventory.add(currentShield);
         inventory.add(new OBJ_Key(gp));
-//        inventory.add(new OBJ_Axe(gp)); // test
+        inventory.add(new OBJ_Axe(gp)); // test
     }
 
     public int getAttack() {
