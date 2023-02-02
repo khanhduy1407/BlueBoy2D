@@ -27,6 +27,7 @@ public class UI {
     public int slotRow = 0;
     int subState = 0;
     int counter = 0;
+    public Entity npc;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -86,17 +87,21 @@ public class UI {
             drawCharacterScreen();
             drawInventory();
         }
-        // OPTIONS STATS
+        // OPTIONS STATE
         if (gp.gameState == gp.optionsState) {
             drawOptionsScreen();
         }
-        // GAME OVER STATS
+        // GAME OVER STATE
         if (gp.gameState == gp.gameOverState) {
             drawGameOverScreen();
         }
-        // TRANSITION STATS
+        // TRANSITION STATE
         if (gp.gameState == gp.transitionState) {
             drawTransition();
+        }
+        // TRADE STATE
+        if (gp.gameState == gp.tradeState) {
+            drawTradeScreen();
         }
     }
 
@@ -528,6 +533,16 @@ public class UI {
         }
     }
 
+    public void drawTradeScreen() {
+        switch (subState) {
+            case 0: trade_select(); break;
+            case 1: trade_buy(); break;
+            case 2: trade_sell(); break;
+        }
+
+        gp.keyH.enterPressed = false;
+    }
+
     public void options_top(int frameX, int frameY) {
         int textX;
         int textY;
@@ -727,6 +742,10 @@ public class UI {
             }
         }
     }
+
+    public void trade_select() {}
+    public void trade_buy() {}
+    public void trade_sell() {}
 
     public int getItemIndexOnSlot() {
         // e.g. cursor[4][2] => 4 + (2 * 5) = 14
