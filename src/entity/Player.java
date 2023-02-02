@@ -50,10 +50,8 @@ public class Player extends Entity {
     public void setDefaultValues() {
         // You can type numbers like worldX = 1000
         // Either way is fine
-//        worldX = gp.tileSize * 23;
-//        worldY = gp.tileSize * 21;
-        worldX = gp.tileSize * 12;
-        worldY = gp.tileSize * 13;
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 21;
         speed = 4;
         direction = "down";
 
@@ -101,6 +99,7 @@ public class Player extends Entity {
         inventory.add(currentWeapon);
         inventory.add(currentShield);
         inventory.add(new OBJ_Key(gp));
+        inventory.add(new OBJ_Axe(gp)); // test
     }
 
     public int getAttack() {

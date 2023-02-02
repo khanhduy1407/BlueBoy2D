@@ -104,7 +104,7 @@ public class CollisionChecker {
         int index = 999;
 
         for (int i = 0; i < target[1].length; i++) { // FIXED
-            if (target[i] != null) {
+            if (target[gp.currentMap][i] != null) { // FIXED
                 // Get entity's solid area position
                 entity.solidArea.x = entity.worldX + entity.solidArea.x;
                 entity.solidArea.y = entity.worldY + entity.solidArea.y;
