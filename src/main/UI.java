@@ -815,6 +815,7 @@ public class UI {
     public void trade_buy() {
         // DRAW PLAYER INVENTORY
         drawInventory(gp.player, false);
+        // DRAW NPC INVENTORY
         drawInventory(npc, true);
 
         // DRAW HIT WINDOW
@@ -867,7 +868,61 @@ public class UI {
         }
     }
 
-    public void trade_sell() {}
+    public void trade_sell() {
+        // DRAW PLAYER INVENTORY
+        drawInventory(gp.player, true);
+
+        int x;
+        int y;
+        int width;
+        int height;
+
+        // DRAW HIT WINDOW
+        x = gp.tileSize * 2;
+        y = gp.tileSize * 9;
+        width = gp.tileSize * 6;
+        height = gp.tileSize * 2;
+        drawSubWindow(x, y, width, height);
+        g2.drawString("[ESC] Back", x+24, y+60);
+
+        // DRAW PLAYER COIN WINDOW
+        x = gp.tileSize * 12;
+        y = gp.tileSize * 9;
+        width = gp.tileSize * 6;
+        height = gp.tileSize * 2;
+        drawSubWindow(x, y, width, height);
+        g2.drawString("Your coin: " + gp.player.coin, x+24, y+60);
+
+        // DRAW PRICE WINDOW
+        int itemIndex = getItemIndexOnSlot(playerSlotCol, playerSlotRow);
+        if (itemIndex < gp.player.inventory.size()) {
+            x = (int) (gp.tileSize * 15.5);
+            y = (int) (gp.tileSize * 5.5);
+            width = (int) (gp.tileSize * 2.5);
+            height = gp.tileSize;
+            drawSubWindow(x, y, width, height);
+            g2.drawImage(coin, x+10, y+8, 32, 32, null);
+
+            int price = gp.player.inventory.get(itemIndex).price / 2;
+            String text = "" + price;
+            x = getXForAlignToRightText(text, gp.tileSize*18-20);
+            g2.drawString(text, x, y+34);
+
+            // SELL AN ITEM
+            if (gp.keyH.enterPressed == true) {
+                if (gp.player.inventory.get(itemIndex) == gp.player.currentWeapon ||
+                        gp.player.inventory.get(itemIndex) == gp.player.currentShield) {
+                    commandNum = 0;
+                    subState = 0;
+                    gp.gameState = gp.dialogueState;
+                    currentDialogue = "You cannot sell an equipped item!";
+                } else {
+                    gp.player.inventory.remove(itemIndex);
+                    gp.player.coin += price;
+                }
+            }
+        }
+    }
 
     public int getItemIndexOnSlot(int slotCol, int slotRow) {
         // e.g. cursor[4][2] => 4 + (2 * 5) = 14
