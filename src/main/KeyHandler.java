@@ -193,33 +193,10 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_C) {
             gp.gameState = gp.playState;
         }
-        if (code == KeyEvent.VK_W) {
-            if (gp.ui.slotRow != 0) {
-                gp.ui.slotRow--;
-                gp.playSE(9);
-            }
-        }
-        if (code == KeyEvent.VK_A) {
-            if (gp.ui.slotCol != 0) {
-                gp.ui.slotCol--;
-                gp.playSE(9);
-            }
-        }
-        if (code == KeyEvent.VK_S) {
-            if (gp.ui.slotRow != 3) {
-                gp.ui.slotRow++;
-                gp.playSE(9);
-            }
-        }
-        if (code == KeyEvent.VK_D) {
-            if (gp.ui.slotCol != 4) {
-                gp.ui.slotCol++;
-                gp.playSE(9);
-            }
-        }
         if (code == KeyEvent.VK_ENTER) {
             gp.player.selectItem();
         }
+        playerInventory(code);
     }
 
     /**
@@ -279,30 +256,6 @@ public class KeyHandler implements KeyListener {
     }
 
     /**
-     * TRADE STATE
-     */
-    public void tradeState(int code) {
-        if (code == KeyEvent.VK_ENTER) {
-            enterPressed = true;
-        }
-
-        if (gp.ui.subState == 0) {
-            if (code == KeyEvent.VK_W) {
-                if (gp.ui.commandNum > 0) {
-                    gp.ui.commandNum--;
-                    gp.playSE(9);
-                }
-            }
-            if (code == KeyEvent.VK_S) {
-                if (gp.ui.commandNum < 2) {
-                    gp.ui.commandNum++;
-                    gp.playSE(9);
-                }
-            }
-        }
-    }
-
-    /**
      * GAME OVER STATE
      */
     public void gameOverState(int code) {
@@ -327,6 +280,92 @@ public class KeyHandler implements KeyListener {
                 gp.gameState = gp.titleState;
                 gp.restart();
                 gp.stopMusic();
+            }
+        }
+    }
+
+    /**
+     * TRADE STATE
+     */
+    public void tradeState(int code) {
+        if (code == KeyEvent.VK_ENTER) {
+            enterPressed = true;
+        }
+
+        if (gp.ui.subState == 0) {
+            if (code == KeyEvent.VK_W) {
+                if (gp.ui.commandNum > 0) {
+                    gp.ui.commandNum--;
+                    gp.playSE(9);
+                }
+            }
+            if (code == KeyEvent.VK_S) {
+                if (gp.ui.commandNum < 2) {
+                    gp.ui.commandNum++;
+                    gp.playSE(9);
+                }
+            }
+        }
+
+        if (gp.ui.subState == 1) {
+            npcInventory(code);
+
+            if (code == KeyEvent.VK_ESCAPE) {
+                gp.ui.subState = 0;
+            }
+        }
+    }
+
+    public void playerInventory(int code) {
+        if (code == KeyEvent.VK_W) {
+            if (gp.ui.playerSlotRow != 0) {
+                gp.ui.playerSlotRow--;
+                gp.playSE(9);
+            }
+        }
+        if (code == KeyEvent.VK_A) {
+            if (gp.ui.playerSlotCol != 0) {
+                gp.ui.playerSlotCol--;
+                gp.playSE(9);
+            }
+        }
+        if (code == KeyEvent.VK_S) {
+            if (gp.ui.playerSlotRow != 3) {
+                gp.ui.playerSlotRow++;
+                gp.playSE(9);
+            }
+        }
+        if (code == KeyEvent.VK_D) {
+            if (gp.ui.playerSlotCol != 4) {
+                gp.ui.playerSlotCol++;
+                gp.playSE(9);
+            }
+        }
+    }
+
+    public void npcInventory(int code) {
+        if (code == KeyEvent.VK_W) {
+            if (gp.ui.npcSlotRow != 0) {
+                gp.ui.npcSlotRow--;
+                gp.playSE(9);
+            }
+        }
+        if (code == KeyEvent.VK_A) {
+            if (gp.ui.npcSlotCol != 0) {
+                gp.ui.npcSlotCol--;
+                gp.playSE(9);
+            }
+        }
+        if (code == KeyEvent.VK_S) {
+            if (gp.ui.npcSlotRow != 3) {
+                gp.ui.npcSlotRow++;
+                gp.playSE(9);
+            }
+        }
+        if (code == KeyEvent.VK_D) {
+            if (gp.ui.npcSlotCol != 4) {
+                gp.ui.npcSlotCol++;
+                gp.playSE(9);
             }
         }
     }
