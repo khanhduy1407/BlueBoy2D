@@ -19,7 +19,7 @@ Use `WASD` to move the character
    - [x] Player status (Life, Level, Attack, Defense, EXP etc.)
    - [x] Monsters (simple AI) and Battle System (hit detection)
    - [x] Inventory
-   - [ ] Merchant NPC (Buy/Sell items)
+   - [x] Merchant NPC (Buy/Sell items)
    - [x] Title Screen, Game Over Screen
    - [x] Environment Interaction (Cutting trees with axe)
    - [x] Item Drop
