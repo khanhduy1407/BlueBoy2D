@@ -274,7 +274,7 @@ public class Player extends Entity {
         if (spriteCounter <= 5) {
             spriteNum = 1;
         }
-        if (spriteCounter > 5 && spriteCounter <= 25) {
+        if (spriteCounter > 5 && spriteCounter <= 25) { // This is the hit window
             spriteNum = 2;
 
             // Save current worldX/Y, solidArea

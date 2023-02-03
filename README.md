@@ -29,4 +29,5 @@ Use `WASD` to move the character
    - [ ] Events (Boss fight etc.)
    - [x] Save/Load
    - [ ] Ending Screen
-   - [ ] And maybe some more...
+   
+And maybe some more...
