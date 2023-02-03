@@ -11,7 +11,7 @@ public class NPC_OldMan extends Entity {
 
         type = 1;
         direction = "down";
-        speed = 2; // test, default 1
+        speed = 1;
 
         solidArea.x = 8;
         solidArea.y = 16;
