@@ -477,6 +477,53 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Search item in inventory
+     * <p>
+     * This method also can be used when you want to check if player has a certain
+     * quest item etc.
+     *
+     * @param itemName Search by item name
+     */
+    public int searchItemInInventory(String itemName) {
+        int itemIndex = 999;
+
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).name.equals(itemName)) {
+                itemIndex = i;
+                break;
+            }
+        }
+
+        return itemIndex;
+    }
+
+    public boolean canObtainItem(Entity item) {
+        boolean canObtain = false;
+
+        // CHECK IF STACKABLE
+        if (item.stackable == true) {
+            int index = searchItemInInventory(item.name);
+
+            if (index != 999) {
+                inventory.get(index).amount++;
+                canObtain = true;
+            } else { // New item so need to check vacancy
+                if (inventory.size() != maxInventorySize) {
+                    inventory.add(item);
+                    canObtain = true;
+                }
+            }
+        } else { // NOT STACKABLE so check vacancy
+            if (inventory.size() != maxInventorySize) {
+                inventory.add(item);
+                canObtain = true;
+            }
+        }
+
+        return canObtain;
+    }
+
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
         int tempScreenX = screenX;
