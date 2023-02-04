@@ -9,7 +9,7 @@ public class Lighting {
 
     GamePanel gp;
     BufferedImage darknessFilter;
-    int dayCounter;
+    public int dayCounter;
     public float filterAlpha = 0f;
 
     // Day State
