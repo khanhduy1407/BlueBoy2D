@@ -435,7 +435,8 @@ public class UI {
         for (int i = 0; i < entity.inventory.size(); i++) {
             // EQUIP CURSOR
             if (entity.inventory.get(i) == entity.currentWeapon ||
-                    entity.inventory.get(i) == entity.currentShield) {
+                    entity.inventory.get(i) == entity.currentShield ||
+                    entity.inventory.get(i) == entity.currentLight) {
                 g2.setColor(new Color(240, 190, 90));
                 g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);
             }
