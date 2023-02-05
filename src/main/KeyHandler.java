@@ -52,7 +52,11 @@ public class KeyHandler implements KeyListener {
         }
         // TRADE STATE
         else if (gp.gameState == gp.tradeState) {
-         tradeState(code);
+            tradeState(code);
+        }
+        // MAP STATE
+        else if (gp.gameState == gp.mapState) {
+            mapState(code);
         }
     }
 
@@ -150,6 +154,9 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_ESCAPE) {
             gp.gameState = gp.optionsState;
+        }
+        if (code == KeyEvent.VK_M) {
+            gp.gameState = gp.mapState;
         }
 
         // DEBUG
@@ -321,6 +328,15 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_ESCAPE) {
                 gp.ui.subState = 0;
             }
+        }
+    }
+
+    /**
+     * MAP OVER STATE
+     */
+    public void mapState(int code) {
+        if (code == KeyEvent.VK_M) {
+            gp.gameState = gp.playState;
         }
     }
 
