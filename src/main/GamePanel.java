@@ -99,7 +99,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
         aSetter.setObject(); // we keep the acquired items and the destroyed objects' status etc.
         aSetter.setNPC();
-//        aSetter.setMonster();
+        aSetter.setMonster();
         aSetter.setInteractiveTile();
 
         eManager.setup();
