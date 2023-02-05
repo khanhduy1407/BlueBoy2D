@@ -405,6 +405,19 @@ public class Entity {
         }
     }
 
+    public String getOppositeDirection(String direction) {
+        String oppositeDirection = "";
+
+        switch (direction) {
+            case "up": oppositeDirection = "down"; break;
+            case "down": oppositeDirection = "up"; break;
+            case "left": oppositeDirection = "right"; break;
+            case "right": oppositeDirection = "left"; break;
+        }
+
+        return oppositeDirection;
+    }
+
     public void attacking() {
         spriteCounter++;
         if (spriteCounter <= motion1_duration) {
@@ -462,13 +475,24 @@ public class Entity {
 
     public void damagePlayer(int attack) {
         if (gp.player.invincible == false) {
-            // we can give damage
-            gp.playSE(6);
-
             int damage = attack - gp.player.defense;
-            if (damage < 0) {
-                damage = 0;
+
+            // Get an opposite direction of this attacker
+            String canGuardDirection = getOppositeDirection(direction);
+
+            if (gp.player.guarding == true && gp.player.direction.equals(canGuardDirection)) {
+                damage /= 3;
+                gp.playSE(15);
+            } else {
+                // Not guarding
+                // we can give damage
+                gp.playSE(6);
+
+                if (damage < 1) {
+                    damage = 1;
+                }
             }
+
             gp.player.life -= damage;
             gp.player.invincible = true;
         }
