@@ -70,6 +70,8 @@ public class Entity {
     public int exp;
     public int nextLevelExp;
     public int coin;
+    public int motion1_duration;
+    public int motion2_duration;
     public Entity currentWeapon;
     public Entity currentShield;
     public Entity currentLight;
@@ -403,10 +405,10 @@ public class Entity {
 
     public void attacking() {
         spriteCounter++;
-        if (spriteCounter <= 5) {
+        if (spriteCounter <= motion1_duration) {
             spriteNum = 1;
         }
-        if (spriteCounter > 5 && spriteCounter <= 25) { // This is the hit window
+        if (spriteCounter > motion1_duration && spriteCounter <= motion2_duration) { // This is the hit window
             spriteNum = 2;
 
             // Save current worldX/Y, solidArea
@@ -449,7 +451,7 @@ public class Entity {
             solidArea.width = solidAreaWidth;
             solidArea.height = solidAreaHeight;
         }
-        if (spriteCounter > 25) {
+        if (spriteCounter > motion2_duration) {
             spriteNum = 1;
             spriteCounter = 0;
             attacking = false;
