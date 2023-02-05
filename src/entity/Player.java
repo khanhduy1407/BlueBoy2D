@@ -95,6 +95,7 @@ public class Player extends Entity {
         life = maxLife;
         mana = maxMana;
         invincible = false;
+        transparent = false;
     }
 
     public void setItems() {
@@ -202,6 +203,7 @@ public class Player extends Entity {
             attacking();
         } else if (keyH.spacePressed == true) {
             guarding = true;
+            guardCounter++;
         } else if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true) {
             if (keyH.upPressed == true) {
                 direction = "up";
@@ -255,6 +257,7 @@ public class Player extends Entity {
             attackCancel = false;
             gp.keyH.enterPressed = false;
             guarding = false;
+            guardCounter = 0;
 
             spriteCounter++;
             if (spriteCounter > 12) {
@@ -272,6 +275,7 @@ public class Player extends Entity {
                 standCounter = 0;
             }
             guarding = false;
+            guardCounter = 0;
         }
 
         if (gp.keyH.shotKeyPressed == true && projectile.alive == false
@@ -391,6 +395,10 @@ public class Player extends Entity {
 
                 if (knockBackPower > 0) {
                     setKnockBack(gp.monster[gp.currentMap][i], attacker, knockBackPower);
+                }
+
+                if (gp.monster[gp.currentMap][i].offBalance == true) {
+                    attack *= 5;
                 }
 
                 int damage = attack - gp.monster[gp.currentMap][i].defense; // FIXED
