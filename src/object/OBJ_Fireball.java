@@ -20,9 +20,7 @@ public class OBJ_Fireball extends Projectile {
         maxLife = 80;
         life = maxLife;
         attack = 2;
-        // Actually if it's 0, we don't need to set it here since we've already
-        // done it in the Entity class
-        knockBackPower = 0;
+        knockBackPower = 5;
         useCost = 1;
         alive = false;
 
