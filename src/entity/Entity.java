@@ -20,7 +20,8 @@ public class Entity {
     // (We use this to store our image files)
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2,
-                         attackLeft1, attackLeft2, attackRight1, attackRight2;
+                         attackLeft1, attackLeft2, attackRight1, attackRight2,
+                         guardUp, guardDown, guardLeft, guardRight;
     public BufferedImage image, image2, image3;
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
@@ -43,6 +44,7 @@ public class Entity {
     public boolean onPath = false;
     public boolean knockBack = false;
     public String knockBackDirection;
+    public boolean guarding = false;
 
     // COUNTER
     public int spriteCounter = 0;
