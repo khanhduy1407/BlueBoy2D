@@ -88,12 +88,12 @@ public class Lighting {
 
         // Check the state of the day
         if (dayState == day) {
-            dayCounter++;
-
-            if (dayCounter > 600) { // 36.000s = 10m
-                dayState = dusk;
-                dayCounter = 0;
-            }
+//            dayCounter++;
+//
+//            if (dayCounter > 600) { // 36.000s = 10m
+//                dayState = dusk;
+//                dayCounter = 0;
+//            }
         }
         if (dayState == dusk) {
             filterAlpha += 0.001f; // 0.0001f x 10.000 = 1f, 10.000/60 = 166s
