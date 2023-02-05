@@ -282,55 +282,6 @@ public class Player extends Entity {
         }
     }
 
-    public void attacking() {
-        spriteCounter++;
-        if (spriteCounter <= 5) {
-            spriteNum = 1;
-        }
-        if (spriteCounter > 5 && spriteCounter <= 25) { // This is the hit window
-            spriteNum = 2;
-
-            // Save current worldX/Y, solidArea
-            int currentWorldX = worldX;
-            int currentWorldY = worldY;
-            int solidAreaWidth = solidArea.width;
-            int solidAreaHeight = solidArea.height;
-
-            // Adjust player's worldX/Y for attackArea
-            switch (direction) {
-                case "up": worldY -= attackArea.height; break;
-                case "down": worldY += attackArea.height; break;
-                case "left": worldX -= attackArea.width; break;
-                case "right": worldX += attackArea.width; break;
-            }
-
-            // attackArea becomes solidArea
-            solidArea.width = attackArea.width;
-            solidArea.height = attackArea.height;
-
-            // Check monster collision with the updated worldX/Y and solidArea
-            int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
-            damageMonster(monsterIndex, this, attack, currentWeapon.knockBackPower);
-
-            int iTileIndex = gp.cChecker.checkEntity(this, gp.iTile);
-            damageInteractiveTile(iTileIndex);
-
-            int projectileIndex = gp.cChecker.checkEntity(this, gp.projectile);
-            damageProjectile(projectileIndex);
-
-            // After checking collision, restore the original data
-            worldX = currentWorldX;
-            worldY = currentWorldY;
-            solidArea.width = solidAreaWidth;
-            solidArea.height = solidAreaHeight;
-        }
-        if (spriteCounter > 25) {
-            spriteNum = 1;
-            spriteCounter = 0;
-            attacking = false;
-        }
-    }
-
     public void pickUpObject(int i) {
         // I choose 999 but basically any number is fine as long as it's not used by
         // the object array's index

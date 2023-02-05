@@ -305,6 +305,10 @@ public class Entity {
         }
     }
 
+    public void checkAttackOrNot(int rate, int straight, int horizontal) {
+        //
+    }
+
     public void checkShootOrNot(int rate, int shotInterval) {
         int i = new Random().nextInt(rate);
         if (i == 0 && projectile.alive == false && shotAvailableCounter == shotInterval) {
@@ -355,6 +359,61 @@ public class Entity {
             if (i > 75 && i <= 100) { direction = "right"; }
 
             actionLockCounter = 0;
+        }
+    }
+
+    public void attacking() {
+        spriteCounter++;
+        if (spriteCounter <= 5) {
+            spriteNum = 1;
+        }
+        if (spriteCounter > 5 && spriteCounter <= 25) { // This is the hit window
+            spriteNum = 2;
+
+            // Save current worldX/Y, solidArea
+            int currentWorldX = worldX;
+            int currentWorldY = worldY;
+            int solidAreaWidth = solidArea.width;
+            int solidAreaHeight = solidArea.height;
+
+            // Adjust player's worldX/Y for attackArea
+            switch (direction) {
+                case "up": worldY -= attackArea.height; break;
+                case "down": worldY += attackArea.height; break;
+                case "left": worldX -= attackArea.width; break;
+                case "right": worldX += attackArea.width; break;
+            }
+
+            // attackArea becomes solidArea
+            solidArea.width = attackArea.width;
+            solidArea.height = attackArea.height;
+
+            if (type == type_monster) {
+                if (gp.cChecker.checkPlayer(this) == true) {
+                    damagePlayer(attack);
+                }
+            } else { // Player
+                // Check monster collision with the updated worldX/Y and solidArea
+                int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+                gp.player.damageMonster(monsterIndex, this, attack, currentWeapon.knockBackPower);
+
+                int iTileIndex = gp.cChecker.checkEntity(this, gp.iTile);
+                gp.player.damageInteractiveTile(iTileIndex);
+
+                int projectileIndex = gp.cChecker.checkEntity(this, gp.projectile);
+                gp.player.damageProjectile(projectileIndex);
+            }
+
+            // After checking collision, restore the original data
+            worldX = currentWorldX;
+            worldY = currentWorldY;
+            solidArea.width = solidAreaWidth;
+            solidArea.height = solidAreaHeight;
+        }
+        if (spriteCounter > 25) {
+            spriteNum = 1;
+            spriteCounter = 0;
+            attacking = false;
         }
     }
 
