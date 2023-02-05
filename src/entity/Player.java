@@ -273,6 +273,7 @@ public class Player extends Entity {
             invincibleCounter++;
             if (invincibleCounter > 60) {
                 invincible = false;
+                transparent = false;
                 invincibleCounter = 0;
             }
         }
@@ -346,11 +347,12 @@ public class Player extends Entity {
                 gp.playSE(6);
 
                 int damage = gp.monster[gp.currentMap][i].attack - defense; // FIXED
-                if (damage < 0) {
-                    damage = 0;
+                if (damage < 1) {
+                    damage = 1;
                 }
                 life -= damage;
                 invincible = true;
+                transparent = true;
             }
         }
     }
@@ -570,7 +572,7 @@ public class Player extends Entity {
                 break;
         }
 
-        if (invincible == true) {
+        if (transparent == true) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
         }
         // draw an image on the screen
