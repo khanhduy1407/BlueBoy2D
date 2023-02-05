@@ -496,6 +496,7 @@ public class Entity {
 
             if (damage != 0) {
                 gp.player.transparent = true;
+                setKnockBack(gp.player, this, knockBackPower);
             }
 
             gp.player.life -= damage;
