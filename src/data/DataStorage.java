@@ -22,4 +22,11 @@ public class DataStorage implements Serializable {
     ArrayList<Integer> itemAmounts = new ArrayList<>();
     int currentWeaponSlot;
     int currentShieldSlot;
+
+    // OBJECTS ON MAP
+    String mapObjectNames[][];
+    int mapObjectWorldX[][];
+    int mapObjectWorldY[][];
+    String mapObjectLootNames[][];
+    boolean mapObjectOpened[][];
 }
