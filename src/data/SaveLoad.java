@@ -58,6 +58,10 @@ public class SaveLoad {
                 ds.itemAmounts.add(gp.player.inventory.get(i).amount);
             }
 
+            // PLAYER EQUIPMENT
+            ds.currentWeaponSlot = gp.player.getCurrentWeaponSlot();
+            ds.currentShieldSlot = gp.player.getCurrentShieldSlot();
+
             // Write the DataStorage object
             oos.writeObject(ds);
         } catch (Exception e) {
@@ -90,6 +94,13 @@ public class SaveLoad {
                 gp.player.inventory.add(getObject(ds.itemNames.get(i)));
                 gp.player.inventory.get(i).amount = ds.itemAmounts.get(i);
             }
+
+            // PLAYER EQUIPMENT
+            gp.player.currentWeapon = gp.player.inventory.get(ds.currentWeaponSlot);
+            gp.player.currentShield = gp.player.inventory.get(ds.currentShieldSlot);
+            gp.player.getAttack();
+            gp.player.getDefense();
+            gp.player.getAttackImage();
         } catch (Exception e) {
             System.out.println("Load Exception!");
         }
