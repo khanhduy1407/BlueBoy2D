@@ -1,6 +1,8 @@
 package data;
 
+import entity.Entity;
 import main.GamePanel;
+import object.*;
 
 import java.io.*;
 
@@ -12,11 +14,33 @@ public class SaveLoad {
         this.gp = gp;
     }
 
+    public Entity getObject(String itemName) {
+        Entity obj = null;
+
+        switch (itemName) {
+            case "Woodcutter's Axe": obj = new OBJ_Axe(gp); break;
+            case "Boots": obj = new OBJ_Boots(gp); break;
+            case "Key": obj = new OBJ_Key(gp); break;
+            case "Lantern": obj = new OBJ_Lantern(gp); break;
+            case "Red Potion": obj = new OBJ_Potion_Red(gp); break;
+            case "Blue Shield": obj = new OBJ_Shield_Blue(gp); break;
+            case "Wood Shield": obj = new OBJ_Shield_Wood(gp); break;
+            case "Normal Sword": obj = new OBJ_Sword_Normal(gp); break;
+            case "Tent": obj = new OBJ_Tent(gp); break;
+            case "Door": obj = new OBJ_Door(gp); break;
+            case "Chest": obj = new OBJ_Chest(gp); break;
+        }
+
+        return obj;
+    }
+
     public void save() {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File("save.dat")));
 
             DataStorage ds = new DataStorage();
+
+            // PLAYER STATS
             ds.level = gp.player.level;
             ds.maxLife = gp.player.maxLife;
             ds.life = gp.player.life;
@@ -27,6 +51,12 @@ public class SaveLoad {
             ds.exp = gp.player.exp;
             ds.nextLevelExp = gp.player.nextLevelExp;
             ds.coin = gp.player.coin;
+
+            // PLAYER INVENTORY
+            for (int i = 0; i < gp.player.inventory.size(); i++) {
+                ds.itemNames.add(gp.player.inventory.get(i).name);
+                ds.itemAmounts.add(gp.player.inventory.get(i).amount);
+            }
 
             // Write the DataStorage object
             oos.writeObject(ds);
@@ -41,6 +71,8 @@ public class SaveLoad {
 
             // Read the DataStorage object
             DataStorage ds = (DataStorage) ois.readObject();
+
+            // PLAYER STATS
             gp.player.level = ds.level;
             gp.player.maxLife = ds.maxLife;
             gp.player.life = ds.life;
@@ -51,6 +83,13 @@ public class SaveLoad {
             gp.player.exp = ds.exp;
             gp.player.nextLevelExp = ds.nextLevelExp;
             gp.player.coin = ds.coin;
+
+            // PLAYER INVENTORY
+            gp.player.inventory.clear();
+            for (int i = 0; i < ds.itemNames.size(); i++) {
+                gp.player.inventory.add(getObject(ds.itemNames.get(i)));
+                gp.player.inventory.get(i).amount = ds.itemAmounts.get(i);
+            }
         } catch (Exception e) {
             System.out.println("Load Exception!");
         }
