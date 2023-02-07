@@ -36,10 +36,16 @@ public class NPC_OldMan extends Entity {
     }
 
     public void setDialogue() {
-        dialogues[0] = "Hello, lab.";
-        dialogues[1] = "So you've come to this island to \nfind the treasure?";
-        dialogues[2] = "I used to be a great wizard but now... \nI'm a bit too old for talking an adventure.";
-        dialogues[3] = "Well, good luck on you.";
+        dialogues[0][0] = "Hello, lab.";
+        dialogues[0][1] = "So you've come to this island to \nfind the treasure?";
+        dialogues[0][2] = "I used to be a great wizard but now... \nI'm a bit too old for talking an adventure.";
+        dialogues[0][3] = "Well, good luck on you.";
+
+        dialogues[1][0] = "If you become tired, rest at the water.";
+        dialogues[1][1] = "However, the monster reappear if you rest.\nI don't know why but that's how it work";
+        dialogues[1][2] = "In any case, don't push yourself too hard";
+
+        dialogues[2][0] = "I wonder how to open thay door...";
     }
 
     public void setAction() {
@@ -77,8 +83,9 @@ public class NPC_OldMan extends Entity {
 
     public void speak() {
         // Do this character specific stuff
-        super.speak();
+        facePlayer();
+        startDialogue(this, dialogueSet);
 
-        onPath = true;
+//        onPath = true;
     }
 }
