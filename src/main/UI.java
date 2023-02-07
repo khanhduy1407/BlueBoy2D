@@ -538,7 +538,7 @@ public class UI {
                 }
 
                 // DURABILITY
-                g2.drawString("Durability: " + entity.inventory.get(itemIndex).durability, textX, textY+100);
+//                g2.drawString("Durability: " + entity.inventory.get(itemIndex).durability, textX, textY+100);
             }
         }
     }
