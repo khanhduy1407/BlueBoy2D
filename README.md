@@ -24,7 +24,7 @@ Use `WASD` to move the character
    - [x] Environment Interaction (Cutting trees with axe)
    - [x] Item Drop
    - [x] In-game menu
-   - [ ] Advanced UI
+   - [x] Advanced UI
    - [x] New Area (map transition)
    - [ ] Events (Boss fight etc.)
    - [x] Save/Load
