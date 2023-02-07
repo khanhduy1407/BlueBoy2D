@@ -41,9 +41,9 @@ public class NPC_BigRock extends Entity {
         dialogues[0][0] = "It's a giant rock";
     }
 
-    public void setAction() {
-        //
-    }
+    public void setAction() {}
+
+    public void update() {}
 
     public void speak() {
         // Do this character specific stuff
