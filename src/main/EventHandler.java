@@ -66,9 +66,13 @@ public class EventHandler {
         if (canTouchEvent) {
             if (hit(0, 27, 16, "right")) { damagePit(gp.dialogueState); }
             else if (hit(0, 23, 12, "up")) { healingPool(gp.dialogueState); }
-            else if (hit(0, 10, 39, "any")) { teleport(1, 12, 13); }
-            else if (hit(1, 12, 13, "any")) { teleport(0, 10, 39); }
+            else if (hit(0, 10, 39, "any")) { teleport(1, 12, 13); } // to merchant's house
+            else if (hit(1, 12, 13, "any")) { teleport(0, 10, 39); } // to outside
             else if (hit(1, 12, 9, "up")) { speak(gp.npc[1][0]); }
+            else if (hit(0, 12, 9, "any")) { teleport(2, 9, 41); } // to the dungeon
+            else if (hit(2, 9, 41, "any")) { teleport(0, 12, 9); } // to outside
+            else if (hit(2, 8, 7, "any")) { teleport(3, 26, 41); } // to B2
+            else if (hit(3, 26, 41, "any")) { teleport(2, 8, 7); } // to B1
         }
     }
 
