@@ -79,6 +79,7 @@ public class Player extends Entity {
         getAttackImage();
         getGuardImage();
         setItems();
+        setDialogue();
     }
 
     /*
@@ -91,6 +92,11 @@ public class Player extends Entity {
         worldX = gp.tileSize * 23;
         worldY = gp.tileSize * 21;
         direction = "down";
+    }
+
+    public void setDialogue() {
+        dialogues[0][0] = "You are level " + level + " now!\n" +
+                          "You feel stronger!";
     }
 
     public void restoreStatus() {
@@ -483,8 +489,8 @@ public class Player extends Entity {
 
             gp.playSE(8);
             gp.gameState = gp.dialogueState;
-            gp.ui.currentDialogue = "You are level " + level + " now!\n" +
-                                    "You feel stronger!";
+
+            startDialogue(this, 0);
         }
     }
 
