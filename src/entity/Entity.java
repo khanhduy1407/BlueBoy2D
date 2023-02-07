@@ -165,6 +165,18 @@ public class Entity {
         return goalRow;
     }
 
+    public void resetCounter() {
+        spriteCounter = 0;
+        actionLockCounter = 0;
+        invincibleCounter = 0;
+        shotAvailableCounter = 0;
+        dyingCounter = 0;
+        hpBarCounter = 0;
+        knockBackCounter = 0;
+        guardCounter = 0;
+        offBalanceCounter = 0;
+    }
+
     public void setLoot(Entity loot) {}
 
     public void setAction() {}
