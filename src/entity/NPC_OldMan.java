@@ -45,7 +45,7 @@ public class NPC_OldMan extends Entity {
         dialogues[1][1] = "However, the monster reappear if you rest.\nI don't know why but that's how it work";
         dialogues[1][2] = "In any case, don't push yourself too hard";
 
-        dialogues[2][0] = "I wonder how to open thay door...";
+        dialogues[2][0] = "I wonder how to open that door...";
     }
 
     public void setAction() {
