@@ -180,7 +180,7 @@ public class UI {
         for (int i = 0; i < gp.monster[1].length; i++) {
             Entity monster = gp.monster[gp.currentMap][i];
             if (monster != null && monster.inCamera() == true) {
-                if (monster.hpBarOn == true) {
+                if (monster.hpBarOn == true && monster.boss == false) {
                     double oneScale = (double) gp.tileSize / monster.maxLife;
                     double hpBarValue = oneScale * monster.life;
 
@@ -195,6 +195,8 @@ public class UI {
                         monster.hpBarCounter = 0;
                         monster.hpBarOn = false;
                     }
+                } else if (monster.boss == true) {
+                    //
                 }
             }
         }
