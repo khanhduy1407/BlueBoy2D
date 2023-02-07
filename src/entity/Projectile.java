@@ -23,7 +23,8 @@ public class Projectile extends Entity {
         if (user == gp.player) {
             int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
             if (monsterIndex != 999) {
-                gp.player.damageMonster(monsterIndex, this, attack, knockBackPower);
+                // The fireball damage increase in every 2 levels
+                gp.player.damageMonster(monsterIndex, this, attack*(gp.player.level/2), knockBackPower);
                 generateParticle(user.projectile, gp.monster[gp.currentMap][monsterIndex]);
                 alive = false; // If the projectile hits a monster, it dies (disappears).
             }

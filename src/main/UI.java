@@ -120,12 +120,21 @@ public class UI {
         int x = gp.tileSize / 2;
         int y = gp.tileSize / 2;
         int i = 0;
+        int iconSize = 32;
+        int manaStartX = (gp.tileSize/2)-5;
+        int manaStartY = 0;
 
         // DRAW MAX LIFE
         while (i < gp.player.maxLife / 2) {
-            g2.drawImage(heart_blank, x, y, null);
+            g2.drawImage(heart_blank, iconSize, iconSize, null);
             i++;
-            x += gp.tileSize;
+            x += iconSize;
+            manaStartY = y + 32;
+
+            if (i % 8 == 0) {
+                x = gp.tileSize/2;
+                y += iconSize;
+            }
         }
 
         // RESET
