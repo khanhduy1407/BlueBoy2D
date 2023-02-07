@@ -116,8 +116,10 @@ public class GamePanel extends JPanel implements Runnable {
 
 //        gameState = titleState;
         gameState = playState; // test
-        playMusic(0); // if test gameState = playState, enable music
-        currentArea = outside;
+//        playMusic(0); // if test gameState = playState, enable music
+        playMusic(19); // if test gameState = playState, enable music, dungeon
+//        currentArea = outside;
+        currentArea = dungeon;
 
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
         g2 = (Graphics2D) tempScreen.getGraphics();

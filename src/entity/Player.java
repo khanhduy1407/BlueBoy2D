@@ -53,14 +53,24 @@ public class Player extends Entity {
 //        worldX = gp.tileSize * 10;
 //        worldY = gp.tileSize * 33;
 
-        // Dungeon Entrance
-        worldX = gp.tileSize * 12;
-        worldY = gp.tileSize * 11;
-
         // Merchant
 //        gp.currentMap = 1;
 //        worldX = gp.tileSize * 12;
 //        worldY = gp.tileSize * 11;
+
+        // Dungeon Entrance
+//        worldX = gp.tileSize * 12;
+//        worldY = gp.tileSize * 11;
+
+        // Dungeon B1
+//        gp.currentMap = 2;
+//        worldX = gp.tileSize * 9;
+//        worldY = gp.tileSize * 40;
+
+        // Dungeon B2
+        gp.currentMap = 3;
+        worldX = gp.tileSize * 26;
+        worldY = gp.tileSize * 40;
 
         defaultSpeed = 4;
         speed = defaultSpeed;
