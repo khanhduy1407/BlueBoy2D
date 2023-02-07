@@ -128,7 +128,7 @@ public class UI {
 
         // DRAW MAX LIFE
         while (i < gp.player.maxLife / 2) {
-            g2.drawImage(heart_blank, iconSize, iconSize, null);
+            g2.drawImage(heart_blank, x, y, iconSize, iconSize, null);
             i++;
             x += iconSize;
             manaStartY = y + 32;
@@ -146,33 +146,48 @@ public class UI {
 
         // DRAW CURRENT LIFE
         while (i < gp.player.life) {
-            g2.drawImage(heart_half, x, y, null);
+            g2.drawImage(heart_half, x, y, iconSize, iconSize, null);
             i++;
             if (i < gp.player.life) {
-                g2.drawImage(heart_full, x, y, null);
+                g2.drawImage(heart_full, x, y, iconSize, iconSize, null);
             }
             i++;
-            x += gp.tileSize;
+            x += iconSize;
+
+            if (i % 16 == 0) {
+                x = gp.tileSize/2;
+                y += iconSize;
+            }
         }
 
         // DRAW MAX MANA
-        x = (gp.tileSize / 2) - 5;
-        y = (int) (gp.tileSize * 1.5);
+        x = manaStartX;
+        y = manaStartY;
         i = 0;
         while (i < gp.player.maxMana) {
-            g2.drawImage(crystal_blank, x, y, null);
+            g2.drawImage(crystal_blank, x, y, iconSize, iconSize, null);
             i++;
-            x += 35;
+            x += 20;
+
+            if (i % 10 == 0) {
+                x = manaStartX;
+                y += iconSize;
+            }
         }
 
         // DRAW MANA
-        x = (gp.tileSize / 2) - 5;
-        y = (int) (gp.tileSize * 1.5);
+        x = manaStartX;
+        y = manaStartY;
         i = 0;
         while (i < gp.player.mana) {
-            g2.drawImage(crystal_full, x, y, null);
+            g2.drawImage(crystal_full, x, y, iconSize, iconSize, null);
             i++;
-            x += 35;
+            x += 20;
+
+            if (i % 10 == 0) {
+                x = manaStartX;
+                y += iconSize;
+            }
         }
     }
 
