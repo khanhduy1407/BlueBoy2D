@@ -69,8 +69,8 @@ public class Player extends Entity {
 
         // Dungeon B2
         gp.currentMap = 3;
-        worldX = gp.tileSize * 26;
-        worldY = gp.tileSize * 40;
+        worldX = gp.tileSize * 25;
+        worldY = gp.tileSize * 29;
 
         defaultSpeed = 4;
         speed = defaultSpeed;
@@ -83,7 +83,7 @@ public class Player extends Entity {
         maxMana = 4;
         mana = maxMana;
         ammo = 10; // test rock
-        strength = 1; // The more strength he has, the more damage he gives.
+        strength = 5; // The more strength he has, the more damage he gives. Default 1
         dexterity = 1; // The more dexterity he has, the less damage he receives.
         exp = 0;
         nextLevelExp = 5;
