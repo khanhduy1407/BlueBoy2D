@@ -29,6 +29,7 @@ public class Entity {
     public boolean collision = false;
     public String dialogues[][] = new String[20][20];
     public Entity attacker;
+    public Entity linkedEntity;
 
     // STATE
     public int worldX, worldY;
