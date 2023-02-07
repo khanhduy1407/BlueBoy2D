@@ -178,21 +178,22 @@ public class UI {
 
     public void drawMonsterLife() {
         for (int i = 0; i < gp.monster[1].length; i++) {
-            if (gp.monster[gp.currentMap][i] != null) {
-                if (type == 2 && hpBarOn == true) {
-                    double oneScale = (double) gp.tileSize / maxLife;
-                    double hpBarValue = oneScale * life;
+            Entity monster = gp.monster[gp.currentMap][i];
+            if (monster != null && monster.inCamera() == true) {
+                if (monster.hpBarOn == true) {
+                    double oneScale = (double) gp.tileSize / monster.maxLife;
+                    double hpBarValue = oneScale * monster.life;
 
                     g2.setColor(new Color(35, 35, 35));
-                    g2.fillRect(screenX - 1, screenY - 16, gp.tileSize + 2, 12);
+                    g2.fillRect(monster.getScreenX() - 1, monster.getScreenY() - 16, gp.tileSize + 2, 12);
 
                     g2.setColor(new Color(255, 0, 30));
-                    g2.fillRect(screenX, screenY - 15, (int) hpBarValue, 10);
+                    g2.fillRect(monster.getScreenX(), monster.getScreenY() - 15, (int) hpBarValue, 10);
 
-                    hpBarCounter++;
-                    if (hpBarCounter > 600) {
-                        hpBarCounter = 0;
-                        hpBarOn = false;
+                    monster.hpBarCounter++;
+                    if (monster.hpBarCounter > 600) {
+                        monster.hpBarCounter = 0;
+                        monster.hpBarOn = false;
                     }
                 }
             }

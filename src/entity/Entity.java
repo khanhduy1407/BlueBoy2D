@@ -42,7 +42,7 @@ public class Entity {
     public boolean attacking = false;
     public boolean alive = true;
     public boolean dying = false;
-    boolean hpBarOn = false;
+    public boolean hpBarOn = false;
     public boolean onPath = false;
     public boolean knockBack = false;
     public String knockBackDirection;
@@ -59,7 +59,7 @@ public class Entity {
     public int invincibleCounter = 0;
     public int shotAvailableCounter = 0;
     int dyingCounter = 0;
-    int hpBarCounter = 0;
+    public int hpBarCounter = 0;
     int knockBackCounter = 0;
     public int guardCounter = 0;
     int offBalanceCounter = 0;
