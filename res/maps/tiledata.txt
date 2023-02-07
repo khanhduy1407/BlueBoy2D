@@ -70,3 +70,7 @@ false
 false
 035.png
 true
+036.png
+false
+037.png
+false
