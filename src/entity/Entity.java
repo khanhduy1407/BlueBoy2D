@@ -99,6 +99,7 @@ public class Entity {
     public boolean stackable = false;
     public int amount = 1;
     public int lightRadius;
+    public int durability = 100;
 
     // TYPE
     public int type;
