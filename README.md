@@ -26,7 +26,7 @@ Use `WASD` to move the character
    - [x] In-game menu
    - [x] Advanced UI
    - [x] New Area (map transition)
-   - [ ] Events (Boss fight etc.)
+   - [x] Events (Boss fight etc.)
    - [x] Save/Load
    - [ ] Ending Screen
    
