@@ -490,6 +490,7 @@ public class Player extends Entity {
             generateParticle(gp.iTile[gp.currentMap][i], gp.iTile[gp.currentMap][i]); // FIXED
 
             if (gp.iTile[gp.currentMap][i].life <= 0) { // FIXED
+//                gp.iTile[gp.currentMap][i].checkDrop();
                 gp.iTile[gp.currentMap][i] = gp.iTile[gp.currentMap][i].getDestroyedForm(); // FIXED
             }
         }
