@@ -46,16 +46,16 @@ public class Player extends Entity {
         // You can type numbers like worldX = 1000
         // Either way is fine
         // Main
-//        worldX = gp.tileSize * 23;
-//        worldY = gp.tileSize * 21;
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 21;
 
         // Ork
 //        worldX = gp.tileSize * 10;
 //        worldY = gp.tileSize * 33;
 
         // Dungeon Entrance
-        worldX = gp.tileSize * 12;
-        worldY = gp.tileSize * 11;
+//        worldX = gp.tileSize * 12;
+//        worldY = gp.tileSize * 11;
 
         // Merchant
 //        gp.currentMap = 1;
@@ -381,12 +381,12 @@ public class Player extends Entity {
             mana = maxMana;
         }
 
-        if (life <= 0) {
-            gp.gameState = gp.gameOverState;
-            gp.ui.commandNum = -1;
-            gp.stopMusic();
-            gp.playSE(12);
-        }
+//        if (life <= 0) {
+//            gp.gameState = gp.gameOverState;
+//            gp.ui.commandNum = -1;
+//            gp.stopMusic();
+//            gp.playSE(12);
+//        }
     }
 
     public void pickUpObject(int i) {
