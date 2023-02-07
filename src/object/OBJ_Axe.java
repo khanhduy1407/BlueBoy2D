@@ -5,7 +5,7 @@ import main.GamePanel;
 
 public class OBJ_Axe extends Entity {
 
-    public static final String objName = "Woodcutter's Axe";
+    public static final String objName = "Fighter's Axe";
 
     public OBJ_Axe(GamePanel gp) {
         super(gp);
