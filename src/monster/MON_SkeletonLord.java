@@ -72,12 +72,15 @@ public class MON_SkeletonLord extends Entity {
     }
 
     public void setAction() {
-        // Get a random direction
-        getRandomDirection(120);
+        if (getYDistance(gp.player) < 10) {
+            moveToAwardPlayer(60);
+        } else {
+            getRandomDirection(120);
+        }
 
         // Check if it attacks
         if (attacking == false) {
-            checkAttackOrNot(60, gp.tileSize*10, gp.tileSize*5);
+            checkAttackOrNot(60, gp.tileSize*7, gp.tileSize*5);
         }
     }
 

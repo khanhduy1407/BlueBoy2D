@@ -437,7 +437,7 @@ public class Entity {
     public void getRandomDirection(int interval) {
         actionLockCounter++;
 
-        if (actionLockCounter == interval) {
+        if (actionLockCounter > interval) {
             Random random = new Random();
             int i = random.nextInt(100) + 1; // pick up a number from 1 to 100
 
@@ -445,6 +445,27 @@ public class Entity {
             if (i > 25 && i <= 50) { direction = "down"; }
             if (i > 50 && i <= 75) { direction = "left"; }
             if (i > 75 && i <= 100) { direction = "right"; }
+
+            actionLockCounter = 0;
+        }
+    }
+
+    public void moveToAwardPlayer(int interval) {
+        actionLockCounter++;
+        if (actionLockCounter > interval) {
+            if (getXDistance(gp.player) > getYDistance(gp.player)) {
+                if (gp.player.getCenterX() < getCenterX()) {
+                    direction = "left";
+                } else {
+                    direction = "right";
+                }
+            } else if (getXDistance(gp.player) < getYDistance(gp.player)) {
+                if (gp.player.getCenterY() < getCenterY()) {
+                    direction = "up";
+                } else {
+                    direction = "down";
+                }
+            }
 
             actionLockCounter = 0;
         }
