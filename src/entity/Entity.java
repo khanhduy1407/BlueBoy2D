@@ -647,24 +647,6 @@ public class Entity {
                     break;
             }
 
-            // Monster HP bar
-            if (type == 2 && hpBarOn == true) {
-                double oneScale = (double) gp.tileSize / maxLife;
-                double hpBarValue = oneScale * life;
-
-                g2.setColor(new Color(35, 35, 35));
-                g2.fillRect(screenX - 1, screenY - 16, gp.tileSize + 2, 12);
-
-                g2.setColor(new Color(255, 0, 30));
-                g2.fillRect(screenX, screenY - 15, (int) hpBarValue, 10);
-
-                hpBarCounter++;
-                if (hpBarCounter > 600) {
-                    hpBarCounter = 0;
-                    hpBarOn = false;
-                }
-            }
-
             if (invincible == true) {
                 hpBarOn = true;
                 hpBarCounter = 0;

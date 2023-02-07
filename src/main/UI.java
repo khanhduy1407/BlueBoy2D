@@ -79,6 +79,7 @@ public class UI {
         // PLAY STATE
         if (gp.gameState == gp.playState) {
             drawPlayerLife();
+            drawMonsterLife();
             drawMessage();
         }
         // PAUSE STATE
@@ -172,6 +173,29 @@ public class UI {
             g2.drawImage(crystal_full, x, y, null);
             i++;
             x += 35;
+        }
+    }
+
+    public void drawMonsterLife() {
+        for (int i = 0; i < gp.monster[1].length; i++) {
+            if (gp.monster[gp.currentMap][i] != null) {
+                if (type == 2 && hpBarOn == true) {
+                    double oneScale = (double) gp.tileSize / maxLife;
+                    double hpBarValue = oneScale * life;
+
+                    g2.setColor(new Color(35, 35, 35));
+                    g2.fillRect(screenX - 1, screenY - 16, gp.tileSize + 2, 12);
+
+                    g2.setColor(new Color(255, 0, 30));
+                    g2.fillRect(screenX, screenY - 15, (int) hpBarValue, 10);
+
+                    hpBarCounter++;
+                    if (hpBarCounter > 600) {
+                        hpBarCounter = 0;
+                        hpBarOn = false;
+                    }
+                }
+            }
         }
     }
 
