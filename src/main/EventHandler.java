@@ -124,7 +124,7 @@ public class EventHandler {
 
     public void teleport(int map, int col, int row, int area) {
         gp.gameState = gp.transitionState;
-        gp.currentArea = area;
+        gp.nextArea = area;
         tempMap = map;
         tempCol = col;
         tempRow = row;
