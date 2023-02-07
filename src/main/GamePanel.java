@@ -393,6 +393,19 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void changeArea() {
+        if (nextArea != currentArea) {
+            stopMusic();
+
+            if (nextArea == outside) {
+                playMusic(0);
+            }
+            if (nextArea == indoor) {
+                playMusic(18);
+            }
+            if (nextArea == dungeon) {
+                playMusic(19);
+            }
+        }
         currentArea = nextArea;
     }
 }
