@@ -78,9 +78,9 @@ public class Player extends Entity {
 
         // PLAYER STATUS
         level = 1;
-        maxLife = 6; // 1 = 0.5 heart, 6 = 3 heart
+        maxLife = 28; // 1 = 0.5 heart, 6 = 3 heart
         life = maxLife;
-        maxMana = 4;
+        maxMana = 8;
         mana = maxMana;
         ammo = 10; // test rock
         strength = 5; // The more strength he has, the more damage he gives. Default 1

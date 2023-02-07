@@ -207,6 +207,10 @@ public class UI {
 
                     g2.setColor(new Color(255, 0, 30));
                     g2.fillRect(x, y, (int) hpBarValue, 20);
+
+                    g2.setFont(g2.getFont().deriveFont(Font.BOLD, 24f));
+                    g2.setColor(Color.white);
+                    g2.drawString(monster.name, x+4, y-10);
                 }
             }
         }
