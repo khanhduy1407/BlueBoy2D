@@ -46,16 +46,16 @@ public class Player extends Entity {
         // You can type numbers like worldX = 1000
         // Either way is fine
         // Main
-//        worldX = gp.tileSize * 23;
-//        worldY = gp.tileSize * 21;
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 21;
 
         // Ork
 //        worldX = gp.tileSize * 10;
 //        worldY = gp.tileSize * 33;
 
         // Dungeon Entrance
-        worldX = gp.tileSize * 12;
-        worldY = gp.tileSize * 11;
+//        worldX = gp.tileSize * 12;
+//        worldY = gp.tileSize * 11;
 
         // Merchant
 //        gp.currentMap = 1;

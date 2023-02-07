@@ -93,15 +93,15 @@ public class Lighting {
 
         // Check the state of the day
         if (dayState == day) {
-//            dayCounter++;
-//
-//            if (dayCounter > 600) { // 36.000s = 10m
-//                dayState = dusk;
-//                dayCounter = 0;
-//            }
+            dayCounter++;
+
+            if (dayCounter > 3600) { // 36.000s = 10m
+                dayState = dusk;
+                dayCounter = 0;
+            }
         }
         if (dayState == dusk) {
-            filterAlpha += 0.001f; // 0.0001f x 10.000 = 1f, 10.000/60 = 166s
+            filterAlpha += 0.0005f; // 0.0001f x 10.000 = 1f, 10.000/60 = 166s
 
             if (filterAlpha > 1f) {
                 filterAlpha = 1f;
@@ -117,7 +117,7 @@ public class Lighting {
             }
         }
         if (dayState == dawn) {
-            filterAlpha -= 0.001f;
+            filterAlpha -= 0.005f;
 
             if (filterAlpha < 0f) {
                 filterAlpha = 0;
@@ -127,8 +127,12 @@ public class Lighting {
     }
 
     public void draw(Graphics2D g2) {
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, filterAlpha));
-        g2.drawImage(darknessFilter, 0, 0, null);
+        if (gp.currentArea == gp.outside) {
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, filterAlpha));
+        }
+        if (gp.currentArea == gp.outside || gp.currentArea == gp.dungeon) {
+            g2.drawImage(darknessFilter, 0, 0, null);
+        }
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
         // DEBUG

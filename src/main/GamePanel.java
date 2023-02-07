@@ -87,6 +87,12 @@ public class GamePanel extends JPanel implements Runnable {
     public final int sleepState = 9;
     public final int mapState = 10;
 
+    // AREA
+    public int currentArea;
+    public final int outside = 50;
+    public final int indoor = 51;
+    public final int dungeon = 52;
+
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
@@ -110,6 +116,7 @@ public class GamePanel extends JPanel implements Runnable {
 //        gameState = titleState;
         gameState = playState; // test
         playMusic(0); // if test gameState = playState, enable music
+        currentArea = outside;
 
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
         g2 = (Graphics2D) tempScreen.getGraphics();
