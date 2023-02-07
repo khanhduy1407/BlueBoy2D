@@ -122,6 +122,16 @@ public class Entity {
         this.gp = gp;
     }
 
+    public int getScreenX() {
+        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+        return screenX;
+    }
+
+    public int getScreenY() {
+        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+        return screenY;
+    }
+
     public int getLeftX() {
         return worldX + solidArea.x;
     }
@@ -588,19 +598,26 @@ public class Entity {
         target.knockBack = true;
     }
 
+    public boolean inCamera() {
+        boolean inCamera = false;
+
+        if (worldX + gp.tileSize * 5 > gp.player.worldX - gp.player.screenX &&
+                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+                worldY + gp.tileSize * 5 > gp.player.worldY - gp.player.screenY &&
+                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
+            inCamera = true;
+        }
+
+        return inCamera;
+    }
+
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
 
-        int screenX = worldX - gp.player.worldX + gp.player.screenX;
-        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+        if (inCamera() == true) {
 
-        if (worldX + gp.tileSize*5 > gp.player.worldX - gp.player.screenX &&
-                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                worldY + gp.tileSize*5 > gp.player.worldY - gp.player.screenY &&
-                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
-
-            int tempScreenX = screenX;
-            int tempScreenY = screenY;
+            int tempScreenX = getScreenX();
+            int tempScreenY = getScreenY();
 
             switch (direction) {
                 case "up":
@@ -609,7 +626,7 @@ public class Entity {
                         if (spriteNum == 2) { image = up2; }
                     }
                     if (attacking) {
-                        tempScreenY = screenY - up1.getHeight();
+                        tempScreenY = getScreenY() - up1.getHeight();
                         if (spriteNum == 1) { image = attackUp1; }
                         if (spriteNum == 2) { image = attackUp2; }
                     }
@@ -630,7 +647,7 @@ public class Entity {
                         if (spriteNum == 2) { image = left2; }
                     }
                     if (attacking) {
-                        tempScreenX = screenX - left1.getWidth();
+                        tempScreenX = getScreenX() - left1.getWidth();
                         if (spriteNum == 1) { image = attackLeft1; }
                         if (spriteNum == 2) { image = attackLeft2; }
                     }
