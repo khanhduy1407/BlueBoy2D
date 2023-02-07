@@ -49,4 +49,19 @@ public class NPC_BigRock extends Entity {
         // Do this character specific stuff
         startDialogue(this, 0);
     }
+
+    public void move(String d) {
+        this.direction = d;
+
+        checkCollision();
+
+        if (collisionOn == false) {
+            switch (direction) {
+                case "up": worldY -= speed; break;
+                case "down": worldY += speed; break;
+                case "left": worldX -= speed; break;
+                case "right": worldX += speed; break;
+            }
+        }
+    }
 }

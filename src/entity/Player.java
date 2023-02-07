@@ -130,6 +130,7 @@ public class Player extends Entity {
         inventory.add(new OBJ_Key(gp));
         inventory.add(new OBJ_Axe(gp));
         inventory.add(new OBJ_Lantern(gp));
+        inventory.add(new OBJ_Pickaxe(gp));
     }
 
     public int getAttack() {
@@ -422,11 +423,13 @@ public class Player extends Entity {
     }
 
     public void interactNPC(int i) {
-        if (gp.keyH.enterPressed) {
-            if (i != 999) {
+        if (i != 999) {
+            if (gp.keyH.enterPressed) {
                 attackCancel = true;
                 gp.npc[gp.currentMap][i].speak(); // FIXED
             }
+
+            gp.npc[gp.currentMap][i].move(direction);
         }
     }
 

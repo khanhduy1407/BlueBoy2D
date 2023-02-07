@@ -184,6 +184,8 @@ public class Entity {
 
     public void setAction() {}
 
+    public void move(String direction) {}
+
     public void damageReaction() {}
 
     public void speak() {}
