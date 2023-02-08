@@ -11,7 +11,8 @@ public class Main {
         // This lets the window properly close when user clicks the close ("x") button.
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Blue Boy Adventure - v1.0");
+        window.setTitle("Blue Boy Adventure");
+        new Main().setIcon();
 
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
@@ -32,5 +33,10 @@ public class Main {
 
         gamePanel.setupGame();
         gamePanel.startGameThread();
+    }
+
+    public void setIcon() {
+        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("player/boy_down_1.png"));
+        window.setIconImage(icon.getImage());
     }
 }
