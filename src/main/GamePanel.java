@@ -86,6 +86,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int tradeState = 8;
     public final int sleepState = 9;
     public final int mapState = 10;
+    public final int cutsceneState = 11;
+
+    // OTHERS
+    public boolean bossBattleOn = false;
 
     // AREA
     public int currentArea;

@@ -97,6 +97,12 @@ public class MON_SkeletonLord extends Entity {
         }
     }
 
+    public void setDialogue() {
+        dialogues[0][0] = "No one can steal my treasure!";
+        dialogues[0][1] = "You will die here!";
+        dialogues[0][2] = "WELCOME TO YOUR DOOM!";
+    }
+
     public void setAction() {
         if (inRage == false && life < maxLife/2) {
             inRage = true;
