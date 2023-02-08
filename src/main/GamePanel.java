@@ -136,6 +136,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void resetGame(boolean restart) {
         currentArea = outside;
+        removeTempEntity();
+        bossBattleOn = false;
         player.setDefaultPositions();
         player.restoreStatus();
         player.resetCounter();
@@ -422,5 +424,15 @@ public class GamePanel extends JPanel implements Runnable {
         }
         currentArea = nextArea;
         aSetter.setMonster();
+    }
+
+    public void removeTempEntity() {
+        for (int mapNum = 0; mapNum < maxMap; mapNum++) {
+            for (int i = 0; i < obj[1].length; i++) {
+                if (obj[mapNum][i] != null && obj[mapNum][i].temp == true) {
+                    obj[mapNum][i] = null;
+                }
+            }
+        }
     }
 }

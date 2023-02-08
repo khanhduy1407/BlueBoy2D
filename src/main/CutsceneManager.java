@@ -1,5 +1,7 @@
 package main;
 
+import object.OBJ_Door_Iron;
+
 import java.awt.*;
 
 public class CutsceneManager {
@@ -27,7 +29,21 @@ public class CutsceneManager {
 
     public void scene_skeletonLord() {
         if (scenePhase == 0) {
-            //
+            gp.bossBattleOn = true;
+
+            // Shut the iron door
+            for (int i = 0; i < gp.obj[1].length; i++) {
+                if (gp.obj[gp.currentMap][i] == null) {
+                    gp.obj[gp.currentMap][i] = new OBJ_Door_Iron(gp);
+                    gp.obj[gp.currentMap][i].worldX = gp.tileSize*25;
+                    gp.obj[gp.currentMap][i].worldY = gp.tileSize*28;
+                    gp.obj[gp.currentMap][i].temp = true;
+                    gp.playSE(21);
+                    break;
+                }
+            }
+
+            scenePhase++;
         }
     }
 }
