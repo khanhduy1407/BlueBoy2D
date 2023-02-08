@@ -123,5 +123,17 @@ public class CutsceneManager {
             gp.ui.npc = new OBJ_BlueHeart(gp);
             scenePhase++;
         }
+        if (scenePhase == 1) {
+            // Display dialogues
+            gp.ui.drawDialogueScreen();
+        }
+        if (scenePhase == 2) {
+            // Play the fanfare
+            gp.playSE(4);
+            scenePhase++;
+        }
+        if (scenePhase == 3) {
+            //
+        }
     }
 }
