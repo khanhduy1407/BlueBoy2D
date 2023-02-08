@@ -16,6 +16,7 @@ public class CutsceneManager {
     int counter = 0;
     float alpha = 0f;
     int y;
+    String endCredit;
 
     // Scene Number
     public final int NA = 0;
@@ -24,6 +25,16 @@ public class CutsceneManager {
 
     public CutsceneManager(GamePanel gp) {
         this.gp = gp;
+
+        endCredit = "Program/Music/Art\n" +
+                "NKDuy" +
+                "\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+                "Special Thanks\n" +
+                "Someone\n" +
+                "Someone\n" +
+                "Someone\n" +
+                "Someone\n\n\n\n\n\n" +
+                "Thank you for playing!";
     }
 
     public void draw(Graphics2D g2) {
@@ -180,6 +191,14 @@ public class CutsceneManager {
         }
         if (scenePhase == 7) {
             drawBlackBackground(1f);
+            drawString(1f, 38f, gp.screenHeight/2, endCredit, 40);
+
+            if (counterReached(480) == true) {
+                scenePhase++;
+            }
+        }
+        if (scenePhase == 8) {
+            //
         }
     }
 
