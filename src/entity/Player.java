@@ -689,8 +689,11 @@ public class Player extends Entity {
         if (transparent == true) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
         }
-        // draw an image on the screen
-        g2.drawImage(image, tempScreenX, tempScreenY, null);
+
+        if (drawing == true) {
+            // draw an image on the screen
+            g2.drawImage(image, tempScreenX, tempScreenY, null);
+        }
 
         // Reset alpha
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));

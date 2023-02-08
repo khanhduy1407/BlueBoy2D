@@ -1,5 +1,6 @@
 package main;
 
+import entity.PlayerDummy;
 import object.OBJ_Door_Iron;
 
 import java.awt.*;
@@ -28,7 +29,7 @@ public class CutsceneManager {
     }
 
     public void scene_skeletonLord() {
-        if (scenePhase == 0) {
+        if (scenePhase == 0) { // Phase 0: Placing iron doors
             gp.bossBattleOn = true;
 
             // Shut the iron door
@@ -43,7 +44,27 @@ public class CutsceneManager {
                 }
             }
 
+            // Search a vacant slot for the dummy
+            for (int i = 0; i < gp.npc[1].length; i++) {
+                if (gp.npc[gp.currentMap][i] == null) {
+                    gp.npc[gp.currentMap][i] = new PlayerDummy(gp);
+                    gp.npc[gp.currentMap][i].worldX = gp.player.worldX;
+                    gp.npc[gp.currentMap][i].worldY = gp.player.worldY;
+                    gp.npc[gp.currentMap][i].direction = gp.player.direction;
+                    break;
+                }
+            }
+
+            gp.player.drawing = false;
+
             scenePhase++;
+        }
+        if (scenePhase == 1) { // Phase 1: Moving the camera
+            gp.player.worldY -= 2;
+
+            if (gp.player.worldY < gp.tileSize * 16) {
+                scenePhase++;
+            }
         }
     }
 }
