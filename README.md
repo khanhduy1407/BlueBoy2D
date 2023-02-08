@@ -28,6 +28,6 @@ Use `WASD` to move the character
    - [x] New Area (map transition)
    - [x] Events (Boss fight etc.)
    - [x] Save/Load
-   - [ ] Ending Screen
+   - [x] Ending Screen
    
 And maybe some more...
