@@ -139,6 +139,19 @@ public class CutsceneManager {
             }
         }
         if (scenePhase == 4) {
+            // The screen gets darker
+            alpha += 0.005f;
+            if (alpha > 1f) {
+                alpha = 1f;
+            }
+            drawBlackBackground(alpha);
+
+            if (alpha == 1f) {
+                alpha = 0;
+                scenePhase++;
+            }
+        }
+        if (scenePhase == 5) {
             //
         }
     }
@@ -153,5 +166,12 @@ public class CutsceneManager {
         }
 
         return counterReached;
+    }
+
+    public void drawBlackBackground(float alpha) {
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+        g2.setColor(Color.black);
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
     }
 }
