@@ -83,5 +83,31 @@ public class CutsceneManager {
             // The boss speaks
             gp.ui.drawDialogueScreen();
         }
+        if (scenePhase == 4) { // Phase 4: Returning to the player
+            // Search the dummy
+            for (int i = 0; i < gp.npc[1].length; i++) {
+                if (gp.npc[gp.currentMap][i] != null && gp.npc[gp.currentMap][i].name == PlayerDummy.npcName) {
+                    // Restore the player position
+                    gp.player.worldX = gp.npc[gp.currentMap][i].worldX;
+                    gp.player.worldY = gp.npc[gp.currentMap][i].worldY;
+
+                    // Delete the dummy
+                    gp.npc[gp.currentMap][i] = null;
+                    break;
+                }
+            }
+
+            // Start drawing the player
+            gp.player.drawing = true;
+
+            // Reset
+            sceneNum = NA;
+            scenePhase = 0;
+            gp.gameState = gp.playState;
+
+            // Change the music
+            gp.stopMusic();
+            gp.playMusic(22);
+        }
     }
 }
