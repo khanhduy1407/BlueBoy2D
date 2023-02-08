@@ -133,7 +133,25 @@ public class CutsceneManager {
             scenePhase++;
         }
         if (scenePhase == 3) {
+            // Wait until the sound effect ends
+            if (counterReached(300) == true) {
+                scenePhase++;
+            }
+        }
+        if (scenePhase == 4) {
             //
         }
+    }
+
+    public boolean counterReached(int target) {
+        boolean counterReached = false;
+
+        counter++;
+        if (counter > target) {
+            counterReached = true;
+            counter = 0;
+        }
+
+        return counterReached;
     }
 }
