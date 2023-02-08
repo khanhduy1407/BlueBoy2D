@@ -70,7 +70,7 @@ public class CutsceneManager {
         if (scenePhase == 2) { // Phase 2: Waking up the boss
             // Search the boss
             for (int i = 0; i < gp.monster[1].length; i++) {
-                if (gp.monster[gp.currentMap][i] == null &&
+                if (gp.monster[gp.currentMap][i] != null &&
                         gp.monster[gp.currentMap][i].name == MON_SkeletonLord.monName) {
                     gp.monster[gp.currentMap][i].sleep = false;
                     gp.ui.npc = gp.monster[gp.currentMap][i];
@@ -78,6 +78,10 @@ public class CutsceneManager {
                     break;
                 }
             }
+        }
+        if (scenePhase == 3) { // Phase 3: Letting the boss speak
+            // The boss speaks
+            gp.ui.drawDialogueScreen();
         }
     }
 }

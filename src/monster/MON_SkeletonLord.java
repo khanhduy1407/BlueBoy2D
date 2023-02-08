@@ -45,6 +45,7 @@ public class MON_SkeletonLord extends Entity {
 
         getImage();
         getAttackImage();
+        setDialogue();
     }
 
     public void getImage() {
