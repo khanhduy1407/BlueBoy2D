@@ -1,6 +1,7 @@
 package main;
 
 import entity.PlayerDummy;
+import monster.MON_SkeletonLord;
 import object.OBJ_Door_Iron;
 
 import java.awt.*;
@@ -64,6 +65,18 @@ public class CutsceneManager {
 
             if (gp.player.worldY < gp.tileSize * 16) {
                 scenePhase++;
+            }
+        }
+        if (scenePhase == 2) { // Phase 2: Waking up the boss
+            // Search the boss
+            for (int i = 0; i < gp.monster[1].length; i++) {
+                if (gp.monster[gp.currentMap][i] == null &&
+                        gp.monster[gp.currentMap][i].name == MON_SkeletonLord.monName) {
+                    gp.monster[gp.currentMap][i].sleep = false;
+                    gp.ui.npc = gp.monster[gp.currentMap][i];
+                    scenePhase++;
+                    break;
+                }
             }
         }
     }
