@@ -78,13 +78,13 @@ public class Player extends Entity {
 
         // PLAYER STATUS
         level = 1;
-        maxLife = 28; // 1 = 0.5 heart, 6 = 3 heart
+        maxLife = 28; // 1 = 0.5 heart, 6 = 3 heart,  Default 6
         life = maxLife;
-        maxMana = 8;
+        maxMana = 8; //  Default 4
         mana = maxMana;
         ammo = 10; // test rock
         strength = 5; // The more strength he has, the more damage he gives. Default 1
-        dexterity = 1; // The more dexterity he has, the less damage he receives.
+        dexterity = 4; // The more dexterity he has, the less damage he receives. Default 1
         exp = 0;
         nextLevelExp = 5;
         coin = 500; // test, default 0

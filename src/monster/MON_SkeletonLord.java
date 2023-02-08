@@ -1,5 +1,6 @@
 package monster;
 
+import data.Progress;
 import entity.Entity;
 import main.GamePanel;
 import object.OBJ_Coin_Bronze;
@@ -132,6 +133,7 @@ public class MON_SkeletonLord extends Entity {
 
     public void checkDrop() {
         gp.bossBattleOn = false;
+        Progress.skeletonLordDefeated = true;
 
         // Restore the previous music
         gp.stopMusic();
