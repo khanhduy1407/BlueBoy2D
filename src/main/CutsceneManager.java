@@ -26,6 +26,8 @@ public class CutsceneManager {
     }
 
     public void scene_skeletonLord() {
-        //
+        if (scenePhase == 0) {
+            //
+        }
     }
 }
