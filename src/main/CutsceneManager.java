@@ -71,7 +71,7 @@ public class CutsceneManager {
             // Search the boss
             for (int i = 0; i < gp.monster[1].length; i++) {
                 if (gp.monster[gp.currentMap][i] != null &&
-                        gp.monster[gp.currentMap][i].name == MON_SkeletonLord.monName) {
+                        gp.monster[gp.currentMap][i].name.equals(MON_SkeletonLord.monName)) {
                     gp.monster[gp.currentMap][i].sleep = false;
                     gp.ui.npc = gp.monster[gp.currentMap][i];
                     scenePhase++;
@@ -86,7 +86,7 @@ public class CutsceneManager {
         if (scenePhase == 4) { // Phase 4: Returning to the player
             // Search the dummy
             for (int i = 0; i < gp.npc[1].length; i++) {
-                if (gp.npc[gp.currentMap][i] != null && gp.npc[gp.currentMap][i].name == PlayerDummy.npcName) {
+                if (gp.npc[gp.currentMap][i] != null && gp.npc[gp.currentMap][i].name.equals(PlayerDummy.npcName)) {
                     // Restore the player position
                     gp.player.worldX = gp.npc[gp.currentMap][i].worldX;
                     gp.player.worldY = gp.npc[gp.currentMap][i].worldY;
