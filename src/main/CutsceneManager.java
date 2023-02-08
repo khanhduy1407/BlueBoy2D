@@ -186,7 +186,8 @@ public class CutsceneManager {
             drawString(1f, 120f, gp.screenHeight/2, "Blue Boy Adventure", 40);
 
             if (counterReached(480) == true) {
-                scenePhase++;
+//                scenePhase++;
+                gp.gameState = gp.titleState;
             }
         }
         if (scenePhase == 7) {

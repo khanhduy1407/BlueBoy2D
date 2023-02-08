@@ -69,8 +69,10 @@ public class Player extends Entity {
 
         // Dungeon B2
         gp.currentMap = 3;
+//        worldX = gp.tileSize * 25;
+//        worldY = gp.tileSize * 29;
         worldX = gp.tileSize * 25;
-        worldY = gp.tileSize * 29;
+        worldY = gp.tileSize * 11;
 
         defaultSpeed = 4;
         speed = defaultSpeed;
