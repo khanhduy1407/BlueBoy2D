@@ -191,14 +191,20 @@ public class CutsceneManager {
         }
         if (scenePhase == 7) {
             drawBlackBackground(1f);
-            drawString(1f, 38f, gp.screenHeight/2, endCredit, 40);
+
+            y = gp.screenHeight/2;
+            drawString(1f, 38f, y, endCredit, 40);
 
             if (counterReached(480) == true) {
                 scenePhase++;
             }
         }
         if (scenePhase == 8) {
-            //
+            drawBlackBackground(1f);
+
+            // Scrolling the credit
+            y--;
+            drawString(1f, 38f, y, endCredit, 40);
         }
     }
 
