@@ -49,7 +49,7 @@ public class MON_SkeletonLord extends Entity {
     public void getImage() {
         int i = 5;
 
-        if (inRange == false) {
+        if (inRage == false) {
             up1 = setup("/monster/skeletonlord_up_1", gp.tileSize * i, gp.tileSize * i);
             up2 = setup("/monster/skeletonlord_up_2", gp.tileSize * i, gp.tileSize * i);
             down1 = setup("/monster/skeletonlord_down_1", gp.tileSize * i, gp.tileSize * i);
@@ -59,7 +59,7 @@ public class MON_SkeletonLord extends Entity {
             right1 = setup("/monster/skeletonlord_right_1", gp.tileSize * i, gp.tileSize * i);
             right2 = setup("/monster/skeletonlord_right_2", gp.tileSize * i, gp.tileSize * i);
         }
-        if (inRange == true) {
+        if (inRage == true) {
             up1 = setup("/monster/skeletonlord_phase2_up_1", gp.tileSize * i, gp.tileSize * i);
             up2 = setup("/monster/skeletonlord_phase2_up_2", gp.tileSize * i, gp.tileSize * i);
             down1 = setup("/monster/skeletonlord_phase2_down_1", gp.tileSize * i, gp.tileSize * i);
@@ -74,7 +74,7 @@ public class MON_SkeletonLord extends Entity {
     public void getAttackImage() {
         int i = 5;
 
-        if (inRange == false) {
+        if (inRage == false) {
             attackUp1 = setup("/monster/skeletonlord_attack_up_1", gp.tileSize * i, gp.tileSize * i * 2);
             attackUp2 = setup("/monster/skeletonlord_attack_up_2", gp.tileSize * i, gp.tileSize * i * 2);
             attackDown1 = setup("/monster/skeletonlord_attack_down_1", gp.tileSize * i, gp.tileSize * i * 2);
@@ -84,7 +84,7 @@ public class MON_SkeletonLord extends Entity {
             attackRight1 = setup("/monster/skeletonlord_attack_right_1", gp.tileSize * i * 2, gp.tileSize * i);
             attackRight2 = setup("/monster/skeletonlord_attack_right_2", gp.tileSize * i * 2, gp.tileSize * i);
         }
-        if (inRange == true) {
+        if (inRage == true) {
             attackUp1 = setup("/monster/skeletonlord_phase2_attack_up_1", gp.tileSize * i, gp.tileSize * i * 2);
             attackUp2 = setup("/monster/skeletonlord_phase2_attack_up_2", gp.tileSize * i, gp.tileSize * i * 2);
             attackDown1 = setup("/monster/skeletonlord_phase2_attack_down_1", gp.tileSize * i, gp.tileSize * i * 2);
@@ -97,8 +97,8 @@ public class MON_SkeletonLord extends Entity {
     }
 
     public void setAction() {
-        if (inRange == false && life < maxLife/2) {
-            inRange = true;
+        if (inRage == false && life < maxLife/2) {
+            inRage = true;
             getImage();
             getAttackImage();
             defaultSpeed++;

@@ -51,7 +51,7 @@ public class Entity {
     public boolean offBalance = false;
     public Entity loot;
     public boolean opened = false;
-    public boolean inRange = false;
+    public boolean inRage = false;
 
     // COUNTER
     public int spriteCounter = 0;
