@@ -166,11 +166,20 @@ public class CutsceneManager {
             drawString(alpha, 38f, 200, text, 70);
 
             if (counterReached(600) == true) {
+                gp.playMusic(0);
                 scenePhase++;
             }
         }
         if (scenePhase == 6) {
-            //
+            drawBlackBackground(1f);
+            drawString(1f, 120f, gp.screenHeight/2, "Blue Boy Adventure", 40);
+
+            if (counterReached(480) == true) {
+                scenePhase++;
+            }
+        }
+        if (scenePhase == 7) {
+            drawBlackBackground(1f);
         }
     }
 
