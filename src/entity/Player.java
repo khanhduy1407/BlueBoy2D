@@ -408,9 +408,9 @@ public class Player extends Entity {
         // the object array's index
         if (i != 999) {
             // PICKUP ONLY ITEMS
-            if (gp.obj[gp.currentMap][i].type == type_pickupOnly) { // FIXED
-                gp.obj[gp.currentMap][i].use(this); // FIXED
-                gp.obj[gp.currentMap][i] = null; // FIXED
+            if (gp.obj[gp.currentMap][i].type == type_pickupOnly) {
+                gp.obj[gp.currentMap][i].use(this);
+                gp.obj[gp.currentMap][i] = null;
             }
             // OBSTACLE
             else if (gp.obj[gp.currentMap][i].type == type_obstacle) {
@@ -425,13 +425,13 @@ public class Player extends Entity {
 
                 if (canObtainItem(gp.obj[gp.currentMap][i])) {
                     gp.playSE(1);
-                    text = "Got a " + gp.obj[gp.currentMap][i].name + "!"; // FIXED
+                    text = "Got a " + gp.obj[gp.currentMap][i].name + "!";
                 } else {
                     text = "You cannot carry any more!";
                 }
 
                 gp.ui.addMessage(text);
-                gp.obj[gp.currentMap][i] = null; // FIXED       DON'T FORGET THIS!!!
+                gp.obj[gp.currentMap][i] = null;
             }
         }
     }
@@ -440,7 +440,7 @@ public class Player extends Entity {
         if (i != 999) {
             if (gp.keyH.enterPressed) {
                 attackCancel = true;
-                gp.npc[gp.currentMap][i].speak(); // FIXED
+                gp.npc[gp.currentMap][i].speak();
             }
 
             gp.npc[gp.currentMap][i].move(direction);
@@ -449,10 +449,10 @@ public class Player extends Entity {
 
     public void contactMonster(int i) {
         if (i != 999) {
-            if (!invincible && !gp.monster[gp.currentMap][i].dying) { // FIXED
+            if (!invincible && !gp.monster[gp.currentMap][i].dying) {
                 gp.playSE(6);
 
-                int damage = gp.monster[gp.currentMap][i].attack - defense; // FIXED
+                int damage = gp.monster[gp.currentMap][i].attack - defense;
                 if (damage < 1) {
                     damage = 1;
                 }
@@ -465,7 +465,7 @@ public class Player extends Entity {
 
     public void damageMonster(int i, Entity attacker, int attack, int knockBackPower) {
         if (i != 999) {
-            if (!gp.monster[gp.currentMap][i].invincible) { // FIXED
+            if (!gp.monster[gp.currentMap][i].invincible) {
                 gp.playSE(5);
 
                 if (knockBackPower > 0) {
@@ -476,20 +476,20 @@ public class Player extends Entity {
                     attack *= 5;
                 }
 
-                int damage = attack - gp.monster[gp.currentMap][i].defense; // FIXED
+                int damage = attack - gp.monster[gp.currentMap][i].defense;
                 if (damage < 0) {
                     damage = 0;
                 }
-                gp.monster[gp.currentMap][i].life -= damage; // FIXED
+                gp.monster[gp.currentMap][i].life -= damage;
                 gp.ui.addMessage(damage + " damage!");
-                gp.monster[gp.currentMap][i].invincible = true; // FIXED
-                gp.monster[gp.currentMap][i].damageReaction(); // FIXED
+                gp.monster[gp.currentMap][i].invincible = true;
+                gp.monster[gp.currentMap][i].damageReaction();
 
-                if (gp.monster[gp.currentMap][i].life <= 0) { // FIXED
-                    gp.monster[gp.currentMap][i].dying = true; // FIXED
-                    gp.ui.addMessage("Kill the " + gp.monster[gp.currentMap][i].name + "!"); // FIXED
-                    gp.ui.addMessage("Exp +" + gp.monster[gp.currentMap][i].exp); // FIXED
-                    exp += gp.monster[gp.currentMap][i].exp; // FIXED
+                if (gp.monster[gp.currentMap][i].life <= 0) {
+                    gp.monster[gp.currentMap][i].dying = true;
+                    gp.ui.addMessage("Kill the " + gp.monster[gp.currentMap][i].name + "!");
+                    gp.ui.addMessage("Exp +" + gp.monster[gp.currentMap][i].exp);
+                    exp += gp.monster[gp.currentMap][i].exp;
                     checkLevelUp();
                 }
             }
@@ -497,18 +497,18 @@ public class Player extends Entity {
     }
 
     public void damageInteractiveTile(int i) {
-        if (i != 999 && gp.iTile[gp.currentMap][i].destructible // FIXED
-                && gp.iTile[gp.currentMap][i].isCorrectItem(this) && !gp.iTile[gp.currentMap][i].invincible) { // FIXED
-            gp.iTile[gp.currentMap][i].playSE(); // FIXED
-            gp.iTile[gp.currentMap][i].life--; // FIXED
-            gp.iTile[gp.currentMap][i].invincible = true; // FIXED
+        if (i != 999 && gp.iTile[gp.currentMap][i].destructible
+                && gp.iTile[gp.currentMap][i].isCorrectItem(this) && !gp.iTile[gp.currentMap][i].invincible) {
+            gp.iTile[gp.currentMap][i].playSE();
+            gp.iTile[gp.currentMap][i].life--;
+            gp.iTile[gp.currentMap][i].invincible = true;
 
             // Generate Particle
-            generateParticle(gp.iTile[gp.currentMap][i], gp.iTile[gp.currentMap][i]); // FIXED
+            generateParticle(gp.iTile[gp.currentMap][i], gp.iTile[gp.currentMap][i]);
 
-            if (gp.iTile[gp.currentMap][i].life <= 0) { // FIXED
+            if (gp.iTile[gp.currentMap][i].life <= 0) {
 //                gp.iTile[gp.currentMap][i].checkDrop();
-                gp.iTile[gp.currentMap][i] = gp.iTile[gp.currentMap][i].getDestroyedForm(); // FIXED
+                gp.iTile[gp.currentMap][i] = gp.iTile[gp.currentMap][i].getDestroyedForm();
             }
         }
     }
