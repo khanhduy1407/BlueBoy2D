@@ -734,7 +734,7 @@ public class UI {
 
         // FULL SCREEN ON/OFF
         textX = frameX + gp.tileSize;
-        textY += gp.tileSize * 2;
+        textY += gp.tileSize;
         g2.drawString("Full Screen", textX, textY);
         if (commandNum == 0) {
             g2.drawString(">", textX - 25, textY);
@@ -769,10 +769,20 @@ public class UI {
             }
         }
 
+        // CONTRIBUTE
+        textY += gp.tileSize;
+        g2.drawString("Contribute", textX, textY);
+        if (commandNum == 4) {
+            g2.drawString(">", textX - 25, textY);
+            if (gp.keyH.enterPressed) {
+                Browser.openPage("https://github.com/khanhduy1407/My2DGame");
+            }
+        }
+
         // END GAME
         textY += gp.tileSize;
         g2.drawString("End Game", textX, textY);
-        if (commandNum == 4) {
+        if (commandNum == 5) {
             g2.drawString(">", textX - 25, textY);
             if (gp.keyH.enterPressed) {
                 subState = 3;
@@ -781,9 +791,9 @@ public class UI {
         }
 
         // BACK
-        textY += gp.tileSize * 2;
+        textY = frameY + gp.tileSize * 9;
         g2.drawString("Back", textX, textY);
-        if (commandNum == 5) {
+        if (commandNum == 6) {
             g2.drawString(">", textX - 25, textY);
             if (gp.keyH.enterPressed) {
                 gp.gameState = gp.playState;
@@ -794,7 +804,7 @@ public class UI {
 
         // FULL SCREEN CHECKBOX
         textX = frameX + (int) (gp.tileSize * 4.5);
-        textY = frameY + gp.tileSize * 2 + 24;
+        textY = frameY + gp.tileSize + 24;
         g2.setStroke(new BasicStroke(3));
         g2.drawRect(textX, textY, 24, 24);
         if (gp.fullScreenOn) {
@@ -851,20 +861,22 @@ public class UI {
         textX = frameX + gp.tileSize;
         textY += gp.tileSize;
         g2.drawString("Move", textX, textY); textY += gp.tileSize;
+        g2.drawString("Pause", textX, textY); textY += gp.tileSize;
+        g2.drawString("Character Screen", textX, textY); textY += gp.tileSize;
         g2.drawString("Confirm/Attack", textX, textY); textY += gp.tileSize;
         g2.drawString("Shoot/Cast", textX, textY); textY += gp.tileSize;
-        g2.drawString("Character Screen", textX, textY); textY += gp.tileSize;
-        g2.drawString("Pause", textX, textY); textY += gp.tileSize;
-        g2.drawString("Options", textX, textY);
+        g2.drawString("Guard", textX, textY); textY += gp.tileSize;
+        g2.drawString("Map/Mini", textX, textY);
 
         textX = frameX + gp.tileSize * 6;
         textY = frameY + gp.tileSize * 2;
         g2.drawString("WASD", textX, textY); textY += gp.tileSize;
+        g2.drawString("P", textX, textY); textY += gp.tileSize;
+        g2.drawString("C", textX, textY); textY += gp.tileSize;
         g2.drawString("ENTER", textX, textY); textY += gp.tileSize;
         g2.drawString("F", textX, textY); textY += gp.tileSize;
-        g2.drawString("C", textX, textY); textY += gp.tileSize;
-        g2.drawString("P", textX, textY); textY += gp.tileSize;
-        g2.drawString("ESC", textX, textY);
+        g2.drawString("SPACE", textX, textY); textY += gp.tileSize;
+        g2.drawString("M/N", textX, textY);
 
         // BACK
         textX = frameX + gp.tileSize;
