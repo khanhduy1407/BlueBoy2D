@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class UI {
 
@@ -17,10 +18,10 @@ public class UI {
     Graphics2D g2;
     public Font maruMonica, purisaB;
     BufferedImage heart_full, heart_half, heart_blank, crystal_full, crystal_blank, coin;
-    public boolean messageOn = false;
+//    public boolean messageOn = false;
     ArrayList<String> message = new ArrayList<>();
     ArrayList<Integer> messageCounter = new ArrayList<>();
-    public boolean gameFinished = false;
+//    public boolean gameFinished = false;
     public String currentDialogue = "";
     public int commandNum = 0;
     public int titleScreenState = 0; // 0: the first screen, 1: the second screen
@@ -38,9 +39,9 @@ public class UI {
         this.gp = gp;
 
         try {
-            InputStream is = getClass().getResourceAsStream("/font/MaruMonica.ttf");
+            InputStream is = Objects.requireNonNull(getClass().getResourceAsStream("/font/MaruMonica.ttf"));
             maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
-            is = getClass().getResourceAsStream("/font/PurisaBold.ttf");
+            is = Objects.requireNonNull(getClass().getResourceAsStream("/font/PurisaBold.ttf"));
             purisaB = Font.createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
@@ -194,8 +195,8 @@ public class UI {
     public void drawMonsterLife() {
         for (int i = 0; i < gp.monster[1].length; i++) {
             Entity monster = gp.monster[gp.currentMap][i];
-            if (monster != null && monster.inCamera() == true) {
-                if (monster.hpBarOn == true && monster.boss == false) {
+            if (monster != null && monster.inCamera()) {
+                if (monster.hpBarOn && !monster.boss) {
                     double oneScale = (double) gp.tileSize / monster.maxLife;
                     double hpBarValue = oneScale * monster.life;
 
@@ -210,7 +211,7 @@ public class UI {
                         monster.hpBarCounter = 0;
                         monster.hpBarOn = false;
                     }
-                } else if (monster.boss == true) {
+                } else if (monster.boss) {
                     double oneScale = (double) gp.tileSize * 8 / monster.maxLife;
                     double hpBarValue = oneScale * monster.life;
 
@@ -373,7 +374,7 @@ public class UI {
         if (npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {
 //            currentDialogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
 
-            char characters[] = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
+            char[] characters = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
 
             if (charIndex < characters.length) {
                 gp.playSE(17);
@@ -383,7 +384,7 @@ public class UI {
                 charIndex++;
             }
 
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 charIndex = 0;
                 combinedText = "";
 
@@ -451,12 +452,12 @@ public class UI {
         g2.drawString(value, textX, textY);
         textY += lineHeight;
 
-        value = String.valueOf(gp.player.life + "/" + gp.player.maxLife); // Life
+        value = gp.player.life + "/" + gp.player.maxLife; // Life
         textX = getXForAlignToRightText(value, tailX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;
 
-        value = String.valueOf(gp.player.mana + "/" + gp.player.maxMana); // Life
+        value = gp.player.mana + "/" + gp.player.maxMana; // Life
         textX = getXForAlignToRightText(value, tailX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;
@@ -502,12 +503,12 @@ public class UI {
     }
 
     public void drawInventory(Entity entity, boolean cursor) {
-        int frameX = 0;
-        int frameY = 0;
-        int frameWidth = 0;
-        int frameHeight = 0;
-        int slotCol = 0;
-        int slotRow = 0;
+        int frameX;
+        int frameY;
+        int frameWidth;
+        int frameHeight;
+        int slotCol;
+        int slotRow;
 
         if (entity == gp.player) {
             frameX = gp.tileSize * 12;
@@ -576,7 +577,7 @@ public class UI {
         }
 
         // CURSOR
-        if (cursor == true) {
+        if (cursor) {
             int cursorX = slotXStart + (slotSize * slotCol);
             int cursorY = slotYStart + (slotSize * slotRow);
             int cursorWidth = gp.tileSize;
@@ -624,10 +625,10 @@ public class UI {
         drawSubWindow(frameX, frameY, frameWidth, frameHeight);
 
         switch (subState) {
-            case 0: options_top(frameX, frameY); break;
-            case 1: options_fullScreenNotification(frameX, frameY); break;
-            case 2: options_control(frameX, frameY); break;
-            case 3: options_endGameConfirmation(frameX, frameY); break;
+            case 0 -> options_top(frameX, frameY);
+            case 1 -> options_fullScreenNotification(frameX, frameY);
+            case 2 -> options_control(frameX, frameY);
+            case 3 -> options_endGameConfirmation(frameX, frameY);
         }
 
         gp.keyH.enterPressed = false;
@@ -691,9 +692,9 @@ public class UI {
 
     public void drawTradeScreen() {
         switch (subState) {
-            case 0: trade_select(); break;
-            case 1: trade_buy(); break;
-            case 2: trade_sell(); break;
+            case 0 -> trade_select();
+            case 1 -> trade_buy();
+            case 2 -> trade_sell();
         }
 
         gp.keyH.enterPressed = false;
@@ -737,12 +738,8 @@ public class UI {
         g2.drawString("Full Screen", textX, textY);
         if (commandNum == 0) {
             g2.drawString(">", textX - 25, textY);
-            if (gp.keyH.enterPressed == true) {
-                if (gp.fullScreenOn == false) {
-                    gp.fullScreenOn = true;
-                } else if (gp.fullScreenOn == true) {
-                    gp.fullScreenOn = false;
-                }
+            if (gp.keyH.enterPressed) {
+                gp.fullScreenOn = !gp.fullScreenOn;
                 subState = 1;
             }
         }
@@ -766,7 +763,7 @@ public class UI {
         g2.drawString("Control", textX, textY);
         if (commandNum == 3) {
             g2.drawString(">", textX - 25, textY);
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 subState = 2;
                 commandNum = 0;
             }
@@ -777,7 +774,7 @@ public class UI {
         g2.drawString("End Game", textX, textY);
         if (commandNum == 4) {
             g2.drawString(">", textX - 25, textY);
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 subState = 3;
                 commandNum = 0;
             }
@@ -788,7 +785,7 @@ public class UI {
         g2.drawString("Back", textX, textY);
         if (commandNum == 5) {
             g2.drawString(">", textX - 25, textY);
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 gp.gameState = gp.playState;
                 commandNum = 0;
             }
@@ -800,7 +797,7 @@ public class UI {
         textY = frameY + gp.tileSize * 2 + 24;
         g2.setStroke(new BasicStroke(3));
         g2.drawRect(textX, textY, 24, 24);
-        if (gp.fullScreenOn == true) {
+        if (gp.fullScreenOn) {
             g2.fillRect(textX, textY, 24, 24);
         }
 
@@ -900,7 +897,7 @@ public class UI {
         g2.drawString(text, textX, textY);
         if (commandNum == 0) {
             g2.drawString(">", textX - 25, textY);
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 subState = 0;
                 gp.gameState = gp.titleState;
                 gp.stopMusic();
@@ -915,7 +912,7 @@ public class UI {
         g2.drawString(text, textX, textY);
         if (commandNum == 1) {
             g2.drawString(">", textX - 25, textY);
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 subState = 0;
                 commandNum = 4;
             }
@@ -939,7 +936,7 @@ public class UI {
         g2.drawString("Buy", x, y);
         if (commandNum == 0) {
             g2.drawString(">", x - 24, y);
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 subState = 1;
             }
         }
@@ -948,7 +945,7 @@ public class UI {
         g2.drawString("Sell", x, y);
         if (commandNum == 1) {
             g2.drawString(">", x - 24, y);
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 subState = 2;
             }
         }
@@ -957,7 +954,7 @@ public class UI {
         g2.drawString("Leave", x, y);
         if (commandNum == 2) {
             g2.drawString(">", x - 24, y);
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 commandNum = 0;
                 npc.startDialogue(npc, 1);
             }
@@ -1002,12 +999,12 @@ public class UI {
             g2.drawString(text, x, y+34);
 
             // BUY AN ITEM
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 if (npc.inventory.get(itemIndex).price > gp.player.coin) {
                     subState = 0;
                     npc.startDialogue(npc, 2);
                 } else {
-                    if (gp.player.canObtainItem(npc.inventory.get(itemIndex)) == true) {
+                    if (gp.player.canObtainItem(npc.inventory.get(itemIndex))) {
                         //
                         gp.player.coin -= npc.inventory.get(itemIndex).price;
                     } else {
@@ -1060,7 +1057,7 @@ public class UI {
             g2.drawString(text, x, y+34);
 
             // SELL AN ITEM
-            if (gp.keyH.enterPressed == true) {
+            if (gp.keyH.enterPressed) {
                 if (gp.player.inventory.get(itemIndex) == gp.player.currentWeapon ||
                         gp.player.inventory.get(itemIndex) == gp.player.currentShield) {
                     commandNum = 0;
@@ -1080,8 +1077,7 @@ public class UI {
 
     public int getItemIndexOnSlot(int slotCol, int slotRow) {
         // e.g. cursor[4][2] => 4 + (2 * 5) = 14
-        int itemIndex = slotCol + (slotRow * 5);
-        return itemIndex;
+        return slotCol + (slotRow * 5);
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {
@@ -1098,15 +1094,13 @@ public class UI {
 
     public int getXForCenteredText(String text) {
         int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-        int x = gp.screenWidth / 2 - length / 2;
 
-        return x;
+        return gp.screenWidth / 2 - length / 2;
     }
 
     public int getXForAlignToRightText(String text, int tailX) {
         int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-        int x = tailX - length;
 
-        return x;
+        return tailX - length;
     }
 }

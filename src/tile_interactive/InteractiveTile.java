@@ -4,7 +4,6 @@ import entity.Entity;
 import main.GamePanel;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class InteractiveTile extends Entity {
 
@@ -18,19 +17,17 @@ public class InteractiveTile extends Entity {
     }
 
     public boolean isCorrectItem(Entity entity) {
-        boolean isCorrectItem = false;
-        return isCorrectItem;
+        return false;
     }
 
     public void playSE() {}
 
     public InteractiveTile getDestroyedForm() {
-        InteractiveTile tile = null;
-        return tile;
+        return null;
     }
 
     public void update() {
-        if (invincible == true) {
+        if (invincible) {
             invincibleCounter++;
             if (invincibleCounter > 20) {
                 invincible = false;

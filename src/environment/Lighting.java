@@ -38,8 +38,8 @@ public class Lighting {
             int centerY = gp.player.screenY + (gp.tileSize) / 2;
 
             // Create a gradient effect within the light circle
-            Color color[] = new Color[12];
-            float fraction[] = new float[12];
+            Color[] color = new Color[12];
+            float[] fraction = new float[12];
 
             color[0] = new Color(0, 0, 0.1f, 0.1f);
             color[1] = new Color(0, 0, 0.1f, 0.42f);
@@ -86,7 +86,7 @@ public class Lighting {
     }
 
     public void update() {
-        if (gp.player.lightUpdated == true) {
+        if (gp.player.lightUpdated) {
             setLightSource();
             gp.player.lightUpdated = false;
         }
@@ -139,10 +139,10 @@ public class Lighting {
         String situation = "";
 
         switch (dayState) {
-            case day: situation = "Day"; break;
-            case dusk: situation = "Dust"; break;
-            case night: situation = "Night"; break;
-            case dawn: situation = "Dawn"; break;
+            case day -> situation = "Day";
+            case dusk -> situation = "Dust";
+            case night -> situation = "Night";
+            case dawn -> situation = "Dawn";
         }
 
         g2.setColor(Color.white);

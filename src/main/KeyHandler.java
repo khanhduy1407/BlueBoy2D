@@ -162,11 +162,7 @@ public class KeyHandler implements KeyListener {
             gp.gameState = gp.mapState;
         }
         if (code == KeyEvent.VK_X) {
-            if (gp.map.miniMapOn == false) {
-                gp.map.miniMapOn = true;
-            } else {
-                gp.map.miniMapOn = false;
-            }
+            gp.map.miniMapOn = !gp.map.miniMapOn;
         }
         if (code == KeyEvent.VK_SPACE) {
             spacePressed = true;
@@ -174,24 +170,18 @@ public class KeyHandler implements KeyListener {
 
         // DEBUG
         if (code == KeyEvent.VK_T) {
-            if (!showDebugText) {
-                showDebugText = true;
-            } else if (showDebugText) {
-                showDebugText = false;
-            }
+            showDebugText = !showDebugText;
         }
         if (code == KeyEvent.VK_R) {
             switch (gp.currentMap) {
-                case 0: gp.tileM.loadMap("/maps/worldV3.txt", 0); break;
-                case 1: gp.tileM.loadMap("/maps/interior01.txt", 1); break;
+                case 0 -> gp.tileM.loadMap("/maps/worldV3.txt", 0);
+                case 1 -> gp.tileM.loadMap("/maps/interior01.txt", 1);
+                case 2 -> gp.tileM.loadMap("/maps/dungeon01.txt", 2);
+                case 3 -> gp.tileM.loadMap("/maps/dungeon02.txt", 3);
             }
         }
         if (code == KeyEvent.VK_G) {
-            if (!godModeOn) {
-                godModeOn = true;
-            } else if (godModeOn) {
-                godModeOn = false;
-            }
+            godModeOn = !godModeOn;
         }
     }
 
@@ -239,8 +229,8 @@ public class KeyHandler implements KeyListener {
 
         int maxCommandNum = 0;
         switch (gp.ui.subState) {
-            case 0: maxCommandNum = 5; break;
-            case 3: maxCommandNum = 1; break;
+            case 0 -> maxCommandNum = 5;
+            case 3 -> maxCommandNum = 1;
         }
         if (code == KeyEvent.VK_W) {
             if (gp.ui.commandNum > 0) {

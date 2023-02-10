@@ -26,43 +26,43 @@ public class CollisionChecker {
         // Use a temporal direction when it's being knockBacked
         String direction = entity.direction;
 
-        if (entity.knockBack == true) {
+        if (entity.knockBack) {
             direction = entity.knockBackDirection;
         }
 
         switch (direction) {
-            case "up":
-                entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
+            case "up" -> {
+                entityTopRow = (entityTopWorldY - entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
-                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
+                if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-                break;
-            case "down":
-                entityBottomRow = (entityBottomWorldY + entity.speed)/gp.tileSize;
+            }
+            case "down" -> {
+                entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
-                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
+                if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-                break;
-            case "left":
-                entityLeftCol = (entityLeftWorldX - entity.speed)/gp.tileSize;
+            }
+            case "left" -> {
+                entityLeftCol = (entityLeftWorldX - entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
-                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
+                if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-                break;
-            case "right":
-                entityRightCol = (entityRightWorldX + entity.speed)/gp.tileSize;
+            }
+            case "right" -> {
+                entityRightCol = (entityRightWorldX + entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
-                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
+                if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-                break;
+            }
         }
     }
 
@@ -72,7 +72,7 @@ public class CollisionChecker {
         // Use a temporal direction when it's being knockBacked
         String direction = entity.direction;
 
-        if (entity.knockBack == true) {
+        if (entity.knockBack) {
             direction = entity.knockBackDirection;
         }
 
@@ -87,18 +87,18 @@ public class CollisionChecker {
 
                 // Simulating entity's movement and check where it will be after it moved.
                 switch (direction) {
-                    case "up": entity.solidArea.y -= entity.speed; break;
-                    case "down": entity.solidArea.y += entity.speed; break;
-                    case "left": entity.solidArea.x -= entity.speed; break;
-                    case "right": entity.solidArea.x += entity.speed; break;
+                    case "up" -> entity.solidArea.y -= entity.speed;
+                    case "down" -> entity.solidArea.y += entity.speed;
+                    case "left" -> entity.solidArea.x -= entity.speed;
+                    case "right" -> entity.solidArea.x += entity.speed;
                 }
 
                 if (entity.solidArea.intersects(gp.obj[gp.currentMap][i].solidArea)) { // FIXED
-                    if (gp.obj[gp.currentMap][i].collision == true) { // FIXED
+                    if (gp.obj[gp.currentMap][i].collision) { // FIXED
                         entity.collisionOn = true;
                     }
                     // Non-player characters cannot pick up objects
-                    if (player == true) {
+                    if (player) {
                         index = i;
                     }
                 }
@@ -120,7 +120,7 @@ public class CollisionChecker {
         // Use a temporal direction when it's being knockBacked
         String direction = entity.direction;
 
-        if (entity.knockBack == true) {
+        if (entity.knockBack) {
             direction = entity.knockBackDirection;
         }
 
@@ -135,10 +135,10 @@ public class CollisionChecker {
 
                 // Simulating entity's movement and check where it will be after it moved.
                 switch (direction) {
-                    case "up": entity.solidArea.y -= entity.speed; break;
-                    case "down": entity.solidArea.y += entity.speed; break;
-                    case "left": entity.solidArea.x -= entity.speed; break;
-                    case "right": entity.solidArea.x += entity.speed; break;
+                    case "up" -> entity.solidArea.y -= entity.speed;
+                    case "down" -> entity.solidArea.y += entity.speed;
+                    case "left" -> entity.solidArea.x -= entity.speed;
+                    case "right" -> entity.solidArea.x += entity.speed;
                 }
 
                 if (entity.solidArea.intersects(target[gp.currentMap][i].solidArea)) { // FIXED
@@ -170,10 +170,10 @@ public class CollisionChecker {
 
         // Simulating entity's movement and check where it will be after it moved.
         switch (entity.direction) {
-            case "up": entity.solidArea.y -= entity.speed; break;
-            case "down": entity.solidArea.y += entity.speed; break;
-            case "left": entity.solidArea.x -= entity.speed; break;
-            case "right": entity.solidArea.x += entity.speed; break;
+            case "up" -> entity.solidArea.y -= entity.speed;
+            case "down" -> entity.solidArea.y += entity.speed;
+            case "left" -> entity.solidArea.x -= entity.speed;
+            case "right" -> entity.solidArea.x += entity.speed;
         }
 
         if (entity.solidArea.intersects(gp.player.solidArea)) {

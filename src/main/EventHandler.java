@@ -6,7 +6,7 @@ import entity.Entity;
 public class EventHandler {
 
     GamePanel gp;
-    EventRect eventRect[][][];
+    EventRect[][][] eventRect;
     Entity eventMaster;
 
     int previousEventX, previousEventY;
@@ -50,8 +50,10 @@ public class EventHandler {
     public void setDialogue() {
         eventMaster.dialogues[0][0] = "You fall into a pit!";
 
-        eventMaster.dialogues[1][0] = "You drink the water.\nYour life and mana have been recovered.\n" +
-                                      "(The progress has been saved)";
+        eventMaster.dialogues[1][0] = """
+                You drink the water.
+                Your life and mana have been recovered.
+                (The progress has been saved)""";
         eventMaster.dialogues[1][1] = "Damn, this is good water.";
     }
 
@@ -135,7 +137,7 @@ public class EventHandler {
     }
 
     public void speak(Entity entity) {
-        if (gp.keyH.enterPressed == true) {
+        if (gp.keyH.enterPressed) {
             gp.gameState = gp.dialogueState;
             gp.player.attackCancel = true;
             entity.speak();
@@ -143,7 +145,7 @@ public class EventHandler {
     }
 
     public void skeletonLord() {
-        if (gp.bossBattleOn == false && Progress.skeletonLordDefeated == false) {
+        if (!gp.bossBattleOn && !Progress.skeletonLordDefeated) {
             gp.gameState = gp.cutsceneState;
             gp.csManager.sceneNum = gp.csManager.skeletonLord;
         }

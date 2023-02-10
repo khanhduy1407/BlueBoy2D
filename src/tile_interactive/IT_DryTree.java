@@ -22,13 +22,7 @@ public class IT_DryTree extends InteractiveTile {
     }
 
     public boolean isCorrectItem(Entity entity) {
-        boolean isCorrectItem = false;
-
-        if (entity.currentWeapon.type == type_axe) {
-            isCorrectItem = true;
-        }
-
-        return isCorrectItem;
+        return entity.currentWeapon.type == type_axe;
     }
 
     public void playSE() {
@@ -36,27 +30,22 @@ public class IT_DryTree extends InteractiveTile {
     }
 
     public InteractiveTile getDestroyedForm() {
-        InteractiveTile tile = new IT_Trunk(gp, worldX/gp.tileSize, worldY/gp.tileSize);
-        return tile;
+        return new IT_Trunk(gp, worldX/gp.tileSize, worldY/gp.tileSize);
     }
 
     public Color getParticleColor() {
-        Color color = new Color(65, 50, 30);
-        return color;
+        return new Color(65, 50, 30);
     }
 
     public int getParticleSize() {
-        int size = 6; // 6 pixels
-        return size;
+        return 6; // 6 pixels
     }
 
     public int getParticleSpeed() {
-        int speed = 1;
-        return speed;
+        return 1;
     }
 
     public int getParticleMaxLife() {
-        int maxlife = 20;
-        return maxlife;
+        return 20;
     }
 }

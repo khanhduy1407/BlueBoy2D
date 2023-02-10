@@ -32,7 +32,7 @@ public class Projectile extends Entity {
         if (user != gp.player) {
             boolean contactPlayer = gp.cChecker.checkPlayer(this);
 
-            if (gp.player.invincible == false && contactPlayer == true) {
+            if (!gp.player.invincible && contactPlayer) {
                 damagePlayer(attack);
                 generateParticle(user.projectile, user.projectile);
                 alive = false;
@@ -41,10 +41,10 @@ public class Projectile extends Entity {
 
         // Just like other NPCs or monsters, projectiles move based on its speed and direction.
         switch (direction) {
-            case "up": worldY -= speed; break;
-            case "down": worldY += speed; break;
-            case "left": worldX -= speed; break;
-            case "right": worldX += speed; break;
+            case "up" -> worldY -= speed;
+            case "down" -> worldY += speed;
+            case "left" -> worldX -= speed;
+            case "right" -> worldX += speed;
         }
 
         life--;
@@ -65,8 +65,7 @@ public class Projectile extends Entity {
     }
 
     public boolean haveResource(Entity user) {
-        boolean haveResource = false;
-        return haveResource;
+        return false;
     }
 
     public void subtractResource(Entity user) {}

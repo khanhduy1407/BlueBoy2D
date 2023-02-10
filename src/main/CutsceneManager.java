@@ -26,23 +26,23 @@ public class CutsceneManager {
     public CutsceneManager(GamePanel gp) {
         this.gp = gp;
 
-        endCredit = "Program/Music/Art\n" +
-                "NKDuy" +
-                "\n\n\n\n\n\n\n\n\n\n\n\n\n" +
-                "Special Thanks\n" +
-                "Someone\n" +
-                "Someone\n" +
-                "Someone\n" +
-                "Someone\n\n\n\n\n\n" +
-                "Thank you for playing!";
+//        endCredit = "Program/Music/Art\n" +
+//                "NKDuy" +
+//                "\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+//                "Special Thanks\n" +
+//                "Someone\n" +
+//                "Someone\n" +
+//                "Someone\n" +
+//                "Someone\n\n\n\n\n\n" +
+//                "Thank you for playing!";
     }
 
     public void draw(Graphics2D g2) {
         this.g2 = g2;
 
         switch (sceneNum) {
-            case skeletonLord: scene_skeletonLord(); break;
-            case ending: scene_ending(); break;
+            case skeletonLord -> scene_skeletonLord();
+            case ending -> scene_ending();
         }
     }
 
@@ -145,7 +145,7 @@ public class CutsceneManager {
         }
         if (scenePhase == 3) {
             // Wait until the sound effect ends
-            if (counterReached(300) == true) {
+            if (counterReached(300)) {
                 scenePhase++;
             }
         }
@@ -170,13 +170,14 @@ public class CutsceneManager {
                 alpha = 1f;
             }
 
-            String text = "After the fierce battle with the Skeleton Lord,\n" +
-                          "the Blue Boy finally found the legendary treasure.\n" +
-                          "But this is not the end of his journey.\n" +
-                          "The Blue Boy's adventure has just begun.";
+            String text = """
+                    After the fierce battle with the Skeleton Lord,
+                    the Blue Boy finally found the legendary treasure.
+                    But this is not the end of his journey.
+                    The Blue Boy's adventure has just begun.""";
             drawString(alpha, 38f, 200, text, 70);
 
-            if (counterReached(600) == true) {
+            if (counterReached(600)) {
                 gp.playMusic(0);
                 scenePhase++;
             }
@@ -185,7 +186,7 @@ public class CutsceneManager {
             drawBlackBackground(1f);
             drawString(1f, 120f, gp.screenHeight/2, "Blue Boy Adventure", 40);
 
-            if (counterReached(480) == true) {
+            if (counterReached(480)) {
 //                scenePhase++;
                 gp.gameState = gp.titleState;
             }
@@ -196,7 +197,7 @@ public class CutsceneManager {
             y = gp.screenHeight/2;
             drawString(1f, 38f, y, endCredit, 40);
 
-            if (counterReached(480) == true) {
+            if (counterReached(480)) {
                 scenePhase++;
             }
         }

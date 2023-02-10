@@ -1,6 +1,7 @@
 package main;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public class Main {
 
@@ -18,7 +19,7 @@ public class Main {
         window.add(gamePanel);
 
         gamePanel.config.loadConfig();
-        if (gamePanel.fullScreenOn == true) {
+        if (gamePanel.fullScreenOn) {
             window.setUndecorated(true);
         }
 
@@ -36,7 +37,8 @@ public class Main {
     }
 
     public void setIcon() {
-        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("player/boy_down_1.png"));
+        ImageIcon icon = new ImageIcon(Objects
+                .requireNonNull(getClass().getClassLoader().getResource("player/boy_down_1.png")));
         window.setIconImage(icon.getImage());
     }
 }

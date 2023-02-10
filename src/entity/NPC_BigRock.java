@@ -6,7 +6,6 @@ import tile_interactive.IT_MetalPlate;
 import tile_interactive.InteractiveTile;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class NPC_BigRock extends Entity {
 
@@ -15,6 +14,7 @@ public class NPC_BigRock extends Entity {
     public NPC_BigRock(GamePanel gp) {
         super(gp);
 
+        type = type_npc;
         name= npcName;
         direction = "down";
         speed = 4;
@@ -59,12 +59,12 @@ public class NPC_BigRock extends Entity {
 
         checkCollision();
 
-        if (collisionOn == false) {
+        if (!collisionOn) {
             switch (direction) {
-                case "up": worldY -= speed; break;
-                case "down": worldY += speed; break;
-                case "left": worldX -= speed; break;
-                case "right": worldX += speed; break;
+                case "up" -> worldY -= speed;
+                case "down" -> worldY += speed;
+                case "left" -> worldX -= speed;
+                case "right" -> worldX += speed;
             }
         }
 
@@ -94,27 +94,27 @@ public class NPC_BigRock extends Entity {
         int count = 0;
 
         // Scan the plate list
-        for (int i = 0; i < plateList.size(); i++) {
-            int xDistance = Math.abs(worldX - plateList.get(i).worldX);
-            int yDistance = Math.abs(worldY - plateList.get(i).worldY);
+        for (InteractiveTile interactiveTile : plateList) {
+            int xDistance = Math.abs(worldX - interactiveTile.worldX);
+            int yDistance = Math.abs(worldY - interactiveTile.worldY);
             int distance = Math.max(xDistance, yDistance);
 
             if (distance < 8) {
                 if (linkedEntity == null) {
-                    linkedEntity = plateList.get(i);
+                    linkedEntity = interactiveTile;
                     gp.playSE(3);
                 }
             } else {
-                if (linkedEntity == plateList.get(i)) {
+                if (linkedEntity == interactiveTile) {
                     linkedEntity = null;
                 }
             }
         }
 
         // Scan the rock list
-        for (int i = 0; i < rockList.size(); i++) {
+        for (Entity entity : rockList) {
             // Count the rock on the plate
-            if (rockList.get(i).linkedEntity != null) {
+            if (entity.linkedEntity != null) {
                 count++;
             }
         }

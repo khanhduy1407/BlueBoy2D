@@ -2,12 +2,8 @@ package tile_interactive;
 
 import entity.Entity;
 import main.GamePanel;
-import object.OBJ_Coin_Bronze;
-import object.OBJ_Heart;
-import object.OBJ_ManaCrystal;
 
 import java.awt.*;
-import java.util.Random;
 
 public class IT_DestructibleWall extends InteractiveTile {
 
@@ -26,13 +22,7 @@ public class IT_DestructibleWall extends InteractiveTile {
     }
 
     public boolean isCorrectItem(Entity entity) {
-        boolean isCorrectItem = false;
-
-        if (entity.currentWeapon.type == type_pickaxe) {
-            isCorrectItem = true;
-        }
-
-        return isCorrectItem;
+        return entity.currentWeapon.type == type_pickaxe;
     }
 
     public void playSE() {
@@ -40,28 +30,23 @@ public class IT_DestructibleWall extends InteractiveTile {
     }
 
     public InteractiveTile getDestroyedForm() {
-        InteractiveTile tile = null;
-        return tile;
+        return null;
     }
 
     public Color getParticleColor() {
-        Color color = new Color(65, 65, 65);
-        return color;
+        return new Color(65, 65, 65);
     }
 
     public int getParticleSize() {
-        int size = 6; // 6 pixels
-        return size;
+        return 6; // 6 pixels
     }
 
     public int getParticleSpeed() {
-        int speed = 1;
-        return speed;
+        return 1;
     }
 
     public int getParticleMaxLife() {
-        int maxlife = 20;
-        return maxlife;
+        return 20;
     }
 
 //    public void checkDrop() {

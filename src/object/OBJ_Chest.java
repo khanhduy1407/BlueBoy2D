@@ -43,10 +43,10 @@ public class OBJ_Chest extends Entity {
     }
 
     public void interact() {
-        if (opened == false) {
+        if (!opened) {
             gp.playSE(3);
 
-            if (gp.player.canObtainItem(loot) == false) {
+            if (!gp.player.canObtainItem(loot)) {
                 startDialogue(this, 0);
             } else {
                 startDialogue(this, 1);

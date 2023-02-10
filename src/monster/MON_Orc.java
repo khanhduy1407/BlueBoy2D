@@ -5,7 +5,6 @@ import main.GamePanel;
 import object.OBJ_Coin_Bronze;
 import object.OBJ_Heart;
 import object.OBJ_ManaCrystal;
-import object.OBJ_Rock;
 
 import java.util.Random;
 
@@ -67,7 +66,7 @@ public class MON_Orc extends Entity {
     }
 
     public void setAction() {
-        if (onPath == true) {
+        if (onPath) {
             // Check if it stops chasing
             checkStopChasingOrNot(gp.player, 15, 100);
 
@@ -82,7 +81,7 @@ public class MON_Orc extends Entity {
         }
 
         // Check if it attacks
-        if (attacking == false) {
+        if (!attacking) {
             checkAttackOrNot(30, gp.tileSize*4, gp.tileSize);
         }
     }

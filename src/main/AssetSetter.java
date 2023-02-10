@@ -46,20 +46,6 @@ public class AssetSetter {
         gp.obj[mapNum][i].setLoot(new OBJ_Key(gp));
         gp.obj[mapNum][i].worldX = gp.tileSize*30;
         gp.obj[mapNum][i].worldY = gp.tileSize*29;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_Chest(gp);
-        gp.obj[mapNum][i].setLoot(new OBJ_Tent(gp));
-        gp.obj[mapNum][i].worldX = gp.tileSize*17;
-        gp.obj[mapNum][i].worldY = gp.tileSize*20;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_Chest(gp);
-        gp.obj[mapNum][i].setLoot(new OBJ_Potion_Red(gp));
-        gp.obj[mapNum][i].worldX = gp.tileSize*16;
-        gp.obj[mapNum][i].worldY = gp.tileSize*20;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_Door(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize*26;
-        gp.obj[mapNum][i].worldY = gp.tileSize*21;
 
         mapNum = 2;
         i = 0;
@@ -109,14 +95,12 @@ public class AssetSetter {
 
         // MAP 1
         mapNum = 1;
-        i = 0;
         gp.npc[mapNum][i] = new NPC_Merchant(gp);
         gp.npc[mapNum][i].worldX = gp.tileSize*12;
         gp.npc[mapNum][i].worldY = gp.tileSize*7;
 
         // MAP 2
         mapNum = 2;
-        i = 0;
         gp.npc[mapNum][i] = new NPC_BigRock(gp);
         gp.npc[mapNum][i].worldX = gp.tileSize*20;
         gp.npc[mapNum][i].worldY = gp.tileSize*25;
@@ -194,7 +178,7 @@ public class AssetSetter {
 
         mapNum = 3;
         i = 0;
-        if (Progress.skeletonLordDefeated == false) {
+        if (!Progress.skeletonLordDefeated) {
             gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
             gp.monster[mapNum][i].worldX = gp.tileSize * 23;
             gp.monster[mapNum][i].worldY = gp.tileSize * 16;

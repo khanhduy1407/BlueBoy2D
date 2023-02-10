@@ -1,8 +1,6 @@
 package data;
 
-import entity.Entity;
 import main.GamePanel;
-import object.*;
 
 import java.io.*;
 
@@ -16,7 +14,7 @@ public class SaveLoad {
 
     public void save() {
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File("save.dat")));
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("save.dat"));
 
             DataStorage ds = new DataStorage();
 
@@ -74,7 +72,7 @@ public class SaveLoad {
 
     public void load() {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("save.dat")));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("save.dat"));
 
             // Read the DataStorage object
             DataStorage ds = (DataStorage) ois.readObject();
@@ -118,7 +116,7 @@ public class SaveLoad {
                             gp.obj[mapNum][i].setLoot(gp.eGenerator.getObject(ds.mapObjectLootNames[mapNum][i]));
                         }
                         gp.obj[mapNum][i].opened = ds.mapObjectOpened[mapNum][i];
-                        if (gp.obj[mapNum][i].opened == true) {
+                        if (gp.obj[mapNum][i].opened) {
                             gp.obj[mapNum][i].down1 = gp.obj[mapNum][i].image2;
                         }
                     }

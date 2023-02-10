@@ -15,10 +15,9 @@ public class Config {
             BufferedWriter bw = new BufferedWriter(new FileWriter("config.txt"));
 
             // Full screen
-            if (gp.fullScreenOn == true) {
+            if (gp.fullScreenOn) {
                 bw.write("On");
-            }
-            if (gp.fullScreenOn == false) {
+            } else {
                 bw.write("Off");
             }
             bw.newLine();

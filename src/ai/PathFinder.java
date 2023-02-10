@@ -77,13 +77,13 @@ public class PathFinder {
             // SET SOLID NODE
             // CHECK TILES
             int tileNum = gp.tileM.mapTileNum[gp.currentMap][col][row];
-            if (gp.tileM.tile[tileNum].collision == true) {
+            if (gp.tileM.tile[tileNum].collision) {
                 node[col][row].solid = true;
             }
 
             // CHECK INTERACTIVE TILES
             for (int i = 0; i < gp.iTile[1].length; i++) {
-                if (gp.iTile[gp.currentMap][i] != null && gp.iTile[gp.currentMap][i].destructible == true) {
+                if (gp.iTile[gp.currentMap][i] != null && gp.iTile[gp.currentMap][i].destructible) {
                     int itCol = gp.iTile[gp.currentMap][i].worldX / gp.tileSize;
                     int itRow = gp.iTile[gp.currentMap][i].worldY / gp.tileSize;
                     node[itCol][itRow].solid = true;
@@ -117,7 +117,7 @@ public class PathFinder {
     }
 
     public boolean search() {
-        while (goalReached == false && step < 500) {
+        while (!goalReached && step < 500) {
             int col = currentNode.col;
             int row = currentNode.row;
 
@@ -178,7 +178,7 @@ public class PathFinder {
     }
 
     public void openNode(Node node) {
-        if (node.open == false && node.checked == false && node.solid == false) {
+        if (!node.open && !node.checked && !node.solid) {
             node.open = true;
             node.parent = currentNode;
             openList.add(node);

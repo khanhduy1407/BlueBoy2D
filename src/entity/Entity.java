@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -27,7 +28,7 @@ public class Entity {
     public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collision = false;
-    public String dialogues[][] = new String[20][20];
+    public String[][] dialogues = new String[20][20];
     public Entity attacker;
     public Entity linkedEntity;
     public boolean temp = false;
@@ -126,13 +127,11 @@ public class Entity {
     }
 
     public int getScreenX() {
-        int screenX = worldX - gp.player.worldX + gp.player.screenX;
-        return screenX;
+        return worldX - gp.player.worldX + gp.player.screenX;
     }
 
     public int getScreenY() {
-        int screenY = worldY - gp.player.worldY + gp.player.screenY;
-        return screenY;
+        return worldY - gp.player.worldY + gp.player.screenY;
     }
 
     public int getLeftX() {
@@ -160,38 +159,31 @@ public class Entity {
     }
 
     public int getCenterX() {
-        int centerX = worldX + left1.getWidth()/2;
-        return centerX;
+        return worldX + left1.getWidth()/2;
     }
 
     public int getCenterY() {
-        int centerY = worldY + up1.getHeight()/2;
-        return centerY;
+        return worldY + up1.getHeight()/2;
     }
 
     public int getXDistance(Entity target) {
-        int xDistance = Math.abs(getCenterX() - target.getCenterX());
-        return xDistance;
+        return Math.abs(getCenterX() - target.getCenterX());
     }
 
     public int getYDistance(Entity target) {
-        int yDistance = Math.abs(getCenterY() - target.getCenterY());
-        return yDistance;
+        return Math.abs(getCenterY() - target.getCenterY());
     }
 
     public int getTileDistance(Entity target) {
-        int tileDistance = (getXDistance(target) + getYDistance(target))/gp.tileSize;
-        return tileDistance;
+        return (getXDistance(target) + getYDistance(target))/gp.tileSize;
     }
 
     public int getGoalCol(Entity target) {
-        int goalCol = (target.worldX + target.solidArea.x) / gp.tileSize;
-        return goalCol;
+        return (target.worldX + target.solidArea.x) / gp.tileSize;
     }
 
     public int getGoalRow(Entity target) {
-        int goalRow = (target.worldY + target.solidArea.y) / gp.tileSize;
-        return goalRow;
+        return (target.worldY + target.solidArea.y) / gp.tileSize;
     }
 
     public void resetCounter() {
@@ -218,10 +210,10 @@ public class Entity {
 
     public void facePlayer() {
         switch (gp.player.direction) {
-            case "up": direction = "down"; break;
-            case "down": direction = "up"; break;
-            case "left": direction = "right"; break;
-            case "right": direction = "left"; break;
+            case "up" -> direction = "down";
+            case "down" -> direction = "up";
+            case "left" -> direction = "right";
+            case "right" -> direction = "left";
         }
     }
 
@@ -251,23 +243,19 @@ public class Entity {
     }
 
     public Color getParticleColor() {
-        Color color = null;
-        return color;
+        return null;
     }
 
     public int getParticleSize() {
-        int size = 0;
-        return size;
+        return 0;
     }
 
     public int getParticleSpeed() {
-        int speed = 0;
-        return speed;
+        return 0;
     }
 
     public int getParticleMaxLife() {
-        int maxlife = 0;
-        return maxlife;
+        return 0;
     }
 
     public void generateParticle(Entity generator, Entity target) {
@@ -295,26 +283,26 @@ public class Entity {
         gp.cChecker.checkEntity(this, gp.iTile);
         boolean contactPlayer = gp.cChecker.checkPlayer(this);
 
-        if (this.type == type_monster && contactPlayer == true) {
+        if (this.type == type_monster && contactPlayer) {
             damagePlayer(attack);
         }
     }
 
     public void update() {
-        if (sleep == false) {
-            if (knockBack == true) {
+        if (!sleep) {
+            if (knockBack) {
                 checkCollision();
 
-                if (collisionOn == true) {
+                if (collisionOn) {
                     knockBackCounter = 0;
                     knockBack = false;
                     speed = defaultSpeed;
-                } else if (collisionOn == false) {
+                } else {
                     switch (knockBackDirection) {
-                        case "up": worldY -= speed; break;
-                        case "down": worldY += speed; break;
-                        case "left": worldX -= speed; break;
-                        case "right": worldX += speed; break;
+                        case "up" -> worldY -= speed;
+                        case "down" -> worldY += speed;
+                        case "left" -> worldX -= speed;
+                        case "right" -> worldX += speed;
                     }
                 }
 
@@ -324,19 +312,19 @@ public class Entity {
                     knockBack = false;
                     speed = defaultSpeed;
                 }
-            } else if (attacking == true) {
+            } else if (attacking) {
                 attacking();
             } else {
                 setAction();
                 checkCollision();
 
                 // IF COLLISION IS FALSE, NPC CAN MOVE
-                if (collisionOn == false) {
+                if (!collisionOn) {
                     switch (direction) {
-                        case "up": worldY -= speed; break;
-                        case "down": worldY += speed; break;
-                        case "left": worldX -= speed; break;
-                        case "right": worldX += speed; break;
+                        case "up" -> worldY -= speed;
+                        case "down" -> worldY += speed;
+                        case "left" -> worldX -= speed;
+                        case "right" -> worldX += speed;
                     }
                 }
 
@@ -351,7 +339,7 @@ public class Entity {
                 }
             }
 
-            if (invincible == true) {
+            if (invincible) {
                 invincibleCounter++;
                 if (invincibleCounter > 40) {
                     invincible = false;
@@ -363,7 +351,7 @@ public class Entity {
                 shotAvailableCounter++;
             }
 
-            if (offBalance == true) {
+            if (offBalance) {
                 offBalanceCounter++;
                 if (offBalanceCounter > 60) {
                     offBalance = false;
@@ -401,7 +389,7 @@ public class Entity {
                 break;
         }
 
-        if (targetInRange == true) {
+        if (targetInRange) {
             // Check if it initiates an attack
             int i = new Random().nextInt(rate);
 
@@ -416,7 +404,7 @@ public class Entity {
 
     public void checkShootOrNot(int rate, int shotInterval) {
         int i = new Random().nextInt(rate);
-        if (i == 0 && projectile.alive == false && shotAvailableCounter == shotInterval) {
+        if (i == 0 && !projectile.alive && shotAvailableCounter == shotInterval) {
             projectile.set(worldX, worldY, direction, true, this);
 
             // CHECK VACANCY
@@ -461,7 +449,7 @@ public class Entity {
             if (i <= 25) { direction = "up"; }
             if (i > 25 && i <= 50) { direction = "down"; }
             if (i > 50 && i <= 75) { direction = "left"; }
-            if (i > 75 && i <= 100) { direction = "right"; }
+            if (i > 75) { direction = "right"; }
 
             actionLockCounter = 0;
         }
@@ -492,10 +480,10 @@ public class Entity {
         String oppositeDirection = "";
 
         switch (direction) {
-            case "up": oppositeDirection = "down"; break;
-            case "down": oppositeDirection = "up"; break;
-            case "left": oppositeDirection = "right"; break;
-            case "right": oppositeDirection = "left"; break;
+            case "up" -> oppositeDirection = "down";
+            case "down" -> oppositeDirection = "up";
+            case "left" -> oppositeDirection = "right";
+            case "right" -> oppositeDirection = "left";
         }
 
         return oppositeDirection;
@@ -517,10 +505,10 @@ public class Entity {
 
             // Adjust player's worldX/Y for attackArea
             switch (direction) {
-                case "up": worldY -= attackArea.height; break;
-                case "down": worldY += attackArea.height; break;
-                case "left": worldX -= attackArea.width; break;
-                case "right": worldX += attackArea.width; break;
+                case "up" -> worldY -= attackArea.height;
+                case "down" -> worldY += attackArea.height;
+                case "left" -> worldX -= attackArea.width;
+                case "right" -> worldX += attackArea.width;
             }
 
             // attackArea becomes solidArea
@@ -528,7 +516,7 @@ public class Entity {
             solidArea.height = attackArea.height;
 
             if (type == type_monster) {
-                if (gp.cChecker.checkPlayer(this) == true) {
+                if (gp.cChecker.checkPlayer(this)) {
                     damagePlayer(attack);
                 }
             } else { // Player
@@ -557,13 +545,13 @@ public class Entity {
     }
 
     public void damagePlayer(int attack) {
-        if (gp.player.invincible == false) {
+        if (!gp.player.invincible) {
             int damage = attack - gp.player.defense;
 
             // Get an opposite direction of this attacker
             String canGuardDirection = getOppositeDirection(direction);
 
-            if (gp.player.guarding == true && gp.player.direction.equals(canGuardDirection)) {
+            if (gp.player.guarding && gp.player.direction.equals(canGuardDirection)) {
                 // Parry
                 if (gp.player.guardCounter < 10) {
                     damage = 0;
@@ -604,28 +592,22 @@ public class Entity {
     }
 
     public boolean inCamera() {
-        boolean inCamera = false;
-
-        if (worldX + gp.tileSize * 5 > gp.player.worldX - gp.player.screenX &&
+        return worldX + gp.tileSize * 5 > gp.player.worldX - gp.player.screenX &&
                 worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
                 worldY + gp.tileSize * 5 > gp.player.worldY - gp.player.screenY &&
-                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
-            inCamera = true;
-        }
-
-        return inCamera;
+                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY;
     }
 
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
 
-        if (inCamera() == true) {
+        if (inCamera()) {
 
             int tempScreenX = getScreenX();
             int tempScreenY = getScreenY();
 
             switch (direction) {
-                case "up":
+                case "up" -> {
                     if (!attacking) {
                         if (spriteNum == 1) { image = up1; }
                         if (spriteNum == 2) { image = up2; }
@@ -635,8 +617,8 @@ public class Entity {
                         if (spriteNum == 1) { image = attackUp1; }
                         if (spriteNum == 2) { image = attackUp2; }
                     }
-                    break;
-                case "down":
+                }
+                case "down" -> {
                     if (!attacking) {
                         if (spriteNum == 1) { image = down1; }
                         if (spriteNum == 2) { image = down2; }
@@ -645,8 +627,8 @@ public class Entity {
                         if (spriteNum == 1) { image = attackDown1; }
                         if (spriteNum == 2) { image = attackDown2; }
                     }
-                    break;
-                case "left":
+                }
+                case "left" -> {
                     if (!attacking) {
                         if (spriteNum == 1) { image = left1; }
                         if (spriteNum == 2) { image = left2; }
@@ -656,8 +638,8 @@ public class Entity {
                         if (spriteNum == 1) { image = attackLeft1; }
                         if (spriteNum == 2) { image = attackLeft2; }
                     }
-                    break;
-                case "right":
+                }
+                case "right" -> {
                     if (!attacking) {
                         if (spriteNum == 1) { image = right1; }
                         if (spriteNum == 2) { image = right2; }
@@ -666,15 +648,15 @@ public class Entity {
                         if (spriteNum == 1) { image = attackRight1; }
                         if (spriteNum == 2) { image = attackRight2; }
                     }
-                    break;
+                }
             }
 
-            if (invincible == true) {
+            if (invincible) {
                 hpBarOn = true;
                 hpBarCounter = 0;
                 changeAlpha(g2, 0.4f);
             }
-            if (dying == true) {
+            if (dying) {
                 dyingAnimation(g2);
             }
 
@@ -711,7 +693,7 @@ public class Entity {
         BufferedImage image = null;
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(imagePath + ".png")));
             image = uTool.scaleImage(image, width, height);
         } catch (IOException e) {
             e.printStackTrace();
@@ -726,7 +708,7 @@ public class Entity {
 
         gp.pFinder.setNodes(startCol, startRow, goalCol, goalRow);
 
-        if (gp.pFinder.search() == true) {
+        if (gp.pFinder.search()) {
             // Based on the current NPC's position, find out the relative direction of
             // the next node
 
@@ -756,28 +738,28 @@ public class Entity {
                 // up or left
                 direction = "up";
                 checkCollision();
-                if (collisionOn == true) {
+                if (collisionOn) {
                     direction = "left";
                 }
             } else if (enTopY > nextY && enLeftX < nextX) {
                 // up or right
                 direction = "up";
                 checkCollision();
-                if (collisionOn == true) {
+                if (collisionOn) {
                     direction = "right";
                 }
             } else if (enBottomY < nextY && enLeftX > nextX) {
                 // down or left
                 direction = "down";
                 checkCollision();
-                if (collisionOn == true) {
+                if (collisionOn) {
                     direction = "left";
                 }
             } else if (enBottomY < nextY && enLeftX < nextX) {
                 // down or right
                 direction = "down";
                 checkCollision();
-                if (collisionOn == true) {
+                if (collisionOn) {
                     direction = "right";
                 }
             }
@@ -791,7 +773,7 @@ public class Entity {
         }
     }
 
-    public int getDetected(Entity user, Entity target[][], String targetName) {
+    public int getDetected(Entity user, Entity[][] target, String targetName) {
         int index = 999;
 
         // Check the surrounding object
@@ -799,10 +781,10 @@ public class Entity {
         int nextWorldY = user.getTopY();
 
         switch (user.direction) {
-            case "up": nextWorldY = user.getTopY() - gp.player.speed; break;
-            case "down": nextWorldY = user.getBottomY() + gp.player.speed; break;
-            case "left": nextWorldX = user.getLeftX() - gp.player.speed; break;
-            case "right": nextWorldX = user.getRightX() + gp.player.speed; break;
+            case "up" -> nextWorldY = user.getTopY() - gp.player.speed;
+            case "down" -> nextWorldY = user.getBottomY() + gp.player.speed;
+            case "left" -> nextWorldX = user.getLeftX() - gp.player.speed;
+            case "right" -> nextWorldX = user.getRightX() + gp.player.speed;
         }
 
         int col = nextWorldX / gp.tileSize;

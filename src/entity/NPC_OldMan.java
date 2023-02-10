@@ -9,6 +9,7 @@ public class NPC_OldMan extends Entity {
     public NPC_OldMan(GamePanel gp) {
         super(gp);
 
+        type = type_npc;
         direction = "down";
         speed = 1;
 
@@ -50,13 +51,14 @@ public class NPC_OldMan extends Entity {
     }
 
     public void setAction() {
-        if (onPath == true) {
+        if (onPath) {
 //            int goalCol = 12;
 //            int goalRow = 9;
-            int goalCol = (gp.player.worldX + gp.player.solidArea.y) / gp.tileSize;
-            int goalRow = (gp.player.worldY + gp.player.solidArea.y) / gp.tileSize;
+//            int goalCol = (gp.player.worldX + gp.player.solidArea.y) / gp.tileSize;
+//            int goalRow = (gp.player.worldY + gp.player.solidArea.y) / gp.tileSize;
 
-            searchPath(goalCol, goalRow);
+//            searchPath(goalCol, goalRow);
+            System.out.println("Talking with Old Man");
         } else {
             actionLockCounter++;
 
@@ -64,18 +66,10 @@ public class NPC_OldMan extends Entity {
                 Random random = new Random();
                 int i = random.nextInt(100) + 1; // pick up a number from 1 to 100
 
-                if (i <= 25) {
-                    direction = "up";
-                }
-                if (i > 25 && i <= 50) {
-                    direction = "down";
-                }
-                if (i > 50 && i <= 75) {
-                    direction = "left";
-                }
-                if (i > 75 && i <= 100) {
-                    direction = "right";
-                }
+                if (i <= 25) { direction = "up"; }
+                if (i > 25 && i <= 50) { direction = "down"; }
+                if (i > 50 && i <= 75) { direction = "left"; }
+                if (i > 75) { direction = "right"; }
 
                 actionLockCounter = 0;
             }
@@ -89,8 +83,8 @@ public class NPC_OldMan extends Entity {
 
         dialogueSet++;
         if (dialogues[dialogueSet][0] == null) {
-//            dialogueSet = 0; // reset to 0
-            dialogueSet--; // don't reset
+            dialogueSet = 0; // reset to 0
+//            dialogueSet--; // don't reset
         }
 
 //        onPath = true;

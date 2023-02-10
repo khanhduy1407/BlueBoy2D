@@ -2,14 +2,10 @@ package entity;
 
 import main.GamePanel;
 import main.KeyHandler;
-import main.UtilityTool;
 import object.*;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Player extends Entity {
 
@@ -27,6 +23,8 @@ public class Player extends Entity {
         super(gp);
 
         this.keyH = keyH;
+
+        type = type_player;
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
@@ -46,8 +44,8 @@ public class Player extends Entity {
         // You can type numbers like worldX = 1000
         // Either way is fine
         // Main
-//        worldX = gp.tileSize * 23;
-//        worldY = gp.tileSize * 21;
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 21;
 
         // Ork
 //        worldX = gp.tileSize * 10;
@@ -68,11 +66,11 @@ public class Player extends Entity {
 //        worldY = gp.tileSize * 40;
 
         // Dungeon B2
-        gp.currentMap = 3;
+//        gp.currentMap = 3;
 //        worldX = gp.tileSize * 25;
 //        worldY = gp.tileSize * 29;
-        worldX = gp.tileSize * 25;
-        worldY = gp.tileSize * 11;
+//        worldX = gp.tileSize * 25;
+//        worldY = gp.tileSize * 11;
 
         defaultSpeed = 4;
         speed = defaultSpeed;
@@ -80,16 +78,16 @@ public class Player extends Entity {
 
         // PLAYER STATUS
         level = 1;
-        maxLife = 28; // 1 = 0.5 heart, 6 = 3 heart,  Default 6
+        maxLife = 6; // 1 = 0.5 heart, 6 = 3 heart
         life = maxLife;
-        maxMana = 8; //  Default 4
+        maxMana = 4;
         mana = maxMana;
         ammo = 10; // test rock
-        strength = 5; // The more strength he has, the more damage he gives. Default 1
-        dexterity = 4; // The more dexterity he has, the less damage he receives. Default 1
+        strength = 1; // The more strength he has, the more damage he gives.
+        dexterity = 1; // The more dexterity he has, the less damage he receives.
         exp = 0;
         nextLevelExp = 5;
-        coin = 500; // test, default 0
+        coin = 500;
         currentWeapon = new OBJ_Sword_Normal(gp);
 //        currentWeapon = new OBJ_Axe(gp); // test (comment projectile above)
         currentShield = new OBJ_Shield_Wood(gp);
@@ -243,7 +241,7 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (knockBack == true) {
+        if (knockBack) {
             collisionOn = false;
             gp.cChecker.checkTile(this);
             gp.cChecker.checkObject(this, true);
@@ -251,16 +249,16 @@ public class Player extends Entity {
             gp.cChecker.checkEntity(this, gp.monster);
             gp.cChecker.checkEntity(this, gp.iTile);
 
-            if (collisionOn == true) {
+            if (collisionOn) {
                 knockBackCounter = 0;
                 knockBack = false;
                 speed = defaultSpeed;
-            } else if (collisionOn == false) {
+            } else {
                 switch (knockBackDirection) {
-                    case "up": worldY -= speed; break;
-                    case "down": worldY += speed; break;
-                    case "left": worldX -= speed; break;
-                    case "right": worldX += speed; break;
+                    case "up" -> worldY -= speed;
+                    case "down" -> worldY += speed;
+                    case "left" -> worldX -= speed;
+                    case "right" -> worldX += speed;
                 }
             }
 
@@ -270,19 +268,19 @@ public class Player extends Entity {
                 knockBack = false;
                 speed = defaultSpeed;
             }
-        } else if (attacking == true) {
+        } else if (attacking) {
             attacking();
-        } else if (keyH.spacePressed == true) {
+        } else if (keyH.spacePressed) {
             guarding = true;
             guardCounter++;
-        } else if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true) {
-            if (keyH.upPressed == true) {
+        } else if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed || keyH.enterPressed) {
+            if (keyH.upPressed) {
                 direction = "up";
-            } else if (keyH.downPressed == true) {
+            } else if (keyH.downPressed) {
                 direction = "down";
-            } else if (keyH.leftPressed == true) {
+            } else if (keyH.leftPressed) {
                 direction = "left";
-            } else if (keyH.rightPressed == true) {
+            } else if (keyH.rightPressed) {
                 direction = "right";
             }
 
@@ -310,16 +308,16 @@ public class Player extends Entity {
             gp.eHandler.checkEvent();
 
             // IF COLLISION IS FALSE, PLAYER CAN MOVE
-            if (collisionOn == false && keyH.enterPressed == false) {
+            if (!collisionOn && !keyH.enterPressed) {
                 switch (direction) {
-                    case "up": worldY -= speed; break;
-                    case "down": worldY += speed; break;
-                    case "left": worldX -= speed; break;
-                    case "right": worldX += speed; break;
+                    case "up" -> worldY -= speed;
+                    case "down" -> worldY += speed;
+                    case "left" -> worldX -= speed;
+                    case "right" -> worldX += speed;
                 }
             }
 
-            if (keyH.enterPressed == true && attackCancel == false) {
+            if (keyH.enterPressed && !attackCancel) {
                 gp.playSE(7);
                 attacking = true;
                 spriteCounter = 0;
@@ -352,8 +350,8 @@ public class Player extends Entity {
             guardCounter = 0;
         }
 
-        if (gp.keyH.shotKeyPressed == true && projectile.alive == false
-                && shotAvailableCounter == 30 && projectile.haveResource(this) == true) {
+        if (gp.keyH.shotKeyPressed && !projectile.alive
+                && shotAvailableCounter == 30 && projectile.haveResource(this)) {
             // SET DEFAULT COORDINATES, DIRECTION AND USER
             projectile.set(worldX, worldY, direction, true, this);
 
@@ -374,7 +372,7 @@ public class Player extends Entity {
         }
 
         // This needs to be outside of key if statement!
-        if (invincible == true) {
+        if (invincible) {
             invincibleCounter++;
             if (invincibleCounter > 60) {
                 invincible = false;
@@ -395,7 +393,7 @@ public class Player extends Entity {
             mana = maxMana;
         }
 
-        if (keyH.godModeOn == false) {
+        if (!keyH.godModeOn) {
             if (life <= 0) {
                 gp.gameState = gp.gameOverState;
                 gp.ui.commandNum = -1;
@@ -416,7 +414,7 @@ public class Player extends Entity {
             }
             // OBSTACLE
             else if (gp.obj[gp.currentMap][i].type == type_obstacle) {
-                if (keyH.enterPressed == true) {
+                if (keyH.enterPressed) {
                     attackCancel = true;
                     gp.obj[gp.currentMap][i].interact();
                 }
@@ -425,7 +423,7 @@ public class Player extends Entity {
             else {
                 String text;
 
-                if (canObtainItem(gp.obj[gp.currentMap][i]) == true) {
+                if (canObtainItem(gp.obj[gp.currentMap][i])) {
                     gp.playSE(1);
                     text = "Got a " + gp.obj[gp.currentMap][i].name + "!"; // FIXED
                 } else {
@@ -451,7 +449,7 @@ public class Player extends Entity {
 
     public void contactMonster(int i) {
         if (i != 999) {
-            if (invincible == false && gp.monster[gp.currentMap][i].dying == false) { // FIXED
+            if (!invincible && !gp.monster[gp.currentMap][i].dying) { // FIXED
                 gp.playSE(6);
 
                 int damage = gp.monster[gp.currentMap][i].attack - defense; // FIXED
@@ -467,14 +465,14 @@ public class Player extends Entity {
 
     public void damageMonster(int i, Entity attacker, int attack, int knockBackPower) {
         if (i != 999) {
-            if (gp.monster[gp.currentMap][i].invincible == false) { // FIXED
+            if (!gp.monster[gp.currentMap][i].invincible) { // FIXED
                 gp.playSE(5);
 
                 if (knockBackPower > 0) {
                     setKnockBack(gp.monster[gp.currentMap][i], attacker, knockBackPower);
                 }
 
-                if (gp.monster[gp.currentMap][i].offBalance == true) {
+                if (gp.monster[gp.currentMap][i].offBalance) {
                     attack *= 5;
                 }
 
@@ -499,8 +497,8 @@ public class Player extends Entity {
     }
 
     public void damageInteractiveTile(int i) {
-        if (i != 999 && gp.iTile[gp.currentMap][i].destructible == true // FIXED
-                && gp.iTile[gp.currentMap][i].isCorrectItem(this) == true && gp.iTile[gp.currentMap][i].invincible == false) { // FIXED
+        if (i != 999 && gp.iTile[gp.currentMap][i].destructible // FIXED
+                && gp.iTile[gp.currentMap][i].isCorrectItem(this) && gp.iTile[gp.currentMap][i].invincible) { // FIXED
             gp.iTile[gp.currentMap][i].playSE(); // FIXED
             gp.iTile[gp.currentMap][i].life--; // FIXED
             gp.iTile[gp.currentMap][i].invincible = true; // FIXED
@@ -566,7 +564,7 @@ public class Player extends Entity {
                 lightUpdated = true;
             }
             if (selectedItem.type == type_consumable) {
-                if (selectedItem.use(this) == true) {
+                if (selectedItem.use(this)) {
                     if (selectedItem.amount > 1) {
                         selectedItem.amount--;
                     } else {
@@ -604,7 +602,7 @@ public class Player extends Entity {
         Entity newItem = gp.eGenerator.getObject(item.name);
 
         // CHECK IF STACKABLE
-        if (newItem.stackable == true) {
+        if (newItem.stackable) {
             int index = searchItemInInventory(newItem.name);
 
             if (index != 999) {
@@ -632,7 +630,7 @@ public class Player extends Entity {
         int tempScreenY = screenY;
 
         switch (direction) {
-            case "up":
+            case "up" -> {
                 if (!attacking) {
                     if (spriteNum == 1) { image = up1; }
                     if (spriteNum == 2) { image = up2; }
@@ -642,11 +640,9 @@ public class Player extends Entity {
                     if (spriteNum == 1) { image = attackUp1; }
                     if (spriteNum == 2) { image = attackUp2; }
                 }
-                if (guarding) {
-                    image = guardUp;
-                }
-                break;
-            case "down":
+                if (guarding) { image = guardUp; }
+            }
+            case "down" -> {
                 if (!attacking) {
                     if (spriteNum == 1) { image = down1; }
                     if (spriteNum == 2) { image = down2; }
@@ -655,11 +651,9 @@ public class Player extends Entity {
                     if (spriteNum == 1) { image = attackDown1; }
                     if (spriteNum == 2) { image = attackDown2; }
                 }
-                if (guarding) {
-                    image = guardDown;
-                }
-                break;
-            case "left":
+                if (guarding) { image = guardDown; }
+            }
+            case "left" -> {
                 if (!attacking) {
                     if (spriteNum == 1) { image = left1; }
                     if (spriteNum == 2) { image = left2; }
@@ -669,11 +663,9 @@ public class Player extends Entity {
                     if (spriteNum == 1) { image = attackLeft1; }
                     if (spriteNum == 2) { image = attackLeft2; }
                 }
-                if (guarding) {
-                    image = guardLeft;
-                }
-                break;
-            case "right":
+                if (guarding) { image = guardLeft; }
+            }
+            case "right" -> {
                 if (!attacking) {
                     if (spriteNum == 1) { image = right1; }
                     if (spriteNum == 2) { image = right2; }
@@ -682,17 +674,15 @@ public class Player extends Entity {
                     if (spriteNum == 1) { image = attackRight1; }
                     if (spriteNum == 2) { image = attackRight2; }
                 }
-                if (guarding) {
-                    image = guardRight;
-                }
-                break;
+                if (guarding) { image = guardRight; }
+            }
         }
 
-        if (transparent == true) {
+        if (transparent) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
         }
 
-        if (drawing == true) {
+        if (drawing) {
             // draw an image on the screen
             g2.drawImage(image, tempScreenX, tempScreenY, null);
         }
