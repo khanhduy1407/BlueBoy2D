@@ -41,8 +41,8 @@ public class CutsceneManager {
         this.g2 = g2;
 
         switch (sceneNum) {
-            case skeletonLord -> scene_skeletonLord();
-            case ending -> scene_ending();
+            case skeletonLord: scene_skeletonLord(); break;
+            case ending: scene_ending(); break;
         }
     }
 
@@ -170,11 +170,10 @@ public class CutsceneManager {
                 alpha = 1f;
             }
 
-            String text = """
-                    After the fierce battle with the Skeleton Lord,
-                    the Blue Boy finally found the legendary treasure.
-                    But this is not the end of his journey.
-                    The Blue Boy's adventure has just begun.""";
+            String text = "After the fierce battle with the Skeleton Lord,\n" +
+                          "the Blue Boy finally found the legendary treasure.\n" +
+                          "But this is not the end of his journey.\n" +
+                          "The Blue Boy's adventure has just begun.";
             drawString(alpha, 38f, 200, text, 70);
 
             if (counterReached(600)) {

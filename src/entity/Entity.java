@@ -210,10 +210,10 @@ public class Entity {
 
     public void facePlayer() {
         switch (gp.player.direction) {
-            case "up" -> direction = "down";
-            case "down" -> direction = "up";
-            case "left" -> direction = "right";
-            case "right" -> direction = "left";
+            case "up": direction = "down"; break;
+            case "down": direction = "up"; break;
+            case "left": direction = "right"; break;
+            case "right": direction = "left"; break;
         }
     }
 
@@ -299,10 +299,10 @@ public class Entity {
                     speed = defaultSpeed;
                 } else {
                     switch (knockBackDirection) {
-                        case "up" -> worldY -= speed;
-                        case "down" -> worldY += speed;
-                        case "left" -> worldX -= speed;
-                        case "right" -> worldX += speed;
+                        case "up": worldY -= speed; break;
+                        case "down": worldY += speed; break;
+                        case "left": worldX -= speed; break;
+                        case "right": worldX += speed; break;
                     }
                 }
 
@@ -321,10 +321,10 @@ public class Entity {
                 // IF COLLISION IS FALSE, NPC CAN MOVE
                 if (!collisionOn) {
                     switch (direction) {
-                        case "up" -> worldY -= speed;
-                        case "down" -> worldY += speed;
-                        case "left" -> worldX -= speed;
-                        case "right" -> worldX += speed;
+                        case "up": worldY -= speed; break;
+                        case "down": worldY += speed; break;
+                        case "left": worldX -= speed; break;
+                        case "right": worldX += speed; break;
                     }
                 }
 
@@ -480,10 +480,10 @@ public class Entity {
         String oppositeDirection = "";
 
         switch (direction) {
-            case "up" -> oppositeDirection = "down";
-            case "down" -> oppositeDirection = "up";
-            case "left" -> oppositeDirection = "right";
-            case "right" -> oppositeDirection = "left";
+            case "up": oppositeDirection = "down"; break;
+            case "down": oppositeDirection = "up"; break;
+            case "left": oppositeDirection = "right"; break;
+            case "right": oppositeDirection = "left"; break;
         }
 
         return oppositeDirection;
@@ -505,10 +505,10 @@ public class Entity {
 
             // Adjust player's worldX/Y for attackArea
             switch (direction) {
-                case "up" -> worldY -= attackArea.height;
-                case "down" -> worldY += attackArea.height;
-                case "left" -> worldX -= attackArea.width;
-                case "right" -> worldX += attackArea.width;
+                case "up": worldY -= attackArea.height; break;
+                case "down": worldY += attackArea.height; break;
+                case "left": worldX -= attackArea.width; break;
+                case "right": worldX += attackArea.width; break;
             }
 
             // attackArea becomes solidArea
@@ -607,7 +607,7 @@ public class Entity {
             int tempScreenY = getScreenY();
 
             switch (direction) {
-                case "up" -> {
+                case "up":
                     if (!attacking) {
                         if (spriteNum == 1) { image = up1; }
                         if (spriteNum == 2) { image = up2; }
@@ -617,8 +617,8 @@ public class Entity {
                         if (spriteNum == 1) { image = attackUp1; }
                         if (spriteNum == 2) { image = attackUp2; }
                     }
-                }
-                case "down" -> {
+                    break;
+                case "down":
                     if (!attacking) {
                         if (spriteNum == 1) { image = down1; }
                         if (spriteNum == 2) { image = down2; }
@@ -627,8 +627,8 @@ public class Entity {
                         if (spriteNum == 1) { image = attackDown1; }
                         if (spriteNum == 2) { image = attackDown2; }
                     }
-                }
-                case "left" -> {
+                    break;
+                case "left":
                     if (!attacking) {
                         if (spriteNum == 1) { image = left1; }
                         if (spriteNum == 2) { image = left2; }
@@ -638,8 +638,8 @@ public class Entity {
                         if (spriteNum == 1) { image = attackLeft1; }
                         if (spriteNum == 2) { image = attackLeft2; }
                     }
-                }
-                case "right" -> {
+                    break;
+                case "right":
                     if (!attacking) {
                         if (spriteNum == 1) { image = right1; }
                         if (spriteNum == 2) { image = right2; }
@@ -648,7 +648,7 @@ public class Entity {
                         if (spriteNum == 1) { image = attackRight1; }
                         if (spriteNum == 2) { image = attackRight2; }
                     }
-                }
+                    break;
             }
 
             if (invincible) {
@@ -781,10 +781,10 @@ public class Entity {
         int nextWorldY = user.getTopY();
 
         switch (user.direction) {
-            case "up" -> nextWorldY = user.getTopY() - gp.player.speed;
-            case "down" -> nextWorldY = user.getBottomY() + gp.player.speed;
-            case "left" -> nextWorldX = user.getLeftX() - gp.player.speed;
-            case "right" -> nextWorldX = user.getRightX() + gp.player.speed;
+            case "up": nextWorldY = user.getTopY() - gp.player.speed; break;
+            case "down": nextWorldY = user.getBottomY() + gp.player.speed; break;
+            case "left": nextWorldX = user.getLeftX() - gp.player.speed; break;
+            case "right": nextWorldX = user.getRightX() + gp.player.speed; break;
         }
 
         int col = nextWorldX / gp.tileSize;

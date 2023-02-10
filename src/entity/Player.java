@@ -255,10 +255,10 @@ public class Player extends Entity {
                 speed = defaultSpeed;
             } else {
                 switch (knockBackDirection) {
-                    case "up" -> worldY -= speed;
-                    case "down" -> worldY += speed;
-                    case "left" -> worldX -= speed;
-                    case "right" -> worldX += speed;
+                    case "up": worldY -= speed; break;
+                    case "down": worldY += speed; break;
+                    case "left": worldX -= speed; break;
+                    case "right": worldX += speed; break;
                 }
             }
 
@@ -310,10 +310,10 @@ public class Player extends Entity {
             // IF COLLISION IS FALSE, PLAYER CAN MOVE
             if (!collisionOn && !keyH.enterPressed) {
                 switch (direction) {
-                    case "up" -> worldY -= speed;
-                    case "down" -> worldY += speed;
-                    case "left" -> worldX -= speed;
-                    case "right" -> worldX += speed;
+                    case "up": worldY -= speed; break;
+                    case "down": worldY += speed; break;
+                    case "left": worldX -= speed; break;
+                    case "right": worldX += speed; break;
                 }
             }
 
@@ -630,7 +630,7 @@ public class Player extends Entity {
         int tempScreenY = screenY;
 
         switch (direction) {
-            case "up" -> {
+            case "up":
                 if (!attacking) {
                     if (spriteNum == 1) { image = up1; }
                     if (spriteNum == 2) { image = up2; }
@@ -641,8 +641,8 @@ public class Player extends Entity {
                     if (spriteNum == 2) { image = attackUp2; }
                 }
                 if (guarding) { image = guardUp; }
-            }
-            case "down" -> {
+                break;
+            case "down":
                 if (!attacking) {
                     if (spriteNum == 1) { image = down1; }
                     if (spriteNum == 2) { image = down2; }
@@ -652,8 +652,8 @@ public class Player extends Entity {
                     if (spriteNum == 2) { image = attackDown2; }
                 }
                 if (guarding) { image = guardDown; }
-            }
-            case "left" -> {
+                break;
+            case "left":
                 if (!attacking) {
                     if (spriteNum == 1) { image = left1; }
                     if (spriteNum == 2) { image = left2; }
@@ -664,8 +664,8 @@ public class Player extends Entity {
                     if (spriteNum == 2) { image = attackLeft2; }
                 }
                 if (guarding) { image = guardLeft; }
-            }
-            case "right" -> {
+                break;
+            case "right":
                 if (!attacking) {
                     if (spriteNum == 1) { image = right1; }
                     if (spriteNum == 2) { image = right2; }
@@ -675,7 +675,7 @@ public class Player extends Entity {
                     if (spriteNum == 2) { image = attackRight2; }
                 }
                 if (guarding) { image = guardRight; }
-            }
+                break;
         }
 
         if (transparent) {
