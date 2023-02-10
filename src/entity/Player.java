@@ -498,7 +498,7 @@ public class Player extends Entity {
 
     public void damageInteractiveTile(int i) {
         if (i != 999 && gp.iTile[gp.currentMap][i].destructible // FIXED
-                && gp.iTile[gp.currentMap][i].isCorrectItem(this) && gp.iTile[gp.currentMap][i].invincible) { // FIXED
+                && gp.iTile[gp.currentMap][i].isCorrectItem(this) && !gp.iTile[gp.currentMap][i].invincible) { // FIXED
             gp.iTile[gp.currentMap][i].playSE(); // FIXED
             gp.iTile[gp.currentMap][i].life--; // FIXED
             gp.iTile[gp.currentMap][i].invincible = true; // FIXED
