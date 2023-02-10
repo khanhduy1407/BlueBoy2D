@@ -161,7 +161,7 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_M) {
             gp.gameState = gp.mapState;
         }
-        if (code == KeyEvent.VK_X) {
+        if (code == KeyEvent.VK_N) {
             gp.map.miniMapOn = !gp.map.miniMapOn;
         }
         if (code == KeyEvent.VK_SPACE) {
