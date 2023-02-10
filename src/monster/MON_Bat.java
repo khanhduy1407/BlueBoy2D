@@ -21,11 +21,11 @@ public class MON_Bat extends Entity {
         name = "Bat";
         defaultSpeed = 4;
         speed = defaultSpeed;
-        maxLife = 7;
+        maxLife = 2;
         life = maxLife;
-        attack = 7;
+        attack = 1;
         defense = 0;
-        exp = 7;
+        exp = 2;
 
         solidArea.x = 3;
         solidArea.y = 15;
