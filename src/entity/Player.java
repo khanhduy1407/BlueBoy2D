@@ -87,7 +87,7 @@ public class Player extends Entity {
         dexterity = 1; // The more dexterity he has, the less damage he receives.
         exp = 0;
         nextLevelExp = 5;
-        coin = 500;
+        coin = 1000;
         currentWeapon = new OBJ_Sword_Normal(gp);
 //        currentWeapon = new OBJ_Axe(gp); // test (comment projectile above)
         currentShield = new OBJ_Shield_Wood(gp);
@@ -139,10 +139,10 @@ public class Player extends Entity {
         inventory.clear();
         inventory.add(currentWeapon);
         inventory.add(currentShield);
-        inventory.add(new OBJ_Key(gp));
-        inventory.add(new OBJ_Axe(gp));
-        inventory.add(new OBJ_Lantern(gp));
-        inventory.add(new OBJ_Pickaxe(gp));
+//        inventory.add(new OBJ_Key(gp));
+//        inventory.add(new OBJ_Axe(gp));
+//        inventory.add(new OBJ_Lantern(gp));
+//        inventory.add(new OBJ_Pickaxe(gp));
     }
 
     public int getAttack() {
