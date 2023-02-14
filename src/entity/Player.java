@@ -41,36 +41,24 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        // You can type numbers like worldX = 1000
-        // Either way is fine
         // Main
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 21;
+        setDefaultPositions(0, 23, 21);
 
         // Ork
-//        worldX = gp.tileSize * 10;
-//        worldY = gp.tileSize * 33;
+//        setDefaultPositions(0, 10, 33);
 
         // Merchant
-//        gp.currentMap = 1;
-//        worldX = gp.tileSize * 12;
-//        worldY = gp.tileSize * 11;
+//        setDefaultPositions(1, 12, 11);
 
         // Dungeon Entrance
-//        worldX = gp.tileSize * 12;
-//        worldY = gp.tileSize * 11;
+//        setDefaultPositions(0, 12, 11);
 
         // Dungeon B1
-//        gp.currentMap = 2;
-//        worldX = gp.tileSize * 9;
-//        worldY = gp.tileSize * 40;
+//        setDefaultPositions(2, 9, 40);
 
         // Dungeon B2
-//        gp.currentMap = 3;
-//        worldX = gp.tileSize * 25;
-//        worldY = gp.tileSize * 29;
-//        worldX = gp.tileSize * 25;
-//        worldY = gp.tileSize * 11;
+//        setDefaultPositions(3, 25, 29);
+//        setDefaultPositions(3, 25, 11);
 
         defaultSpeed = 4;
         speed = defaultSpeed;
@@ -110,11 +98,12 @@ public class Player extends Entity {
      *
      * setDefaultPositions() and restoreLifeAndMana()
      */
-    public void setDefaultPositions() {
-
-        gp.currentMap = 0;
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 21;
+    public void setDefaultPositions(int map, int x, int y) {
+        gp.currentMap = map;
+        // You can type numbers like worldX = 1000
+        // Either way is fine
+        worldX = gp.tileSize * x;
+        worldY = gp.tileSize * y;
         direction = "down";
     }
 
