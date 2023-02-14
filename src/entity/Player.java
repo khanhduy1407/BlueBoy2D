@@ -41,24 +41,7 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        // Main
-        setDefaultPositions(0, 23, 21);
-
-        // Ork
-//        setDefaultPositions(0, 10, 33);
-
-        // Merchant
-//        setDefaultPositions(1, 12, 11);
-
-        // Dungeon Entrance
-//        setDefaultPositions(0, 12, 11);
-
-        // Dungeon B1
-//        setDefaultPositions(2, 9, 40);
-
-        // Dungeon B2
-//        setDefaultPositions(3, 25, 29);
-//        setDefaultPositions(3, 25, 11);
+        getDefaultPositions();
 
         defaultSpeed = 4;
         speed = defaultSpeed;
@@ -90,6 +73,27 @@ public class Player extends Entity {
         getGuardImage();
         setItems();
         setDialogue();
+    }
+
+    public void getDefaultPositions() {
+        // Main
+        setDefaultPositions(0, 23, 21);
+
+        // Ork
+//        setDefaultPositions(0, 10, 33);
+
+        // Merchant
+//        setDefaultPositions(1, 12, 11);
+
+        // Dungeon Entrance
+//        setDefaultPositions(0, 12, 11);
+
+        // Dungeon B1
+//        setDefaultPositions(2, 9, 40);
+
+        // Dungeon B2
+//        setDefaultPositions(3, 25, 29);
+//        setDefaultPositions(3, 25, 11);
     }
 
     public void setDefaultPositions(int map, int x, int y) {
