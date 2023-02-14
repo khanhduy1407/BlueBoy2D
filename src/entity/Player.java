@@ -202,42 +202,18 @@ public class Player extends Entity {
 
     public void getAttackImage() {
         if (currentWeapon.type == type_sword) {
-            attackUp1 = setup("/player/boy_attack_up_1", gp.tileSize, gp.tileSize * 2);
-            attackUp2 = setup("/player/boy_attack_up_2", gp.tileSize, gp.tileSize * 2);
-            attackDown1 = setup("/player/boy_attack_down_1", gp.tileSize, gp.tileSize * 2);
-            attackDown2 = setup("/player/boy_attack_down_2", gp.tileSize, gp.tileSize * 2);
-            attackLeft1 = setup("/player/boy_attack_left_1", gp.tileSize * 2, gp.tileSize);
-            attackLeft2 = setup("/player/boy_attack_left_2", gp.tileSize * 2, gp.tileSize);
-            attackRight1 = setup("/player/boy_attack_right_1", gp.tileSize * 2, gp.tileSize);
-            attackRight2 = setup("/player/boy_attack_right_2", gp.tileSize * 2, gp.tileSize);
+            getPlayerAttackImage("attack");
         }
         if (currentWeapon.type == type_axe) {
-            attackUp1 = setup("/player/boy_axe_up_1", gp.tileSize, gp.tileSize * 2);
-            attackUp2 = setup("/player/boy_axe_up_2", gp.tileSize, gp.tileSize * 2);
-            attackDown1 = setup("/player/boy_axe_down_1", gp.tileSize, gp.tileSize * 2);
-            attackDown2 = setup("/player/boy_axe_down_2", gp.tileSize, gp.tileSize * 2);
-            attackLeft1 = setup("/player/boy_axe_left_1", gp.tileSize * 2, gp.tileSize);
-            attackLeft2 = setup("/player/boy_axe_left_2", gp.tileSize * 2, gp.tileSize);
-            attackRight1 = setup("/player/boy_axe_right_1", gp.tileSize * 2, gp.tileSize);
-            attackRight2 = setup("/player/boy_axe_right_2", gp.tileSize * 2, gp.tileSize);
+            getPlayerAttackImage("axe");
         }
         if (currentWeapon.type == type_pickaxe) {
-            attackUp1 = setup("/player/boy_pick_up_1", gp.tileSize, gp.tileSize * 2);
-            attackUp2 = setup("/player/boy_pick_up_2", gp.tileSize, gp.tileSize * 2);
-            attackDown1 = setup("/player/boy_pick_down_1", gp.tileSize, gp.tileSize * 2);
-            attackDown2 = setup("/player/boy_pick_down_2", gp.tileSize, gp.tileSize * 2);
-            attackLeft1 = setup("/player/boy_pick_left_1", gp.tileSize * 2, gp.tileSize);
-            attackLeft2 = setup("/player/boy_pick_left_2", gp.tileSize * 2, gp.tileSize);
-            attackRight1 = setup("/player/boy_pick_right_1", gp.tileSize * 2, gp.tileSize);
-            attackRight2 = setup("/player/boy_pick_right_2", gp.tileSize * 2, gp.tileSize);
+            getPlayerAttackImage("pick");
         }
     }
 
     public void getGuardImage() {
-        guardUp = setup("/player/boy_guard_up", gp.tileSize, gp.tileSize);
-        guardDown = setup("/player/boy_guard_down", gp.tileSize, gp.tileSize);
-        guardLeft = setup("/player/boy_guard_left", gp.tileSize, gp.tileSize);
-        guardRight = setup("/player/boy_guard_right", gp.tileSize, gp.tileSize);
+        getPlayerGuardImage("guard");
     }
 
     public void update() {
