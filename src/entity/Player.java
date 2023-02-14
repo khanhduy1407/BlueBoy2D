@@ -376,6 +376,14 @@ public class Player extends Entity {
                 gp.stopMusic();
                 gp.playSE(12);
             }
+        } else {
+            if (life < maxLife) {
+                life = maxLife;
+            }
+
+            if (mana < maxMana) {
+                mana = maxMana;
+            }
         }
     }
 
