@@ -92,12 +92,6 @@ public class Player extends Entity {
         setDialogue();
     }
 
-    /*
-     * This is just example and what to keep and what to reset really depend on
-     * how your game works so please modify them however you like!
-     *
-     * setDefaultPositions() and restoreLifeAndMana()
-     */
     public void setDefaultPositions(int map, int x, int y) {
         gp.currentMap = map;
         // You can type numbers like worldX = 1000
