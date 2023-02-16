@@ -190,7 +190,7 @@ public class Player extends Entity {
 
     public void getAttackImage() {
         if (currentWeapon.type == type_sword) {
-            if (currentWeapon.sword_type.equals("Normal")) {
+            if (currentWeapon.sword_type.equals("default")) {
                 getPlayerAttackImage("attack");
             }
             if (currentWeapon.sword_type.equals("Blood")) {
@@ -206,7 +206,7 @@ public class Player extends Entity {
     }
 
     public void getGuardImage() {
-        if (currentShield.shield_type.equals("Wood")) {
+        if (currentShield.shield_type.equals("default")) {
             getPlayerGuardImage("guard");
         }
         if (currentShield.shield_type.equals("Blue")) {
