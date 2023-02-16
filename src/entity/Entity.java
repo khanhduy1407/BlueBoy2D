@@ -108,6 +108,7 @@ public class Entity {
     public int lightRadius;
 //    public int durability = 100;
     public String sword_type;
+    public String shield_type;
 
     // TYPE
     public int type;

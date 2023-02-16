@@ -130,6 +130,7 @@ public class Player extends Entity {
 //        inventory.add(new OBJ_Axe(gp));
 //        inventory.add(new OBJ_Lantern(gp));
 //        inventory.add(new OBJ_Pickaxe(gp));
+//        inventory.add(new OBJ_Pickaxe(gp));
     }
 
     public int getAttack() {
@@ -205,7 +206,12 @@ public class Player extends Entity {
     }
 
     public void getGuardImage() {
-        getPlayerGuardImage("guard");
+        if (currentShield.shield_type.equals("Wood")) {
+            getPlayerGuardImage("guard");
+        }
+        if (currentShield.shield_type.equals("Blue")) {
+            getPlayerGuardImage("shield_blue");
+        }
     }
 
     public void update() {
