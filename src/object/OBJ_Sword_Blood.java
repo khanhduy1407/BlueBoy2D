@@ -17,7 +17,7 @@ public class OBJ_Sword_Blood extends Entity {
         attackValue = 2;
         attackArea.width = 36;
         attackArea.height = 36;
-        description = "[" + name + "]\nAn blood sword.";
+        description = "[" + name + "]\nA blood sword.";
         price = 50;
         knockBackPower = 2;
         motion1_duration = 5;
