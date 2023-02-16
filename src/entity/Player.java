@@ -189,7 +189,12 @@ public class Player extends Entity {
 
     public void getAttackImage() {
         if (currentWeapon.type == type_sword) {
-            getPlayerAttackImage("attack");
+            if (currentWeapon.sword_type.equals("Normal")) {
+                getPlayerAttackImage("attack");
+            }
+            if (currentWeapon.sword_type.equals("Blood")) {
+                getPlayerAttackImage("sword_blood");
+            }
         }
         if (currentWeapon.type == type_axe) {
             getPlayerAttackImage("axe");

@@ -107,6 +107,7 @@ public class Entity {
     public int amount = 1;
     public int lightRadius;
 //    public int durability = 100;
+    public String sword_type;
 
     // TYPE
     public int type;

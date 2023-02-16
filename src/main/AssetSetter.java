@@ -46,6 +46,10 @@ public class AssetSetter {
         gp.obj[mapNum][i].setLoot(new OBJ_Key(gp));
         gp.obj[mapNum][i].worldX = gp.tileSize*30;
         gp.obj[mapNum][i].worldY = gp.tileSize*29;
+        i++;
+        gp.obj[mapNum][i] = new OBJ_Sword_Blood(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize*15;
+        gp.obj[mapNum][i].worldY = gp.tileSize*20;
 
         mapNum = 2;
         i = 0;
