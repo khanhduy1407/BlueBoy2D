@@ -167,14 +167,14 @@ public class Player extends Entity {
     }
 
     public void getImage() {
-        up1 = setup("/player/boy_up_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/player/boy_up_2", gp.tileSize, gp.tileSize);
-        down1 = setup("/player/boy_down_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/player/boy_down_2", gp.tileSize, gp.tileSize);
-        left1 = setup("/player/boy_left_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/player/boy_left_2", gp.tileSize, gp.tileSize);
-        right1 = setup("/player/boy_right_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/player/boy_right_2", gp.tileSize, gp.tileSize);
+        up1 = setup("/player/boy/up_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/player/boy/up_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/player/boy/down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/player/boy/down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/player/boy/left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/player/boy/left_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/player/boy/right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/player/boy/right_2", gp.tileSize, gp.tileSize);
     }
 
     public void getSleepingImage(BufferedImage image) {
@@ -190,27 +190,27 @@ public class Player extends Entity {
 
     public void getAttackImage() {
         if (currentWeapon.type == type_sword) {
-            if (currentWeapon.sword_type.equals("default")) {
-                getPlayerAttackImage("attack");
+            if (currentWeapon.style_sword.equals("default")) {
+                getPlayerAttackImage("boy/attack");
             }
-            if (currentWeapon.sword_type.equals("Blood")) {
-                getPlayerAttackImage("sword_blood");
+            if (currentWeapon.style_sword.equals("Blood")) {
+                getPlayerAttackImage("boy/sword_blood");
             }
         }
         if (currentWeapon.type == type_axe) {
-            getPlayerAttackImage("axe");
+            getPlayerAttackImage("boy/axe");
         }
         if (currentWeapon.type == type_pickaxe) {
-            getPlayerAttackImage("pick");
+            getPlayerAttackImage("boy/pick");
         }
     }
 
     public void getGuardImage() {
-        if (currentShield.shield_type.equals("default")) {
-            getPlayerGuardImage("guard");
+        if (currentShield.style_shield.equals("default")) {
+            getPlayerGuardImage("boy/guard");
         }
-        if (currentShield.shield_type.equals("Blue")) {
-            getPlayerGuardImage("shield_blue");
+        if (currentShield.style_shield.equals("Blue")) {
+            getPlayerGuardImage("boy/shield_blue");
         }
     }
 

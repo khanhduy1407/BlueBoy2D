@@ -38,7 +38,7 @@ public class Main {
 
     public void setIcon() {
         ImageIcon icon = new ImageIcon(Objects
-                .requireNonNull(getClass().getClassLoader().getResource("player/boy_down_1.png")));
+                .requireNonNull(getClass().getClassLoader().getResource("player/boy/down_1.png")));
         window.setIconImage(icon.getImage());
     }
 }
