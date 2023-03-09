@@ -11,7 +11,7 @@ public class OBJ_Sword_Blood extends Entity {
         super(gp);
 
         type = type_sword;
-        style_sword = "Blood";
+        style_player = "boy/sword_blood";
         name = objName;
         down1 = setup("/objects/sword_blood", gp.tileSize, gp.tileSize);
         attackValue = 2;

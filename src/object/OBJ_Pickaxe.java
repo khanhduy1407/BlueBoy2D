@@ -11,6 +11,7 @@ public class OBJ_Pickaxe extends Entity {
         super(gp);
 
         type = type_pickaxe;
+        style_player = "boy/pick";
         name = objName;
         down1 = setup("/objects/pickaxe", gp.tileSize, gp.tileSize);
         attackValue = 2;

@@ -107,8 +107,7 @@ public class Entity {
     public int amount = 1;
     public int lightRadius;
 //    public int durability = 100;
-    public String style_sword = "default";
-    public String style_shield = "default";
+    public String style_player = "";
 
     // TYPE
     public int type;

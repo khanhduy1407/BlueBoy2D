@@ -189,29 +189,11 @@ public class Player extends Entity {
     }
 
     public void getAttackImage() {
-        if (currentWeapon.type == type_sword) {
-            if (currentWeapon.style_sword.equals("default")) {
-                getPlayerAttackImage("boy/attack");
-            }
-            if (currentWeapon.style_sword.equals("Blood")) {
-                getPlayerAttackImage("boy/sword_blood");
-            }
-        }
-        if (currentWeapon.type == type_axe) {
-            getPlayerAttackImage("boy/axe");
-        }
-        if (currentWeapon.type == type_pickaxe) {
-            getPlayerAttackImage("boy/pick");
-        }
+        getPlayerAttackImage(currentWeapon.style_player);
     }
 
     public void getGuardImage() {
-        if (currentShield.style_shield.equals("default")) {
-            getPlayerGuardImage("boy/guard");
-        }
-        if (currentShield.style_shield.equals("Blue")) {
-            getPlayerGuardImage("boy/shield_blue");
-        }
+        getPlayerGuardImage(currentShield.style_player);
     }
 
     public void update() {
