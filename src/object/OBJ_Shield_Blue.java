@@ -11,7 +11,7 @@ public class OBJ_Shield_Blue extends Entity {
         super(gp);
 
         type = type_shield;
-        style_player = "boy/shield_blue";
+        style_player = "/shield_blue";
         name = objName;
         down1 = setup("/objects/shield_blue", gp.tileSize, gp.tileSize);
         defenseValue = 2;

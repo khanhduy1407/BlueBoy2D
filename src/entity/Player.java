@@ -68,7 +68,7 @@ public class Player extends Entity {
         attack = getAttack(); // The total attack value is decided by strength and weapon
         defense = getDefense(); // The total defense value is decided by dexterity and shield
 
-        getImage();
+        getPlayerImage();
         getPlayerAttackImage(currentWeapon.style_player);
         getPlayerGuardImage(currentShield.style_player);
         setItems();
@@ -166,15 +166,15 @@ public class Player extends Entity {
         return currentShieldSlot;
     }
 
-    public void getImage() {
-        up1 = setup("/player/boy/up_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/player/boy/up_2", gp.tileSize, gp.tileSize);
-        down1 = setup("/player/boy/down_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/player/boy/down_2", gp.tileSize, gp.tileSize);
-        left1 = setup("/player/boy/left_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/player/boy/left_2", gp.tileSize, gp.tileSize);
-        right1 = setup("/player/boy/right_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/player/boy/right_2", gp.tileSize, gp.tileSize);
+    public void getPlayerImage() {
+        up1 = setup("/player/" + classPlayer + "/up_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/player/" + classPlayer + "/up_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/player/" + classPlayer + "/down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/player/" + classPlayer + "/down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/player/" + classPlayer + "/left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/player/" + classPlayer + "/left_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/player/" + classPlayer + "/right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/player/" + classPlayer + "/right_2", gp.tileSize, gp.tileSize);
     }
 
     public void getSleepingImage(BufferedImage image) {

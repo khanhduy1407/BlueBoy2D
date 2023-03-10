@@ -315,7 +315,7 @@ public class UI {
             int y = gp.tileSize * 3;
             g2.drawString(text, x, y);
 
-            text = "Fighter";
+            text = "Boy";
             x = getXForCenteredText(text);
             y += gp.tileSize * 3;
             g2.drawString(text, x, y);
@@ -323,7 +323,7 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
-            text = "Thief";
+            text = "Soon!!!";
             x = getXForCenteredText(text);
             y += gp.tileSize;
             g2.drawString(text, x, y);
@@ -331,7 +331,7 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
-            text = "Sorcerer";
+            text = "Soon!!!";
             x = getXForCenteredText(text);
             y += gp.tileSize;
             g2.drawString(text, x, y);
@@ -717,7 +717,7 @@ public class UI {
                 gp.eManager.lighting.dayState = gp.eManager.lighting.day;
                 gp.eManager.lighting.dayCounter = 0;
                 gp.gameState = gp.playState;
-                gp.player.getImage();
+                gp.player.getPlayerImage();
             }
         }
     }

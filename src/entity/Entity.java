@@ -69,6 +69,7 @@ public class Entity {
     int offBalanceCounter = 0;
 
     // CHARACTER ATTRIBUTES
+    public String classPlayer = "boy";
     public String name;
     public int defaultSpeed;
     public int speed;
@@ -363,21 +364,21 @@ public class Entity {
     }
 
     public void getPlayerAttackImage(String className) {
-        attackUp1 = setup("/player/" + className + "/up_1", gp.tileSize, gp.tileSize * 2);
-        attackUp2 = setup("/player/" + className + "/up_2", gp.tileSize, gp.tileSize * 2);
-        attackDown1 = setup("/player/" + className + "/down_1", gp.tileSize, gp.tileSize * 2);
-        attackDown2 = setup("/player/" + className + "/down_2", gp.tileSize, gp.tileSize * 2);
-        attackLeft1 = setup("/player/" + className + "/left_1", gp.tileSize * 2, gp.tileSize);
-        attackLeft2 = setup("/player/" + className + "/left_2", gp.tileSize * 2, gp.tileSize);
-        attackRight1 = setup("/player/" + className + "/right_1", gp.tileSize * 2, gp.tileSize);
-        attackRight2 = setup("/player/" + className + "/right_2", gp.tileSize * 2, gp.tileSize);
+        attackUp1 = setup("/player/" + classPlayer + className + "/up_1", gp.tileSize, gp.tileSize * 2);
+        attackUp2 = setup("/player/" + classPlayer + className + "/up_2", gp.tileSize, gp.tileSize * 2);
+        attackDown1 = setup("/player/" + classPlayer + className + "/down_1", gp.tileSize, gp.tileSize * 2);
+        attackDown2 = setup("/player/" + classPlayer + className + "/down_2", gp.tileSize, gp.tileSize * 2);
+        attackLeft1 = setup("/player/" + classPlayer + className + "/left_1", gp.tileSize * 2, gp.tileSize);
+        attackLeft2 = setup("/player/" + classPlayer + className + "/left_2", gp.tileSize * 2, gp.tileSize);
+        attackRight1 = setup("/player/" + classPlayer + className + "/right_1", gp.tileSize * 2, gp.tileSize);
+        attackRight2 = setup("/player/" + classPlayer + className + "/right_2", gp.tileSize * 2, gp.tileSize);
     }
 
     public void getPlayerGuardImage(String className) {
-        guardUp = setup("/player/" + className + "/up", gp.tileSize, gp.tileSize);
-        guardDown = setup("/player/" + className + "/down", gp.tileSize, gp.tileSize);
-        guardLeft = setup("/player/" + className + "/left", gp.tileSize, gp.tileSize);
-        guardRight = setup("/player/" + className + "/right", gp.tileSize, gp.tileSize);
+        guardUp = setup("/player/" + classPlayer + className + "/up", gp.tileSize, gp.tileSize);
+        guardDown = setup("/player/" + classPlayer + className + "/down", gp.tileSize, gp.tileSize);
+        guardLeft = setup("/player/" + classPlayer + className + "/left", gp.tileSize, gp.tileSize);
+        guardRight = setup("/player/" + classPlayer + className + "/right", gp.tileSize, gp.tileSize);
     }
 
     public void checkAttackOrNot(int rate, int straight, int horizontal) {

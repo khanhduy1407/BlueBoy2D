@@ -11,7 +11,7 @@ public class OBJ_Shield_Wood extends Entity {
         super(gp);
 
         type = type_shield;
-        style_player = "boy/guard";
+        style_player = "/guard";
         name = objName;
         down1 = setup("/objects/shield_wood", gp.tileSize, gp.tileSize);
         defenseValue = 1;

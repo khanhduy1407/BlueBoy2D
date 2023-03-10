@@ -78,7 +78,7 @@ public class KeyHandler implements KeyListener {
             }
             if (code == KeyEvent.VK_ENTER) {
                 if (gp.ui.commandNum == 0) {
-                    // gp.ui.titleScreenState = 1;
+//                    gp.ui.titleScreenState = 1;
                     gp.gameState = gp.playState;
                     gp.playMusic(0);
                 }
@@ -91,8 +91,7 @@ public class KeyHandler implements KeyListener {
                     System.exit(0);
                 }
             }
-        }
-        else if (gp.ui.titleScreenState == 1) {
+        } else if (gp.ui.titleScreenState == 1) {
             if (code == KeyEvent.VK_W) {
                 if (gp.ui.commandNum > 0) {
                     gp.ui.commandNum--;
@@ -105,19 +104,14 @@ public class KeyHandler implements KeyListener {
             }
             if (code == KeyEvent.VK_ENTER) {
                 if (gp.ui.commandNum == 0) {
-                    System.out.println("Do some fighter specific stuff!");
+                    gp.player.classPlayer = "boy";
                     gp.gameState = gp.playState;
                     gp.playMusic(0);
                 }
-                if (gp.ui.commandNum == 1) {
-                    System.out.println("Do some thief specific stuff!");
-                    gp.gameState = gp.playState;
-                    gp.playMusic(0);
-                }
-                if (gp.ui.commandNum == 2) {
-                    System.out.println("Do some sorcerer specific stuff!");
-                    gp.gameState = gp.playState;
-                    gp.playMusic(0);
+                if (gp.ui.commandNum == 1 || gp.ui.commandNum == 2) {
+                    System.out.println("Soon!!!");
+//                    gp.gameState = gp.playState;
+//                    gp.playMusic(0);
                 }
                 if (gp.ui.commandNum == 3) {
                     gp.ui.titleScreenState = 0;
