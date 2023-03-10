@@ -101,7 +101,8 @@ public class SaveLoad {
             gp.player.currentShield = gp.player.inventory.get(ds.currentShieldSlot);
             gp.player.getAttack();
             gp.player.getDefense();
-            gp.player.getAttackImage();
+            gp.player.getPlayerAttackImage(gp.player.currentWeapon.style_player);
+            gp.player.getPlayerGuardImage(gp.player.currentShield.style_player);
 
             // OBJECTS ON MAP
             for (int mapNum = 0; mapNum < gp.maxMap; mapNum++) {

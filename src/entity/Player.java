@@ -69,8 +69,8 @@ public class Player extends Entity {
         defense = getDefense(); // The total defense value is decided by dexterity and shield
 
         getImage();
-        getAttackImage();
-        getGuardImage();
+        getPlayerAttackImage(currentWeapon.style_player);
+        getPlayerGuardImage(currentShield.style_player);
         setItems();
         setDialogue();
     }
@@ -186,14 +186,6 @@ public class Player extends Entity {
         left2 = image;
         right1 = image;
         right2 = image;
-    }
-
-    public void getAttackImage() {
-        getPlayerAttackImage(currentWeapon.style_player);
-    }
-
-    public void getGuardImage() {
-        getPlayerGuardImage(currentShield.style_player);
     }
 
     public void update() {
@@ -512,11 +504,12 @@ public class Player extends Entity {
             if (selectedItem.type == type_sword || selectedItem.type == type_axe || selectedItem.type == type_pickaxe) {
                 currentWeapon = selectedItem;
                 attack = getAttack();
-                getAttackImage();
+                getPlayerAttackImage(currentWeapon.style_player);
             }
             if (selectedItem.type == type_shield) {
                 currentShield = selectedItem;
                 defense = getDefense();
+                getPlayerGuardImage(currentShield.style_player);
             }
             if (selectedItem.type == type_light) {
                 if (currentLight == selectedItem) {
