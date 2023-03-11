@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // Frames-Per-Second (FPS)
     int FPS = 60;
+    long numFPS;
 
     // SYSTEM
     public TileManager tileM = new TileManager(this);
@@ -203,7 +204,7 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             if (timer >= 1000000000) {
-//                System.out.println("FPS: " + drawCount);
+                numFPS = drawCount;
                 drawCount = 0;
                 timer = 0;
             }
@@ -367,6 +368,8 @@ public class GamePanel extends JPanel implements Runnable {
             int y = 400;
             int lineHeight = 20;
 
+            g2.drawString("FPS: " + numFPS, x, y); y += lineHeight;
+            g2.drawString("Version: " + Main.gameInfo.version, x, y); y += lineHeight;
             g2.drawString("Class: " + player.classPlayer, x, y); y += lineHeight;
             g2.drawString("WorldX: " + player.worldX, x, y); y += lineHeight;
             g2.drawString("WorldY: " + player.worldY, x, y); y += lineHeight;

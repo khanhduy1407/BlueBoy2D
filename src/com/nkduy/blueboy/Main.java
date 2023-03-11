@@ -8,13 +8,18 @@ import java.util.Objects;
 public class Main {
 
     public static JFrame window;
+    public static GameInfo gameInfo;
 
     public static void main(String[] args) {
         window = new JFrame();
+        gameInfo = new GameInfo();
+
         // This lets the window properly close when user clicks the close ("x") button.
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Blue Boy Adventure");
+
+        gameInfo.setShowVersion(true);
+        gameInfo.setWindowWithTitle();
         new Main().setIcon();
 
         GamePanel gamePanel = new GamePanel();

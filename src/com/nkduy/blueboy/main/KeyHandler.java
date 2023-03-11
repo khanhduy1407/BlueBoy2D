@@ -1,5 +1,7 @@
 package com.nkduy.blueboy.main;
 
+import com.nkduy.blueboy.Main;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -81,6 +83,7 @@ public class KeyHandler implements KeyListener {
 //                    gp.ui.titleScreenState = 1;
                     gp.gameState = gp.playState;
                     gp.playMusic(0);
+                    Main.gameInfo.setWindowWithSubtitle("Play");
                 }
                 if (gp.ui.commandNum == 1) {
                     gp.saveLoad.load();
@@ -139,6 +142,7 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_P) {
             gp.gameState = gp.pauseState;
+            Main.gameInfo.setWindowWithSubtitle("Pause");
         }
         if (code == KeyEvent.VK_C) {
             gp.gameState = gp.characterState;
@@ -185,6 +189,7 @@ public class KeyHandler implements KeyListener {
     public void pauseState(int code) {
         if (code == KeyEvent.VK_P) {
             gp.gameState = gp.playState;
+            Main.gameInfo.setWindowWithSubtitle("Play");
         }
     }
 
