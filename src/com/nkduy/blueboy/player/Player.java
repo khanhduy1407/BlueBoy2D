@@ -80,7 +80,8 @@ public class Player extends Entity {
 
     public void getDefaultPositions() {
         // Main
-        setDefaultPositions(0, 23, 21);
+//        setDefaultPositions(0, 23, 21);
+        setDefaultPositions(0, 25, 25);
 
         // Ork
 //        setDefaultPositions(0, 10, 33);
