@@ -1,5 +1,6 @@
-package com.nkduy.blueboy.entity;
+package com.nkduy.blueboy.npc;
 
+import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
 import com.nkduy.blueboy.object.*;
 
@@ -7,8 +8,11 @@ import java.util.Random;
 
 public class NPC_Merchant extends Entity {
 
+    GamePanel gp;
+
     public NPC_Merchant(GamePanel gp) {
         super(gp);
+        this.gp = gp;
 
         type = type_npc;
         direction = "down";

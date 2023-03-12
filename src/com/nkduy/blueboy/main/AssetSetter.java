@@ -1,9 +1,9 @@
 package com.nkduy.blueboy.main;
 
 import com.nkduy.blueboy.data.Progress;
-import com.nkduy.blueboy.entity.NPC_BigRock;
-import com.nkduy.blueboy.entity.NPC_Merchant;
-import com.nkduy.blueboy.entity.NPC_OldMan;
+import com.nkduy.blueboy.npc.NPC_BigRock;
+import com.nkduy.blueboy.npc.NPC_Merchant;
+import com.nkduy.blueboy.npc.NPC_OldMan;
 import com.nkduy.blueboy.monster.*;
 import com.nkduy.blueboy.object.*;
 import com.nkduy.blueboy.tile_interactive.IT_DestructibleWall;

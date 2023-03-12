@@ -64,7 +64,7 @@ public class Entity {
     public int shotAvailableCounter = 0;
     int dyingCounter = 0;
     public int hpBarCounter = 0;
-    int knockBackCounter = 0;
+    public int knockBackCounter = 0;
     public int guardCounter = 0;
     int offBalanceCounter = 0;
 

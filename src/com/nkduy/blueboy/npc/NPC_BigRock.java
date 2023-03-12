@@ -1,5 +1,6 @@
-package com.nkduy.blueboy.entity;
+package com.nkduy.blueboy.npc;
 
+import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
 import com.nkduy.blueboy.object.OBJ_Door_Iron;
 import com.nkduy.blueboy.tile_interactive.IT_MetalPlate;
@@ -9,10 +10,12 @@ import java.util.ArrayList;
 
 public class NPC_BigRock extends Entity {
 
+    GamePanel gp;
     public static final String npcName = "Big Rock";
 
     public NPC_BigRock(GamePanel gp) {
         super(gp);
+        this.gp = gp;
 
         type = type_npc;
         name= npcName;

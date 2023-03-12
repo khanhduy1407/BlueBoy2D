@@ -4,7 +4,7 @@ import com.nkduy.blueboy.Main;
 import com.nkduy.blueboy.ai.PathFinder;
 import com.nkduy.blueboy.data.SaveLoad;
 import com.nkduy.blueboy.entity.Entity;
-import com.nkduy.blueboy.entity.Player;
+import com.nkduy.blueboy.player.Player;
 import com.nkduy.blueboy.environment.EnvironmentManager;
 import com.nkduy.blueboy.tile.Map;
 import com.nkduy.blueboy.tile.TileManager;

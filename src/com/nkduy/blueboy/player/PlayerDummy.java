@@ -1,13 +1,16 @@
-package com.nkduy.blueboy.entity;
+package com.nkduy.blueboy.player;
 
+import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
 
 public class PlayerDummy extends Entity {
 
+    GamePanel gp;
     public static final String npcName = "Dummy";
 
     public PlayerDummy(GamePanel gp) {
         super(gp);
+        this.gp = gp;
 
         name = npcName;
 

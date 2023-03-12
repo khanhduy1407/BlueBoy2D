@@ -1,5 +1,6 @@
-package com.nkduy.blueboy.entity;
+package com.nkduy.blueboy.player;
 
+import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
 import com.nkduy.blueboy.main.KeyHandler;
 import com.nkduy.blueboy.object.*;
@@ -9,6 +10,7 @@ import java.awt.image.BufferedImage;
 
 public class Player extends Entity {
 
+    GamePanel gp;
     KeyHandler keyH;
 
     public final int screenX;
@@ -22,6 +24,7 @@ public class Player extends Entity {
     public Player(GamePanel gp, KeyHandler keyH) {
         super(gp);
 
+        this.gp = gp;
         this.keyH = keyH;
 
         type = type_player;

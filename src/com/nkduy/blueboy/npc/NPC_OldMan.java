@@ -1,13 +1,17 @@
-package com.nkduy.blueboy.entity;
+package com.nkduy.blueboy.npc;
 
+import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
 
 import java.util.Random;
 
 public class NPC_OldMan extends Entity {
 
+    GamePanel gp;
+
     public NPC_OldMan(GamePanel gp) {
         super(gp);
+        this.gp = gp;
 
         type = type_npc;
         direction = "down";

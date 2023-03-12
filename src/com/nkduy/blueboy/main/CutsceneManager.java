@@ -1,6 +1,6 @@
 package com.nkduy.blueboy.main;
 
-import com.nkduy.blueboy.entity.PlayerDummy;
+import com.nkduy.blueboy.player.PlayerDummy;
 import com.nkduy.blueboy.monster.MON_SkeletonLord;
 import com.nkduy.blueboy.object.OBJ_BlueHeart;
 import com.nkduy.blueboy.object.OBJ_Door_Iron;
