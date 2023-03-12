@@ -1,5 +1,7 @@
 # Blue Boy Adventure
 
+[Download Game](https://github.com/khanhduy1407/BlueBoy2D/releases/latest)
+
 ## Game control
 
 |       Name       |  Key  |
