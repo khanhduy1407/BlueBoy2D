@@ -775,13 +775,13 @@ public class UI {
         if (commandNum == 4) {
             g2.drawString(">", textX - 25, textY);
             if (gp.keyH.enterPressed) {
-                Browser.openPage("https://github.com/khanhduy1407/My2DGame");
+                Browser.openPage("https://github.com/khanhduy1407/BlueBoy2D");
             }
         }
 
-        // END GAME
+        // SAVE AND END GAME
         textY += gp.tileSize;
-        g2.drawString("End Game", textX, textY);
+        g2.drawString("Save & End Game", textX, textY);
         if (commandNum == 5) {
             g2.drawString(">", textX - 25, textY);
             if (gp.keyH.enterPressed) {
@@ -912,6 +912,7 @@ public class UI {
             if (gp.keyH.enterPressed) {
                 subState = 0;
                 gp.gameState = gp.titleState;
+                gp.saveLoad.save();
                 gp.stopMusic();
                 gp.resetGame(true);
             }
