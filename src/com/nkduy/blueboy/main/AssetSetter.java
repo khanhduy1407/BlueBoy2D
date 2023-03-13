@@ -93,14 +93,14 @@ public class AssetSetter {
     }
 
     public void setNPC() {
-        int mapNum = 0;
-        int i = 0;
-
-        // MAP 0
-        gp.npc[mapNum][i] = new NPC_OldMan(gp);
-        gp.npc[mapNum][i].worldX = gp.tileSize*23;
-        gp.npc[mapNum][i].worldY = gp.tileSize*23;
-
+//        int mapNum = 0;
+//        int i = 0;
+//
+//        // MAP 0
+//        gp.npc[mapNum][i] = new NPC_OldMan(gp);
+//        gp.npc[mapNum][i].worldX = gp.tileSize*23;
+//        gp.npc[mapNum][i].worldY = gp.tileSize*23;
+//
 //        // MAP 1
 //        mapNum = 1;
 //        gp.npc[mapNum][i] = new NPC_Merchant(gp);
@@ -250,5 +250,14 @@ public class AssetSetter {
 //        gp.iTile[mapNum][i] = new IT_MetalPlate(gp, 20, 22); i++;
 //        gp.iTile[mapNum][i] = new IT_MetalPlate(gp, 8, 17); i++;
 //        gp.iTile[mapNum][i] = new IT_MetalPlate(gp, 39, 31);
+    }
+
+    public void setMarker() {
+        int mapNum = 0;
+        int i = 0;
+
+        gp.obj[mapNum][i] = new OBJ_Marker(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize*25;
+        gp.obj[mapNum][i].worldY = gp.tileSize*6;
     }
 }
