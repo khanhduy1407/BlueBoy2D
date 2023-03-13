@@ -22,18 +22,18 @@ public class Config {
 
             // Full screen
             if (gp.fullScreenOn) {
-                bw.write("On");
+                bw.write("Fullscreen: on");
             } else {
-                bw.write("Off");
+                bw.write("Fullscreen: off");
             }
             bw.newLine();
 
             // Music volume
-            bw.write(String.valueOf(gp.music.volumeScale));
+            bw.write("Music: " + gp.music.volumeScale);
             bw.newLine();
 
             // SE volume
-            bw.write(String.valueOf(gp.se.volumeScale));
+            bw.write("SE: " + gp.se.volumeScale);
             bw.newLine();
 
             bw.close();
@@ -53,20 +53,20 @@ public class Config {
 
             // Full screen
             s = br.readLine();
-            if (s.equals("On")) {
+            if (s.equals("Fullscreen: on")) {
                 gp.fullScreenOn = true;
             }
-            if (s.equals("Off")) {
+            if (s.equals("Fullscreen: off")) {
                 gp.fullScreenOn = false;
             }
 
             // Music volume
             s = br.readLine();
-            gp.music.volumeScale = Integer.parseInt(s);
+            gp.music.volumeScale = Integer.parseInt(s.split("Music: ")[1]);
 
             // SE volume
             s = br.readLine();
-            gp.se.volumeScale = Integer.parseInt(s);
+            gp.se.volumeScale = Integer.parseInt(s.split("SE: ")[1]);
 
             br.close();
         } catch (IOException e) {

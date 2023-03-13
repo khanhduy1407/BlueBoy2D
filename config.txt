@@ -1,4 +1,4 @@
 Username: NKDuy
-Off
-0
-2
+Fullscreen: off
+Music: 0
+SE: 2
