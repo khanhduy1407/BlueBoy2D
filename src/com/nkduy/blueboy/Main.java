@@ -3,14 +3,42 @@ package com.nkduy.blueboy;
 import com.nkduy.blueboy.main.GamePanel;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.Objects;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
     public static JFrame window;
     public static GameInfo gameInfo;
+    public static String username = " ";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        Scanner sc = new Scanner(System.in);
+        GamePanel gamePanel = new GamePanel();
+
+        File f = new File("config.txt");
+        if (f.exists() && !f.isDirectory()) {
+            gamePanel.config.loadConfig();
+        } else {
+            gamePanel.config.saveConfig();
+            TimeUnit.SECONDS.sleep(2);
+            gamePanel.config.loadConfig();
+        }
+
+        if (username.equals(" ")) {
+            do {
+                System.out.print("Enter username (10 characters): ");
+                username = sc.nextLine();
+            } while (username.length() <= 0 || username.length() > 10);
+            gamePanel.config.saveConfig();
+            System.out.println("Welcome " + username + ", wish you happy gaming!!!");
+        } else {
+            System.out.println("Welcome back " + username + "!!!");
+        }
+        TimeUnit.SECONDS.sleep(2);
+
         window = new JFrame();
         gameInfo = new GameInfo();
 
@@ -22,10 +50,9 @@ public class Main {
         gameInfo.setWindowWithTitle();
         new Main().setIcon();
 
-        GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
 
-        gamePanel.config.loadConfig();
+//        gamePanel.config.loadConfig();
         if (gamePanel.fullScreenOn) {
             window.setUndecorated(true);
         }

@@ -1,5 +1,7 @@
 package com.nkduy.blueboy.main;
 
+import com.nkduy.blueboy.Main;
+
 import java.io.*;
 
 public class Config {
@@ -13,6 +15,10 @@ public class Config {
     public void saveConfig() {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("config.txt"));
+
+            // Username
+            bw.write("Username: " + Main.username);
+            bw.newLine();
 
             // Full screen
             if (gp.fullScreenOn) {
@@ -42,7 +48,11 @@ public class Config {
 
             String s = br.readLine();
 
+            // Username
+            Main.username = s.split("Username: ")[1];
+
             // Full screen
+            s = br.readLine();
             if (s.equals("On")) {
                 gp.fullScreenOn = true;
             }

@@ -368,6 +368,7 @@ public class GamePanel extends JPanel implements Runnable {
             int y = 380;
             int lineHeight = 20;
 
+            g2.drawString("Username: " + Main.username, x, y); y += lineHeight;
             g2.drawString("FPS: " + numFPS, x, y); y += lineHeight;
             g2.drawString("Version: " + Main.gameInfo.version, x, y); y += lineHeight;
             g2.drawString("Class: " + player.classPlayer, x, y); y += lineHeight;

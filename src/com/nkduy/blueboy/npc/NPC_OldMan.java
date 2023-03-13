@@ -1,5 +1,6 @@
 package com.nkduy.blueboy.npc;
 
+import com.nkduy.blueboy.Main;
 import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
 
@@ -42,7 +43,7 @@ public class NPC_OldMan extends Entity {
     }
 
     public void setDialogue() {
-        dialogues[0][0] = "Hello, lab.";
+        dialogues[0][0] = "Hello, " + Main.username + ".";
         dialogues[0][1] = "So you've come to this island to \nfind the treasure?";
         dialogues[0][2] = "I used to be a great wizard but now... \nI'm a bit too old for talking an adventure.";
         dialogues[0][3] = "Well, good luck on you.";
