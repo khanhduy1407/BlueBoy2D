@@ -45,7 +45,7 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
 
-        gameInfo.setShowVersion(true);
+//        gameInfo.setShowVersion(true);
         gameInfo.setWindowWithTitle();
         new Main().setIcon();
 

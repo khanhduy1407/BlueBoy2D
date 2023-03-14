@@ -1,5 +1,7 @@
 package com.nkduy.blueboy;
 
+import com.nkduy.blueboy.main.GamePanel;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +15,13 @@ public class GameLauncher extends JFrame implements ActionListener {
     JButton startButton;
     JPanel panel;
 
+    public static GameInfo gameInfo;
+    public static GamePanel gamePanel;
+
     public GameLauncher() {
+        gameInfo = new GameInfo();
+        gamePanel = new GamePanel();
+
         setTitle("Game Launcher");
         setSize(400, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -43,6 +51,12 @@ public class GameLauncher extends JFrame implements ActionListener {
         constraints.gridwidth = 2;
         constraints.anchor = GridBagConstraints.CENTER;
         panel.add(startButton, constraints);
+
+        title = new JLabel("v" + gameInfo.version);
+        title.setFont(new Font("Arial", Font.PLAIN, 13));
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        panel.add(title, constraints);
 
         add(panel);
         setVisible(true);
