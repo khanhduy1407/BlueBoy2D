@@ -23,13 +23,11 @@ public class Main {
         System.out.println("Blue Boy 2D v" + gameInfo.version + "\n");
 
         File f = new File("config.txt");
-        if (f.exists() && !f.isDirectory()) {
-            gamePanel.config.loadConfig();
-        } else {
+        if (!f.exists() && f.isDirectory()) {
             gamePanel.config.saveConfig();
-            TimeUnit.SECONDS.sleep(2);
-            gamePanel.config.loadConfig();
         }
+        TimeUnit.SECONDS.sleep(2);
+        gamePanel.config.loadConfig();
 
         if (username.equals(" ")) {
             do {
