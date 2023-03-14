@@ -12,6 +12,7 @@ public class EventHandler {
     int previousEventX, previousEventY;
     boolean canTouchEvent = true;
     int tempMap, tempCol, tempRow;
+    String dest = "";
 
     public EventHandler(GamePanel gp) {
         this.gp = gp;
@@ -66,7 +67,7 @@ public class EventHandler {
         }
 
         if (canTouchEvent) {
-            if (hit(0, 25, 6, "any")) { marker(1, 23, 21, gp.outside); }
+            if (hit(0, 25, 6, "any")) { marker( 1, "Adventure Map", 23, 21, gp.outside); }
             else if (hit(1, 27, 16, "right")) { damagePit(gp.dialogueState); }
             else if (hit(1, 23, 12, "up")) { healingPool(gp.dialogueState); }
             else if (hit(1, 10, 39, "any")) { teleport(2, 12, 13, gp.indoor); } // to merchant's house
@@ -135,8 +136,16 @@ public class EventHandler {
         gp.playSE(13);
     }
 
-    public void marker(int map, int col, int row, int area) {
-        teleport(map, col, row, area);
+    public void marker(int map, String dest, int col, int row, int area) {
+        gp.gameState = gp.dialogueState;
+        eventMaster.dialogues[2][0] = "Go to '" + dest + "'.";
+        eventMaster.startDialogue(eventMaster, 2);
+        canTouchEvent = false;
+
+        if (gp.keyH.enterPressed) {
+            gp.player.attackCancel = true;
+            teleport(map, col, row, area);
+        }
     }
 
     public void speak(Entity entity) {
