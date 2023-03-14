@@ -10,7 +10,7 @@ public class OBJ_Marker extends Entity {
     public OBJ_Marker(GamePanel gp) {
         super(gp);
 
-        type = type_obstacle;
+        type = type_marker;
         name = objName;
         down1 = setup("/objects/marker", gp.tileSize, gp.tileSize);
     }

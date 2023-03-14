@@ -123,6 +123,7 @@ public class Entity {
     public final int type_obstacle = 8;
     public final int type_light = 9;
     public final int type_pickaxe = 10;
+    public final int type_marker = 11;
 
     public Entity(GamePanel gp) {
         this.gp = gp;

@@ -80,7 +80,7 @@ public class Player extends Entity {
 
     public void getDefaultPositions() {
         // Main
-//        setDefaultPositions(0, 23, 21);
+//        setDefaultPositions(1, 23, 21);
         setDefaultPositions(0, 25, 25);
 
         // Ork
@@ -378,6 +378,10 @@ public class Player extends Entity {
                     attackCancel = true;
                     gp.obj[gp.currentMap][i].interact();
                 }
+            }
+            // MARKER
+            else if (gp.obj[gp.currentMap][i].type == type_marker) {
+                // do not thing
             }
             // INVENTORY ITEMS
             else {

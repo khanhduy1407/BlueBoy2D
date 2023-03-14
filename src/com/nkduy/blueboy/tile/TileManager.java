@@ -62,10 +62,10 @@ public class TileManager {
         }
 
         loadMap("/maps/homeyard.txt", 0);
-//        loadMap("/maps/worldmap.txt", 0);
-//        loadMap("/maps/indoor01.txt", 1);
-//        loadMap("/maps/dungeon01.txt", 2);
-//        loadMap("/maps/dungeon02.txt", 3);
+        loadMap("/maps/worldmap.txt", 1);
+        loadMap("/maps/indoor01.txt", 2);
+        loadMap("/maps/dungeon01.txt", 3);
+        loadMap("/maps/dungeon02.txt", 4);
     }
 
     public void getTileImage() {
