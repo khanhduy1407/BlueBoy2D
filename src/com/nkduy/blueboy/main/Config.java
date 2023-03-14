@@ -1,5 +1,6 @@
 package com.nkduy.blueboy.main;
 
+import com.nkduy.blueboy.GameLauncher;
 import com.nkduy.blueboy.Main;
 
 import java.io.*;
@@ -17,7 +18,7 @@ public class Config {
             BufferedWriter bw = new BufferedWriter(new FileWriter("config.txt"));
 
             // Username
-            bw.write("Username: " + Main.username);
+            bw.write("Username: " + GameLauncher.username);
             bw.newLine();
 
             // Full screen
@@ -49,7 +50,8 @@ public class Config {
             String s = br.readLine();
 
             // Username
-            Main.username = s.split("Username: ")[1];
+            GameLauncher.username = s.split("Username: ")[1];
+            Main.username = GameLauncher.username;
 
             // Full screen
             s = br.readLine();

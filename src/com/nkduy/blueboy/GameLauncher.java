@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 public class GameLauncher extends JFrame implements ActionListener {
 
@@ -17,10 +18,24 @@ public class GameLauncher extends JFrame implements ActionListener {
 
     public static GameInfo gameInfo;
     public static GamePanel gamePanel;
+    public static String username = " ";
+
+    static boolean startGame = false;
 
     public GameLauncher() {
         gameInfo = new GameInfo();
         gamePanel = new GamePanel();
+
+        File f = new File("config.txt");
+        if (!f.exists() && f.isDirectory()) {
+            gamePanel.config.saveConfig();
+        }
+        try {
+            TimeUnit.SECONDS.sleep(2);
+            gamePanel.config.loadConfig();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
 
         setTitle("Game Launcher");
         setSize(400, 200);
@@ -63,11 +78,18 @@ public class GameLauncher extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        ImageIcon icon = new ImageIcon("res/player/boy/down_1.png");
-        Image image = icon.getImage();
-        Image newImage = image.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newImage);
-        JOptionPane.showInputDialog(this, "Enter your username:", "Username Input", JOptionPane.PLAIN_MESSAGE, newIcon, null, null);
+        if (username.equals(" ")) {
+            ImageIcon icon = new ImageIcon("res/player/boy/down_1.png");
+            Image image = icon.getImage();
+            Image newImage = image.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newImage);
+            username = (String) JOptionPane.showInputDialog(this, "Enter your username:", "Input", JOptionPane.PLAIN_MESSAGE, newIcon, null, null);
+            gamePanel.config.saveConfig();
+            System.out.println("Welcome " + username + ", wish you happy gaming!!!");
+        } else {
+            System.out.println("Welcome back " + username + "!!!");
+        }
+
         dispose();
     }
 
