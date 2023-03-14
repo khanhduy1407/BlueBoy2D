@@ -11,7 +11,7 @@ import java.io.File;
 
 public class GameLauncher extends JFrame implements ActionListener {
 
-    JLabel title;
+    JLabel title, version;
     JButton startButton;
     JPanel panel;
 
@@ -52,11 +52,11 @@ public class GameLauncher extends JFrame implements ActionListener {
         constraints.anchor = GridBagConstraints.CENTER;
         panel.add(startButton, constraints);
 
-        title = new JLabel("v" + gameInfo.version);
-        title.setFont(new Font("Arial", Font.PLAIN, 13));
+        version = new JLabel("v" + gameInfo.version);
+        version.setFont(new Font("Arial", Font.PLAIN, 13));
         constraints.gridx = 0;
         constraints.gridy = 2;
-        panel.add(title, constraints);
+        panel.add(version, constraints);
 
         add(panel);
         setVisible(true);
