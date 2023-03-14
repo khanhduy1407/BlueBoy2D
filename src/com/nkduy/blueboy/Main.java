@@ -17,6 +17,10 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         GamePanel gamePanel = new GamePanel();
+        window = new JFrame();
+        gameInfo = new GameInfo();
+
+        System.out.println("Blue Boy 2D v" + gameInfo.version + "\n");
 
         File f = new File("config.txt");
         if (f.exists() && !f.isDirectory()) {
@@ -39,14 +43,11 @@ public class Main {
         }
         TimeUnit.SECONDS.sleep(2);
 
-        window = new JFrame();
-        gameInfo = new GameInfo();
-
         // This lets the window properly close when user clicks the close ("x") button.
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
 
-//        gameInfo.setShowVersion(true);
+        gameInfo.setShowVersion(true);
         gameInfo.setWindowWithTitle();
         new Main().setIcon();
 

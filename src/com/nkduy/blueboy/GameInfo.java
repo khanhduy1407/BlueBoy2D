@@ -4,10 +4,12 @@ public class GameInfo {
 
     public String title = "Blue Boy Adventure";
 
-    int major = 2;
+    int major = 3;
     int minor = 0;
     int patch = 0;
-    public String version = major + "." + minor + "." + patch;
+    String preRelease = "alpha.0";
+    String build = "b0";
+    public String version = major + "." + minor + "." + patch + "-" + preRelease + "+" + build;
     public boolean showVersion = false;
 
     public GameInfo() { }
