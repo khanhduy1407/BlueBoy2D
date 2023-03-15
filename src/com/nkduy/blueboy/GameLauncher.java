@@ -102,33 +102,28 @@ public class GameLauncher extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (!isLogged) {
-            if (username.equals(" ")) {
-                UIManager.put("OptionPane.background", new Color(38, 38, 38));
-                UIManager.put("Panel.background", new Color(38, 38, 38));
-                UIManager.put("OptionPane.messageForeground", Color.WHITE);
-                UIManager.put("TextField.background", Color.BLACK);
-                UIManager.put("TextField.foreground", Color.WHITE);
-                UIManager.put("Button.background", new Color(45, 87, 223));
-                UIManager.put("Button.foreground", Color.WHITE);
-                UIManager.put("Button.border", BorderFactory.createEmptyBorder(5, 10, 5, 10));
+            UIManager.put("OptionPane.background", new Color(38, 38, 38));
+            UIManager.put("Panel.background", new Color(38, 38, 38));
+            UIManager.put("OptionPane.messageForeground", Color.WHITE);
+            UIManager.put("TextField.background", Color.BLACK);
+            UIManager.put("TextField.foreground", Color.WHITE);
+            UIManager.put("Button.background", new Color(45, 87, 223));
+            UIManager.put("Button.foreground", Color.WHITE);
+            UIManager.put("Button.border", BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
-                ImageIcon icon = new ImageIcon("res/player/boy/down_1.png");
-                Image image = icon.getImage();
-                Image newImage = image.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH);
-                ImageIcon newIcon = new ImageIcon(newImage);
-                do {
-                    username = (String) JOptionPane.showInputDialog(this, "Enter your username (10 characters):", "Input", JOptionPane.PLAIN_MESSAGE, newIcon, null, null);
+            ImageIcon icon = new ImageIcon("res/player/boy/down_1.png");
+            Image image = icon.getImage();
+            Image newImage = image.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newImage);
+            do {
+                username = (String) JOptionPane.showInputDialog(this, "Enter your username (10 characters):", "Input", JOptionPane.PLAIN_MESSAGE, newIcon, null, null);
 
-                    if (username == null) {
-                        username = " ";
-                        break;
-                    }
-                } while (username.isEmpty() || username.length() > 10);
-                gamePanel.config.saveConfig();
-                System.out.println("Welcome " + username + ", wish you happy gaming!!!");
-            } else {
-                System.out.println("Welcome back " + username + "!!!");
-            }
+                if (username == null) {
+                    username = " ";
+                    break;
+                }
+            } while (username.isEmpty() || username.length() > 10);
+            gamePanel.config.saveConfig();
         } else {
             // later
         }
