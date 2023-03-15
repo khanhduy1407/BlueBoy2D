@@ -18,6 +18,7 @@ public class GameLauncher extends JFrame implements ActionListener {
     JPanel panel;
 
     String[] args;
+    Color primaryColor = new Color(45, 87, 223);
 
     public static GameInfo gameInfo;
     public static GamePanel gamePanel;
@@ -69,7 +70,7 @@ public class GameLauncher extends JFrame implements ActionListener {
 
         startButton.setFont(new Font("Arial", Font.BOLD, 15));
         startButton.setForeground(Color.WHITE);
-        startButton.setBackground(new Color(45, 87, 223));
+        startButton.setBackground(primaryColor);
         startButton.setOpaque(true);
         startButton.setBorderPainted(false);
         startButton.setFocusPainted(false);
@@ -108,7 +109,7 @@ public class GameLauncher extends JFrame implements ActionListener {
             UIManager.put("OptionPane.messageForeground", Color.WHITE);
             UIManager.put("TextField.background", Color.BLACK);
             UIManager.put("TextField.foreground", Color.WHITE);
-            UIManager.put("Button.background", new Color(45, 87, 223));
+            UIManager.put("Button.background", primaryColor);
             UIManager.put("Button.foreground", Color.WHITE);
             UIManager.put("Button.border", BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
