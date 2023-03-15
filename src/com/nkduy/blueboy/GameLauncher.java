@@ -85,6 +85,15 @@ public class GameLauncher extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (username.equals(" ")) {
+            UIManager.put("OptionPane.background", new Color(38, 38, 38));
+            UIManager.put("Panel.background", new Color(38, 38, 38));
+            UIManager.put("OptionPane.messageForeground", Color.WHITE);
+            UIManager.put("TextField.background", Color.BLACK);
+            UIManager.put("TextField.foreground", Color.WHITE);
+            UIManager.put("Button.background", new Color(45, 87, 223));
+            UIManager.put("Button.foreground", Color.WHITE);
+            UIManager.put("Button.border", BorderFactory.createEmptyBorder(5, 10, 5, 10));
+
             ImageIcon icon = new ImageIcon("res/player/boy/down_1.png");
             Image image = icon.getImage();
             Image newImage = image.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH);

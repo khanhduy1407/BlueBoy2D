@@ -1,4 +1,4 @@
-Username: NKDuy
+Username:  
 Fullscreen: off
 Music: 3
 SE: 3
