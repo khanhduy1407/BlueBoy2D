@@ -140,7 +140,7 @@ public class EventHandler {
         gp.gameState = gp.dialogueState;
         eventMaster.dialogues[2][0] = "Go to '" + dest + "'.";
         eventMaster.startDialogue(eventMaster, 2);
-        canTouchEvent = false;
+//        canTouchEvent = false;
 
         if (gp.keyH.enterPressed) {
             gp.player.attackCancel = true;
