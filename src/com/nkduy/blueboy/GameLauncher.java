@@ -16,13 +16,17 @@ public class GameLauncher extends JFrame implements ActionListener {
     JButton startButton;
     JPanel panel;
 
+    String[] args;
+
     public static GameInfo gameInfo;
     public static GamePanel gamePanel;
     public static String username = " ";
 
     public static boolean isLogged = false;
 
-    public GameLauncher() {
+    public GameLauncher(String[] args) {
+        this.args = args;
+
         gameInfo = new GameInfo();
         gamePanel = new GamePanel();
 
@@ -125,13 +129,13 @@ public class GameLauncher extends JFrame implements ActionListener {
             } while (username.isEmpty() || username.length() > 10);
             gamePanel.config.saveConfig();
         } else {
-            // later
+            Main.main(args);
         }
 
         dispose();
     }
 
     public static void main(String[] args) {
-        new GameLauncher();
+        new GameLauncher(args);
     }
 }
