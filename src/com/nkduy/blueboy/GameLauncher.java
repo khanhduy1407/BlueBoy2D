@@ -81,6 +81,17 @@ public class GameLauncher extends JFrame implements ActionListener {
 
         add(panel);
         setVisible(true);
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int screenWidth = (int) screenSize.getWidth();
+        int screenHeight = (int) screenSize.getHeight();
+
+        int windowWidth = getWidth();
+        int windowHeight = getHeight();
+        int windowX = (screenWidth - windowWidth) / 2;
+        int windowY = (screenHeight - windowHeight) / 2;
+
+        setLocation(windowX, windowY);
     }
 
     public void actionPerformed(ActionEvent e) {
