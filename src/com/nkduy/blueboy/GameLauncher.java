@@ -53,7 +53,11 @@ public class GameLauncher extends JFrame implements ActionListener {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        title = new JLabel("Welcome to Blue Boy 2D");
+        if (!username.equals(" ")) {
+            title = new JLabel("Welcome back " + username + "!!!");
+        } else {
+            title = new JLabel("Welcome to Blue Boy 2D");
+        }
         title.setFont(new Font("Arial", Font.BOLD, 20));
         constraints.gridx = 0;
         constraints.gridy = 0;
