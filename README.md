@@ -1,6 +1,9 @@
-# Blue Boy Adventure
+# Blue Boy Adventure 2D
 
-[Download Game](https://github.com/khanhduy1407/BlueBoy2D/releases/latest)
+![Latest version](https://img.shields.io/github/release/khanhduy1407/BlueBoy2D?label=Latest)
+![Pre version](https://img.shields.io/github/release-pre/khanhduy1407/BlueBoy2D?label=Pre-Release)
+
+[Download Game (latest version)](https://github.com/khanhduy1407/BlueBoy2D/releases/latest)
 
 ## Game control
 
