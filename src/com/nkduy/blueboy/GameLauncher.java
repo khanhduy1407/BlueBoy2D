@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class GameLauncher extends JFrame implements ActionListener {
@@ -45,13 +46,9 @@ public class GameLauncher extends JFrame implements ActionListener {
         setSize(400, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        BufferedImage iconImage = null;
-        try {
-            iconImage = ImageIO.read(new File("res/player/boy/down_1.png"));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        setIconImage(iconImage);
+        ImageIcon iconImage = new ImageIcon(Objects
+                .requireNonNull(getClass().getClassLoader().getResource("player/boy/down_1.png")));
+        setIconImage(iconImage.getImage());
 
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -115,7 +112,8 @@ public class GameLauncher extends JFrame implements ActionListener {
             UIManager.put("Button.foreground", Color.WHITE);
             UIManager.put("Button.border", BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
-            ImageIcon icon = new ImageIcon("res/player/boy/down_1.png");
+            ImageIcon icon = new ImageIcon(Objects
+                    .requireNonNull(getClass().getClassLoader().getResource("player/boy/down_1.png")));
             Image image = icon.getImage();
             Image newImage = image.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newImage);
