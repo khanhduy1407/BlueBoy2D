@@ -7,8 +7,8 @@ public class GameInfo {
     int major = 3;
     int minor = 0;
     int patch = 0;
-    String preRelease = "alpha.0";
-    String build = "b0";
+    String preRelease = "beta.0";
+    String build = "b1";
     public String version = major + "." + minor + "." + patch + "-" + preRelease + "+" + build;
     public boolean showVersion = false;
 
