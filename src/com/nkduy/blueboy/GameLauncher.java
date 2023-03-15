@@ -60,6 +60,12 @@ public class GameLauncher extends JFrame implements ActionListener {
         panel.add(title, constraints);
 
         startButton = new JButton("Start Game");
+        startButton.setFont(new Font("Arial", Font.BOLD, 15));
+        startButton.setForeground(Color.WHITE);
+        startButton.setBackground(new Color(45, 87, 223));
+        startButton.setOpaque(true);
+        startButton.setBorderPainted(false);
+        startButton.setFocusPainted(false);
         startButton.addActionListener(this);
         constraints.gridx = 0;
         constraints.gridy = 1;
