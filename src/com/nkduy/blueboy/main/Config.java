@@ -52,6 +52,9 @@ public class Config {
             // Username
             GameLauncher.username = s.split("Username: ")[1];
             Main.username = GameLauncher.username;
+            if (!GameLauncher.username.equals(" ")) {
+                GameLauncher.isLogged = true;
+            }
 
             // Full screen
             s = br.readLine();

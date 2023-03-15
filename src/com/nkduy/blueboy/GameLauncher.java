@@ -20,7 +20,7 @@ public class GameLauncher extends JFrame implements ActionListener {
     public static GamePanel gamePanel;
     public static String username = " ";
 
-    static boolean startGame = false;
+    public static boolean isLogged = false;
 
     public GameLauncher() {
         gameInfo = new GameInfo();
@@ -53,17 +53,19 @@ public class GameLauncher extends JFrame implements ActionListener {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        if (!username.equals(" ")) {
+        if (isLogged) {
             title = new JLabel("Welcome back " + username + "!!!");
+            startButton = new JButton("Start Game");
         } else {
             title = new JLabel("Welcome to Blue Boy 2D");
+            startButton = new JButton("Login");
         }
+
         title.setFont(new Font("Arial", Font.BOLD, 20));
         constraints.gridx = 0;
         constraints.gridy = 0;
         panel.add(title, constraints);
 
-        startButton = new JButton("Start Game");
         startButton.setFont(new Font("Arial", Font.BOLD, 15));
         startButton.setForeground(Color.WHITE);
         startButton.setBackground(new Color(45, 87, 223));
@@ -99,32 +101,36 @@ public class GameLauncher extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (username.equals(" ")) {
-            UIManager.put("OptionPane.background", new Color(38, 38, 38));
-            UIManager.put("Panel.background", new Color(38, 38, 38));
-            UIManager.put("OptionPane.messageForeground", Color.WHITE);
-            UIManager.put("TextField.background", Color.BLACK);
-            UIManager.put("TextField.foreground", Color.WHITE);
-            UIManager.put("Button.background", new Color(45, 87, 223));
-            UIManager.put("Button.foreground", Color.WHITE);
-            UIManager.put("Button.border", BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        if (!isLogged) {
+            if (username.equals(" ")) {
+                UIManager.put("OptionPane.background", new Color(38, 38, 38));
+                UIManager.put("Panel.background", new Color(38, 38, 38));
+                UIManager.put("OptionPane.messageForeground", Color.WHITE);
+                UIManager.put("TextField.background", Color.BLACK);
+                UIManager.put("TextField.foreground", Color.WHITE);
+                UIManager.put("Button.background", new Color(45, 87, 223));
+                UIManager.put("Button.foreground", Color.WHITE);
+                UIManager.put("Button.border", BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
-            ImageIcon icon = new ImageIcon("res/player/boy/down_1.png");
-            Image image = icon.getImage();
-            Image newImage = image.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH);
-            ImageIcon newIcon = new ImageIcon(newImage);
-            do {
-                username = (String) JOptionPane.showInputDialog(this, "Enter your username (10 characters):", "Input", JOptionPane.PLAIN_MESSAGE, newIcon, null, null);
+                ImageIcon icon = new ImageIcon("res/player/boy/down_1.png");
+                Image image = icon.getImage();
+                Image newImage = image.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH);
+                ImageIcon newIcon = new ImageIcon(newImage);
+                do {
+                    username = (String) JOptionPane.showInputDialog(this, "Enter your username (10 characters):", "Input", JOptionPane.PLAIN_MESSAGE, newIcon, null, null);
 
-                if (username == null) {
-                    username = " ";
-                    break;
-                }
-            } while (username.isEmpty() || username.length() > 10);
-            gamePanel.config.saveConfig();
-            System.out.println("Welcome " + username + ", wish you happy gaming!!!");
+                    if (username == null) {
+                        username = " ";
+                        break;
+                    }
+                } while (username.isEmpty() || username.length() > 10);
+                gamePanel.config.saveConfig();
+                System.out.println("Welcome " + username + ", wish you happy gaming!!!");
+            } else {
+                System.out.println("Welcome back " + username + "!!!");
+            }
         } else {
-            System.out.println("Welcome back " + username + "!!!");
+            // later
         }
 
         dispose();
