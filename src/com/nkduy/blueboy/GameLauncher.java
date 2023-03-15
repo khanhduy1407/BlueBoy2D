@@ -89,7 +89,14 @@ public class GameLauncher extends JFrame implements ActionListener {
             Image image = icon.getImage();
             Image newImage = image.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newImage);
-            username = (String) JOptionPane.showInputDialog(this, "Enter your username:", "Input", JOptionPane.PLAIN_MESSAGE, newIcon, null, null);
+            do {
+                username = (String) JOptionPane.showInputDialog(this, "Enter your username (10 characters):", "Input", JOptionPane.PLAIN_MESSAGE, newIcon, null, null);
+
+                if (username == null) {
+                    username = " ";
+                    break;
+                }
+            } while (username.isEmpty() || username.length() > 10);
             gamePanel.config.saveConfig();
             System.out.println("Welcome " + username + ", wish you happy gaming!!!");
         } else {
