@@ -294,7 +294,7 @@ public class Player extends Entity {
             }
         } else {
             standCounter++;
-            if (standCounter == 120) {
+            if (standCounter == 20) {
                 spriteNum = 1;
                 standCounter = 0;
             }
