@@ -274,7 +274,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void drawToTempScreen() {
         // DEBUG
         long drawStart = 0;
-        if (keyH.showDebugText) {
+        if (keyH.debugOn) {
             drawStart = System.nanoTime();
         }
 
@@ -359,14 +359,14 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         // DEBUG
-        if (keyH.showDebugText) {
+        if (keyH.debugOn) {
             long drawEnd = System.nanoTime();
             long passed = drawEnd - drawStart;
 
             g2.setFont(new Font("Arial", Font.PLAIN, 20));
             g2.setColor(Color.white);
             int x= 10;
-            int y = 380;
+            int y = 360;
             int lineHeight = 20;
 
             g2.drawString("Username: " + Main.username, x, y); y += lineHeight;

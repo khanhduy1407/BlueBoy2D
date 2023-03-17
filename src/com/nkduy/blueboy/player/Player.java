@@ -650,6 +650,12 @@ public class Player extends Entity {
         if (drawing) {
             // draw an image on the screen
             g2.drawImage(image, tempScreenX, tempScreenY, null);
+
+            // DEBUG
+            if (gp.keyH.debugOn) {
+                g2.setColor(Color.red);
+                g2.drawRect(tempScreenX + solidArea.x, tempScreenY + solidArea.y, solidArea.width, solidArea.height);
+            }
         }
 
         // Reset alpha
