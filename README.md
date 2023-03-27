@@ -5,27 +5,19 @@
 
 [Download Game (latest version)](https://github.com/khanhduy1407/BlueBoy2D/releases/latest)
 
-## Game control
+## Game controller
 
-|       Name       |  Key  |
-|:----------------:|:-----:|
-|       Move       | WASD  |
-|      Pause       |   P   |
-| Character Screen |   C   |
-|  Confirm/Attack  | Enter |
-|    Shoot/Cast    |   F   |
-|      Guard       | Space |
-|       Map        |   M   |
-|     Mini Map     |   N   |
-|     Options      |  Esc  |
-
-## Dev control
-
-|         Name         | Key |
-|:--------------------:|:---:|
-|       Load Map       |  R  |
-|   Show Debug Text    |  T  |
-| God Mode (never die) |  G  |
+|   Name (Main)    |  Key  |   |       Name (Dev)     | Key |
+|:----------------:|:-----:|:-:|:--------------------:|:---:|
+|       Move       | WASD  |   |       Load Map       |  R  |
+|      Pause       |   P   |   |   Show Debug Text    |  T  |
+| Character Screen |   C   |   | God Mode (never die) |  G  |
+|  Confirm/Attack  | Enter |   |                      |     |
+|    Shoot/Cast    |   F   |   |                      |     |
+|      Guard       | Space |   |                      |     |
+|       Map        |   M   |   |                      |     |
+|     Mini Map     |   N   |   |                      |     |
+|     Options      |  Esc  |   |                      |     |
 
 ## Issues
 
