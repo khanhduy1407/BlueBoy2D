@@ -14,7 +14,7 @@ public class GameInfo {
     int major = 3;
     int minor = 0;
     int patch = 0;
-    String preRelease = "beta.0";
+    String preRelease = "beta.1";
     String build = shortGitSHA;
     public String version = major + "." + minor + "." + patch + "-" + preRelease + "+" + build;
     public boolean showVersion = false;
