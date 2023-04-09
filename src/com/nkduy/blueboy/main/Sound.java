@@ -64,12 +64,12 @@ public class Sound {
 
     public void checkVolume() {
         switch (volumeScale) {
-            case 0: volume = -80f; break;
-            case 1: volume = -20f; break;
-            case 2: volume = -12f; break;
-            case 3: volume = 1f; break;
-            case 4: volume = 5f; break;
-            case 5: volume = 6f; break;
+            case 0 -> volume = -80f;
+            case 1 -> volume = -20f;
+            case 2 -> volume = -12f;
+            case 3 -> volume = 1f;
+            case 4 -> volume = 5f;
+            case 5 -> volume = 6f;
         }
 
         fc.setValue(volume);

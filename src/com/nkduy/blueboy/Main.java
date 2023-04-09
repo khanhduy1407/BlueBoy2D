@@ -3,10 +3,7 @@ package com.nkduy.blueboy;
 import com.nkduy.blueboy.main.GamePanel;
 
 import javax.swing.*;
-import java.io.File;
 import java.util.Objects;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
 

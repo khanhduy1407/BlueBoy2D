@@ -626,10 +626,10 @@ public class UI {
         drawSubWindow(frameX, frameY, frameWidth, frameHeight);
 
         switch (subState) {
-            case 0: options_top(frameX, frameY); break;
-            case 1: options_fullScreenNotification(frameX, frameY); break;
-            case 2: options_control(frameX, frameY); break;
-            case 3: options_endGameConfirmation(frameX, frameY); break;
+            case 0 -> options_top(frameX, frameY);
+            case 1 -> options_fullScreenNotification(frameX, frameY);
+            case 2 -> options_control(frameX, frameY);
+            case 3 -> options_endGameConfirmation(frameX, frameY);
         }
 
         gp.keyH.enterPressed = false;
@@ -693,9 +693,9 @@ public class UI {
 
     public void drawTradeScreen() {
         switch (subState) {
-            case 0: trade_select(); break;
-            case 1: trade_buy(); break;
-            case 2: trade_sell(); break;
+            case 0 -> trade_select();
+            case 1 -> trade_buy();
+            case 2 -> trade_sell();
         }
 
         gp.keyH.enterPressed = false;
