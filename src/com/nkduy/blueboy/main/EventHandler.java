@@ -2,7 +2,8 @@ package com.nkduy.blueboy.main;
 
 import com.nkduy.blueboy.data.Progress;
 import com.nkduy.blueboy.entity.Entity;
-import com.nkduy.blueboy.state.GameState;
+import com.nkduy.blueboy.util.Area;
+import com.nkduy.blueboy.util.GameState;
 
 public class EventHandler {
 
@@ -68,16 +69,16 @@ public class EventHandler {
         }
 
         if (canTouchEvent) {
-            if (hit(0, 25, 6, "any")) { marker( 1, "Adventure Map", 23, 21, gp.outside); }
+            if (hit(0, 25, 6, "any")) { marker( 1, "Adventure Map", 23, 21, Area.OUTSIDE); }
             else if (hit(1, 27, 16, "right")) { damagePit(GameState.DIALOGUE); }
             else if (hit(1, 23, 12, "up")) { healingPool(GameState.DIALOGUE); }
-            else if (hit(1, 10, 39, "any")) { teleport(2, 12, 13, gp.indoor); } // to merchant's house
-            else if (hit(2, 12, 13, "any")) { teleport(1, 10, 39, gp.outside); } // to outside
+            else if (hit(1, 10, 39, "any")) { teleport(2, 12, 13, Area.INDOOR); } // to merchant's house
+            else if (hit(2, 12, 13, "any")) { teleport(1, 10, 39, Area.OUTSIDE); } // to outside
             else if (hit(2, 12, 9, "up")) { speak(gp.npc[1][0]); }
-            else if (hit(1, 12, 9, "any")) { teleport(3, 9, 41, gp.dungeon); } // to the dungeon
-            else if (hit(3, 9, 41, "any")) { teleport(1, 12, 9, gp.outside); } // to outside
-            else if (hit(3, 8, 7, "any")) { teleport(4, 26, 41, gp.dungeon); } // to B2
-            else if (hit(4, 26, 41, "any")) { teleport(3, 8, 7, gp.dungeon); } // to B1
+            else if (hit(1, 12, 9, "any")) { teleport(3, 9, 41, Area.DUNGEON); } // to the dungeon
+            else if (hit(3, 9, 41, "any")) { teleport(1, 12, 9, Area.OUTSIDE); } // to outside
+            else if (hit(3, 8, 7, "any")) { teleport(4, 26, 41, Area.DUNGEON); } // to B2
+            else if (hit(4, 26, 41, "any")) { teleport(3, 8, 7, Area.DUNGEON); } // to B1
             else if (hit(4, 25, 27, "any")) { skeletonLord(); } // BOSS
         }
     }
@@ -127,7 +128,7 @@ public class EventHandler {
         }
     }
 
-    public void teleport(int map, int col, int row, int area) {
+    public void teleport(int map, int col, int row, Area area) {
         gp.gameState = GameState.TRANSITION;
         gp.nextArea = area;
         tempMap = map;
@@ -137,7 +138,7 @@ public class EventHandler {
         gp.playSE(13);
     }
 
-    public void marker(int map, String dest, int col, int row, int area) {
+    public void marker(int map, String dest, int col, int row, Area area) {
         gp.gameState = GameState.DIALOGUE;
         eventMaster.dialogues[2][0] = "Go to '" + dest + "'.";
         eventMaster.startDialogue(eventMaster, 2);

@@ -2,7 +2,7 @@ package com.nkduy.blueboy.entity;
 
 import com.nkduy.blueboy.main.GamePanel;
 import com.nkduy.blueboy.main.UtilityTool;
-import com.nkduy.blueboy.state.GameState;
+import com.nkduy.blueboy.util.GameState;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

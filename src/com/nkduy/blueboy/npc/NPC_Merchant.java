@@ -3,7 +3,7 @@ package com.nkduy.blueboy.npc;
 import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
 import com.nkduy.blueboy.object.*;
-import com.nkduy.blueboy.state.GameState;
+import com.nkduy.blueboy.util.GameState;
 
 import java.util.Random;
 

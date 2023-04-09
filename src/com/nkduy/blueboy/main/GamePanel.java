@@ -6,7 +6,8 @@ import com.nkduy.blueboy.data.SaveLoad;
 import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.player.Player;
 import com.nkduy.blueboy.environment.EnvironmentManager;
-import com.nkduy.blueboy.state.GameState;
+import com.nkduy.blueboy.util.Area;
+import com.nkduy.blueboy.util.GameState;
 import com.nkduy.blueboy.tile.Map;
 import com.nkduy.blueboy.tile.TileManager;
 import com.nkduy.blueboy.tile_interactive.InteractiveTile;
@@ -79,11 +80,8 @@ public class GamePanel extends JPanel implements Runnable {
     public boolean bossBattleOn = false;
 
     // AREA
-    public int currentArea;
-    public int nextArea;
-    public final int outside = 50;
-    public final int indoor = 51;
-    public final int dungeon = 52;
+    public Area currentArea;
+    public Area nextArea;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -123,7 +121,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void resetGame(boolean restart) {
         stopMusic();
-        currentArea = outside;
+        currentArea = Area.OUTSIDE;
         removeTempEntity();
         bossBattleOn = false;
         player.setDefaultPositions(0, 23, 21);
@@ -395,13 +393,13 @@ public class GamePanel extends JPanel implements Runnable {
         if (nextArea != currentArea) {
             stopMusic();
 
-            if (nextArea == outside) {
+            if (nextArea == Area.OUTSIDE) {
                 playMusic(0);
             }
-            if (nextArea == indoor) {
+            if (nextArea == Area.INDOOR) {
                 playMusic(18);
             }
-            if (nextArea == dungeon) {
+            if (nextArea == Area.DUNGEON) {
                 playMusic(19);
             }
 

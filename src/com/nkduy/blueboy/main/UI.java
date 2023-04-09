@@ -4,7 +4,7 @@ import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.object.OBJ_Coin_Bronze;
 import com.nkduy.blueboy.object.OBJ_Heart;
 import com.nkduy.blueboy.object.OBJ_ManaCrystal;
-import com.nkduy.blueboy.state.GameState;
+import com.nkduy.blueboy.util.GameState;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

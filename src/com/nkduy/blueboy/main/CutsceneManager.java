@@ -4,7 +4,7 @@ import com.nkduy.blueboy.player.PlayerDummy;
 import com.nkduy.blueboy.monster.MON_SkeletonLord;
 import com.nkduy.blueboy.object.OBJ_BlueHeart;
 import com.nkduy.blueboy.object.OBJ_Door_Iron;
-import com.nkduy.blueboy.state.GameState;
+import com.nkduy.blueboy.util.GameState;
 
 import java.awt.*;
 

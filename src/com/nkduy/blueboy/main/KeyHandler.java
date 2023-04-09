@@ -1,7 +1,7 @@
 package com.nkduy.blueboy.main;
 
 import com.nkduy.blueboy.Main;
-import com.nkduy.blueboy.state.GameState;
+import com.nkduy.blueboy.util.GameState;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

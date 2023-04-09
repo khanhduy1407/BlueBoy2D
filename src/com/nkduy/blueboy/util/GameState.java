@@ -1,4 +1,4 @@
-package com.nkduy.blueboy.state;
+package com.nkduy.blueboy.util;
 
 public enum GameState {
 

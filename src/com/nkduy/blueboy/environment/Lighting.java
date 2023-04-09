@@ -1,6 +1,7 @@
 package com.nkduy.blueboy.environment;
 
 import com.nkduy.blueboy.main.GamePanel;
+import com.nkduy.blueboy.util.Area;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -127,10 +128,10 @@ public class Lighting {
     }
 
     public void draw(Graphics2D g2) {
-        if (gp.currentArea == gp.outside) {
+        if (gp.currentArea == Area.OUTSIDE) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, filterAlpha));
         }
-        if (gp.currentArea == gp.outside || gp.currentArea == gp.dungeon) {
+        if (gp.currentArea == Area.OUTSIDE || gp.currentArea == Area.DUNGEON) {
             g2.drawImage(darknessFilter, 0, 0, null);
         }
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
