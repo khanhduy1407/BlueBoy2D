@@ -21,7 +21,7 @@
 
 ## Issues
 
-Please make sure to respect issue requirements and use [the new issue helper](https://github.com/khanhduy1407/My2DGame/issues/new) when opening an issue. Issues not conforming to the guidelines may be closed immediately.
+Please make sure to respect issue requirements and use [the new issue helper](https://github.com/khanhduy1407/My2DGame/issues/new/choose) when opening an issue. Issues not conforming to the guidelines may be closed immediately.
 
 ## License
 
