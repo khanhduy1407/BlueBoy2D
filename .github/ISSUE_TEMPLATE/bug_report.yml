@@ -1,0 +1,46 @@
+name: 🐛 Bug Report
+description: Create a report to help us improve Blue Boy 2D
+title: 'bug: '
+labels: bug, help wanted, question
+body:
+  - type: checkboxes
+    attributes:
+      label: Prerequisites
+      description: Please ensure you have completed all of the following.
+      options:
+        - label: I have searched for [existing issues](https://github.com/khanhduy1407/BlueBoy2D/issues) that already report this problem, without success.
+  - type: input
+    attributes:
+      label: Version
+      description: The version number where the issue is occurring.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Current Behavior
+      description: A clear description of what the bug is and how it manifests.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: A clear description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: System Info
+      description: |
+        Please provide any additional information, such as Java version, browser(s) & version(s) as well
+      render: shell
+      placeholder: System, Environment.
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce
+      description: Please explain the steps required to duplicate this issue.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: List any other information that is relevant to your issue. Stack traces, related issues, suggestions on how to fix, Stack Overflow links, forum links, etc.
