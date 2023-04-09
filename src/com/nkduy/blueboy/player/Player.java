@@ -4,6 +4,7 @@ import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
 import com.nkduy.blueboy.main.KeyHandler;
 import com.nkduy.blueboy.object.*;
+import com.nkduy.blueboy.state.GameState;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -347,7 +348,7 @@ public class Player extends Entity {
 
         if (!keyH.godModeOn) {
             if (life <= 0) {
-                gp.gameState = gp.gameOverState;
+                gp.gameState = GameState.GAME_OVER;
                 gp.ui.commandNum = -1;
                 gp.stopMusic();
                 gp.playSE(12);
@@ -496,7 +497,7 @@ public class Player extends Entity {
             defense = getDefense();
 
             gp.playSE(8);
-            gp.gameState = gp.dialogueState;
+            gp.gameState = GameState.DIALOGUE;
 
             setDialogue();
             startDialogue(this, 0);

@@ -6,6 +6,7 @@ import com.nkduy.blueboy.data.SaveLoad;
 import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.player.Player;
 import com.nkduy.blueboy.environment.EnvironmentManager;
+import com.nkduy.blueboy.state.GameState;
 import com.nkduy.blueboy.tile.Map;
 import com.nkduy.blueboy.tile.TileManager;
 import com.nkduy.blueboy.tile_interactive.InteractiveTile;
@@ -61,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable {
     SaveLoad saveLoad = new SaveLoad(this);
     public EntityGenerator eGenerator = new EntityGenerator(this);
     public CutsceneManager csManager = new CutsceneManager(this);
+    public GameState gameState;
     Thread gameThread;
 
     // ENTITY AND OBJECT
@@ -72,21 +74,6 @@ public class GamePanel extends JPanel implements Runnable {
     public Entity[][] projectile = new Entity[maxMap][20];
     public ArrayList<Entity> particleList = new ArrayList<>();
     ArrayList<Entity> entityList = new ArrayList<>();
-
-    // GAME STATE
-    public int gameState;
-    public final int titleState = 0;
-    public final int playState = 1;
-    public final int pauseState = 2;
-    public final int dialogueState = 3;
-    public final int characterState = 4;
-    public final int optionsState = 5;
-    public final int gameOverState = 6;
-    public final int transitionState = 7;
-    public final int tradeState = 8;
-    public final int sleepState = 9;
-    public final int mapState = 10;
-    public final int cutsceneState = 11;
 
     // OTHERS
     public boolean bossBattleOn = false;
@@ -119,7 +106,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         eManager.setup();
 
-        gameState = titleState;
+        gameState = GameState.TITLE;
 //        gameState = playState; // test
 //        playMusic(0); // if test gameState = playState, enable music
 //        playMusic(19); // if test gameState = playState, enable music, dungeon
@@ -213,7 +200,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        if (gameState == playState) {
+        if (gameState == GameState.PLAY) {
             // PLAYER
             player.update();
 
@@ -279,11 +266,11 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         // TITLE SCREEN
-        if (gameState == titleState) {
+        if (gameState == GameState.TITLE) {
             ui.draw(g2);
         }
         // MAP SCREEN
-        else if (gameState == mapState) {
+        else if (gameState == GameState.MAP) {
             map.drawFullMapScreen(g2);
         }
         // OTHERS

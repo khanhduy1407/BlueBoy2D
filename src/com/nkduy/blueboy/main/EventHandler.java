@@ -2,6 +2,7 @@ package com.nkduy.blueboy.main;
 
 import com.nkduy.blueboy.data.Progress;
 import com.nkduy.blueboy.entity.Entity;
+import com.nkduy.blueboy.state.GameState;
 
 public class EventHandler {
 
@@ -68,8 +69,8 @@ public class EventHandler {
 
         if (canTouchEvent) {
             if (hit(0, 25, 6, "any")) { marker( 1, "Adventure Map", 23, 21, gp.outside); }
-            else if (hit(1, 27, 16, "right")) { damagePit(gp.dialogueState); }
-            else if (hit(1, 23, 12, "up")) { healingPool(gp.dialogueState); }
+            else if (hit(1, 27, 16, "right")) { damagePit(GameState.DIALOGUE); }
+            else if (hit(1, 23, 12, "up")) { healingPool(GameState.DIALOGUE); }
             else if (hit(1, 10, 39, "any")) { teleport(2, 12, 13, gp.indoor); } // to merchant's house
             else if (hit(2, 12, 13, "any")) { teleport(1, 10, 39, gp.outside); } // to outside
             else if (hit(2, 12, 9, "up")) { speak(gp.npc[1][0]); }
@@ -108,14 +109,14 @@ public class EventHandler {
         return hit;
     }
 
-    public void damagePit(int gameState) {
+    public void damagePit(GameState gameState) {
         gp.gameState = gameState;
         eventMaster.startDialogue(eventMaster, 0);
         gp.player.life -= 1;
         canTouchEvent = false;
     }
 
-    public void healingPool(int gameState) {
+    public void healingPool(GameState gameState) {
         if (gp.keyH.enterPressed) {
             gp.gameState = gameState;
             gp.player.attackCancel = true;
@@ -127,7 +128,7 @@ public class EventHandler {
     }
 
     public void teleport(int map, int col, int row, int area) {
-        gp.gameState = gp.transitionState;
+        gp.gameState = GameState.TRANSITION;
         gp.nextArea = area;
         tempMap = map;
         tempCol = col;
@@ -137,7 +138,7 @@ public class EventHandler {
     }
 
     public void marker(int map, String dest, int col, int row, int area) {
-        gp.gameState = gp.dialogueState;
+        gp.gameState = GameState.DIALOGUE;
         eventMaster.dialogues[2][0] = "Go to '" + dest + "'.";
         eventMaster.startDialogue(eventMaster, 2);
 //        canTouchEvent = false;
@@ -150,7 +151,7 @@ public class EventHandler {
 
     public void speak(Entity entity) {
         if (gp.keyH.enterPressed) {
-            gp.gameState = gp.dialogueState;
+            gp.gameState = GameState.DIALOGUE;
             gp.player.attackCancel = true;
             entity.speak();
         }
@@ -158,7 +159,7 @@ public class EventHandler {
 
     public void skeletonLord() {
         if (!gp.bossBattleOn && !Progress.skeletonLordDefeated) {
-            gp.gameState = gp.cutsceneState;
+            gp.gameState = GameState.CUT_SCENE;
             gp.csManager.sceneNum = gp.csManager.skeletonLord;
         }
     }

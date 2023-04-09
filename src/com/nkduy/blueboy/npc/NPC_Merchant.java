@@ -3,6 +3,7 @@ package com.nkduy.blueboy.npc;
 import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
 import com.nkduy.blueboy.object.*;
+import com.nkduy.blueboy.state.GameState;
 
 import java.util.Random;
 
@@ -76,7 +77,7 @@ public class NPC_Merchant extends Entity {
 
     public void speak() {
         facePlayer();
-        gp.gameState = gp.tradeState;
+        gp.gameState = GameState.TRADE;
         gp.ui.npc = this;
     }
 }

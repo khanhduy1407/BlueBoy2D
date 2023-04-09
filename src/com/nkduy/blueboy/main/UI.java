@@ -4,6 +4,7 @@ import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.object.OBJ_Coin_Bronze;
 import com.nkduy.blueboy.object.OBJ_Heart;
 import com.nkduy.blueboy.object.OBJ_ManaCrystal;
+import com.nkduy.blueboy.state.GameState;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -74,47 +75,47 @@ public class UI {
         g2.setColor(Color.white);
 
         // TITLE STATE
-        if (gp.gameState == gp.titleState) {
+        if (gp.gameState == GameState.TITLE) {
             drawTitleScreen();
         }
         // PLAY STATE
-        if (gp.gameState == gp.playState) {
+        if (gp.gameState == GameState.PLAY) {
             drawPlayerLife();
             drawMonsterLife();
             drawMessage();
         }
         // PAUSE STATE
-        if (gp.gameState == gp.pauseState) {
+        if (gp.gameState == GameState.PAUSE) {
             drawPlayerLife();
             drawPauseScreen();
         }
         // DIALOGUE STATE
-        if (gp.gameState == gp.dialogueState) {
+        if (gp.gameState == GameState.DIALOGUE) {
             drawDialogueScreen();
         }
         // CHARACTER STATE
-        if (gp.gameState == gp.characterState) {
+        if (gp.gameState == GameState.CHARACTER) {
             drawCharacterScreen();
             drawInventory(gp.player, true);
         }
         // OPTIONS STATE
-        if (gp.gameState == gp.optionsState) {
+        if (gp.gameState == GameState.OPTIONS) {
             drawOptionsScreen();
         }
         // GAME OVER STATE
-        if (gp.gameState == gp.gameOverState) {
+        if (gp.gameState == GameState.GAME_OVER) {
             drawGameOverScreen();
         }
         // TRANSITION STATE
-        if (gp.gameState == gp.transitionState) {
+        if (gp.gameState == GameState.TRANSITION) {
             drawTransition();
         }
         // TRADE STATE
-        if (gp.gameState == gp.tradeState) {
+        if (gp.gameState == GameState.TRADE) {
             drawTradeScreen();
         }
         // SLEEP STATE
-        if (gp.gameState == gp.sleepState) {
+        if (gp.gameState == GameState.SLEEP) {
             drawSleepScreen();
         }
     }
@@ -388,7 +389,7 @@ public class UI {
                 charIndex = 0;
                 combinedText = "";
 
-                if (gp.gameState == gp.dialogueState || gp.gameState == gp.cutsceneState) {
+                if (gp.gameState == GameState.DIALOGUE || gp.gameState == GameState.CUT_SCENE) {
                     npc.dialogueIndex++;
                     gp.keyH.enterPressed = false;
                 }
@@ -396,10 +397,10 @@ public class UI {
         } else { // If no text is in the array
             npc.dialogueIndex = 0;
 
-            if (gp.gameState == gp.dialogueState) {
-                gp.gameState = gp.playState;
+            if (gp.gameState == GameState.DIALOGUE) {
+                gp.gameState = GameState.PLAY;
             }
-            if (gp.gameState == gp.cutsceneState) {
+            if (gp.gameState == GameState.CUT_SCENE) {
                 gp.csManager.scenePhase++;
             }
         }
@@ -680,7 +681,7 @@ public class UI {
 
         if (counter == 50) { // The transition is done
             counter = 0;
-            gp.gameState = gp.playState;
+            gp.gameState = GameState.PLAY;
             gp.currentMap = gp.eHandler.tempMap;
             gp.player.worldX = gp.tileSize * gp.eHandler.tempCol;
             gp.player.worldY = gp.tileSize * gp.eHandler.tempRow;
@@ -716,7 +717,7 @@ public class UI {
                 counter = 0;
                 gp.eManager.lighting.dayState = gp.eManager.lighting.day;
                 gp.eManager.lighting.dayCounter = 0;
-                gp.gameState = gp.playState;
+                gp.gameState = GameState.PLAY;
                 gp.player.getPlayerImage();
             }
         }
@@ -796,7 +797,7 @@ public class UI {
         if (commandNum == 6) {
             g2.drawString(">", textX - 25, textY);
             if (gp.keyH.enterPressed) {
-                gp.gameState = gp.playState;
+                gp.gameState = GameState.PLAY;
                 commandNum = 0;
             }
         }
@@ -911,7 +912,7 @@ public class UI {
             g2.drawString(">", textX - 25, textY);
             if (gp.keyH.enterPressed) {
                 subState = 0;
-                gp.gameState = gp.titleState;
+                gp.gameState = GameState.TITLE;
                 gp.saveLoad.save();
                 gp.stopMusic();
                 gp.resetGame(true);

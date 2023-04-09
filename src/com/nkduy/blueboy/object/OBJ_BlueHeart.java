@@ -2,6 +2,7 @@ package com.nkduy.blueboy.object;
 
 import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
+import com.nkduy.blueboy.state.GameState;
 
 public class OBJ_BlueHeart extends Entity {
 
@@ -26,7 +27,7 @@ public class OBJ_BlueHeart extends Entity {
     }
 
     public boolean use(Entity entity) {
-        gp.gameState = gp.cutsceneState;
+        gp.gameState = GameState.CUT_SCENE;
         gp.csManager.sceneNum = gp.csManager.ending;
 
         return true;

@@ -2,6 +2,7 @@ package com.nkduy.blueboy.object;
 
 import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.main.GamePanel;
+import com.nkduy.blueboy.state.GameState;
 
 public class OBJ_Tent extends Entity {
 
@@ -22,7 +23,7 @@ public class OBJ_Tent extends Entity {
     }
 
     public boolean use(Entity entity) {
-        gp.gameState = gp.sleepState;
+        gp.gameState = GameState.SLEEP;
         gp.playSE(14);
         gp.player.life = gp.player.maxLife;
         gp.player.mana = gp.player.maxMana;

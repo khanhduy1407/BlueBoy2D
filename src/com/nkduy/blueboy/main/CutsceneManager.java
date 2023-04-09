@@ -4,6 +4,7 @@ import com.nkduy.blueboy.player.PlayerDummy;
 import com.nkduy.blueboy.monster.MON_SkeletonLord;
 import com.nkduy.blueboy.object.OBJ_BlueHeart;
 import com.nkduy.blueboy.object.OBJ_Door_Iron;
+import com.nkduy.blueboy.state.GameState;
 
 import java.awt.*;
 
@@ -120,7 +121,7 @@ public class CutsceneManager {
             // Reset
             sceneNum = NA;
             scenePhase = 0;
-            gp.gameState = gp.playState;
+            gp.gameState = GameState.PLAY;
 
             // Change the music
             gp.stopMusic();
@@ -187,7 +188,7 @@ public class CutsceneManager {
 
             if (counterReached(480)) {
 //                scenePhase++;
-                gp.gameState = gp.titleState;
+                gp.gameState = GameState.TITLE;
             }
         }
         if (scenePhase == 7) {

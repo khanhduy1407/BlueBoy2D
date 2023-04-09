@@ -2,6 +2,7 @@ package com.nkduy.blueboy.entity;
 
 import com.nkduy.blueboy.main.GamePanel;
 import com.nkduy.blueboy.main.UtilityTool;
+import com.nkduy.blueboy.state.GameState;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -221,7 +222,7 @@ public class Entity {
     }
 
     public void startDialogue(Entity entity, int setNum) {
-        gp.gameState = gp.dialogueState;
+        gp.gameState = GameState.DIALOGUE;
         gp.ui.npc = entity;
         dialogueSet = setNum;
     }
