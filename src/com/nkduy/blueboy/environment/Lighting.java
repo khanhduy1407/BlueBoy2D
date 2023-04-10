@@ -2,6 +2,7 @@ package com.nkduy.blueboy.environment;
 
 import com.nkduy.blueboy.main.GamePanel;
 import com.nkduy.blueboy.util.Area;
+import com.nkduy.blueboy.util.DateState;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -14,11 +15,7 @@ public class Lighting {
     public float filterAlpha = 0f;
 
     // Day State
-    public final int day = 0;
-    public final int dusk = 1;
-    public final int night = 2;
-    public final int dawn = 3;
-    public int dayState = day;
+    public DateState dayState = DateState.DAY;
 
     public Lighting(GamePanel gp) {
         this.gp = gp;
@@ -82,7 +79,7 @@ public class Lighting {
     }
 
     public void resetDay() {
-        dayState = day;
+        dayState = DateState.DAY;
         filterAlpha = 0f;
     }
 
@@ -93,36 +90,36 @@ public class Lighting {
         }
 
         // Check the state of the day
-        if (dayState == day) {
+        if (dayState == DateState.DAY) {
             dayCounter++;
 
             if (dayCounter > 3600) { // 36.000s = 10m
-                dayState = dusk;
+                dayState = DateState.DUSK;
                 dayCounter = 0;
             }
         }
-        if (dayState == dusk) {
+        if (dayState == DateState.DUSK) {
             filterAlpha += 0.0005f; // 0.0001f x 10.000 = 1f, 10.000/60 = 166s
 
             if (filterAlpha > 1f) {
                 filterAlpha = 1f;
-                dayState = night;
+                dayState = DateState.NIGHT;
             }
         }
-        if (dayState == night) {
+        if (dayState == DateState.NIGHT) {
             dayCounter++;
 
             if (dayCounter > 36000) {
-                dayState = dawn;
+                dayState = DateState.DAWN;
                 dayCounter = 0;
             }
         }
-        if (dayState == dawn) {
+        if (dayState == DateState.DAWN) {
             filterAlpha -= 0.005f;
 
             if (filterAlpha < 0f) {
                 filterAlpha = 0;
-                dayState = day;
+                dayState = DateState.DAY;
             }
         }
     }
@@ -140,10 +137,10 @@ public class Lighting {
         String situation = "";
 
         switch (dayState) {
-            case day -> situation = "Day";
-            case dusk -> situation = "Dust";
-            case night -> situation = "Night";
-            case dawn -> situation = "Dawn";
+            case DAY -> situation = "Day";
+            case DUSK -> situation = "Dust";
+            case NIGHT -> situation = "Night";
+            case DAWN -> situation = "Dawn";
         }
 
         g2.setColor(Color.white);

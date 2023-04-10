@@ -4,6 +4,7 @@ import com.nkduy.blueboy.entity.Entity;
 import com.nkduy.blueboy.object.OBJ_Coin_Bronze;
 import com.nkduy.blueboy.object.OBJ_Heart;
 import com.nkduy.blueboy.object.OBJ_ManaCrystal;
+import com.nkduy.blueboy.util.DateState;
 import com.nkduy.blueboy.util.GameState;
 
 import java.awt.*;
@@ -715,7 +716,7 @@ public class UI {
             if (gp.eManager.lighting.filterAlpha <= 0f) {
                 gp.eManager.lighting.filterAlpha = 0f;
                 counter = 0;
-                gp.eManager.lighting.dayState = gp.eManager.lighting.day;
+                gp.eManager.lighting.dayState = DateState.DAY;
                 gp.eManager.lighting.dayCounter = 0;
                 gp.gameState = GameState.PLAY;
                 gp.player.getPlayerImage();
